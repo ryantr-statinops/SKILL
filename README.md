@@ -105,3 +105,26 @@ maintenance guidance.
 Keep changes focused. Validate before committing, use small Conventional
 Commits, and explain any new dependency or taxonomy change in the relevant
 documentation. See `AGENTS.md` for repository conventions.
+
+### Contribution checklist
+
+- [ ] The skill has a narrow outcome and clear activation boundaries.
+- [ ] `SKILL.md` contains only essential instructions.
+- [ ] Supporting resources are linked and conditionally loaded.
+- [ ] The validator passes.
+- [ ] A representative task and a boundary case were reviewed.
+- [ ] Commit scope is focused and the message is descriptive.
+
+### Evaluation workflow
+
+For each new or changed skill, record one representative task and one nearby
+task that should not activate it. Check routing, procedure, decisions, failure
+handling, expected output, and context size. Re-run these cases after changes;
+keep the cases close to the skill or in a future evaluation harness when they
+become reusable regression tests.
+
+Run the structural check with:
+
+```bash
+python3 scripts/validate_skills.py
+```
