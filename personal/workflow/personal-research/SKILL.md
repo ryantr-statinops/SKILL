@@ -1,5 +1,5 @@
 ---
-name: research
+name: personal-research
 description: Conduct focused personal technical research that turns evidence into an engineering or product decision.
 category: personal
 subject: workflow

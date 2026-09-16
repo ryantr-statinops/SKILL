@@ -12,7 +12,7 @@ version: 1.0.0
 
 | Need | Skill |
 | --- | --- |
-| Alpha or backtesting research | [research](research/SKILL.md) |
+| Alpha or backtesting research | [quant-research](quant-research/SKILL.md) |
 | MT5 or execution concerns | [trading](trading/SKILL.md) |
 | Time-series foundations | [time-series](time-series/SKILL.md) |
 

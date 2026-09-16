@@ -1,5 +1,5 @@
 ---
-name: research
+name: quant-research
 description: Route quantitative research to alpha investigation or backtesting workflows with explicit bias and cost controls.
 category: personal
 subject: quant

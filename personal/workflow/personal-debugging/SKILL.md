@@ -1,5 +1,5 @@
 ---
-name: debugging
+name: personal-debugging
 description: Apply Ryan's evidence-first debugging workflow to reproduce, isolate, fix, and verify a personal project failure.
 category: personal
 subject: workflow
