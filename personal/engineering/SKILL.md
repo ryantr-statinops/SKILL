@@ -14,8 +14,9 @@ Use for engineering decisions that should reflect Ryan's preferences. Route to t
 
 | Need | Skill |
 | --- | --- |
-| Go or Python backend | [backend](backend/SKILL.md) |
+| Go, Python, or Node.js backend | [backend](backend/SKILL.md) |
 | Data pipelines or storage | [data-engineering](data-engineering/SKILL.md) |
+| AI and agent engineering | [ai](ai/SKILL.md) |
 | Linux, Docker, or networking | [infrastructure](infrastructure/SKILL.md) |
 | Lightweight web UI | [frontend](frontend/SKILL.md) |
 
