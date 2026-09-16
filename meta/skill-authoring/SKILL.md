@@ -1,6 +1,11 @@
 ---
 name: skill-authoring
 description: Design or revise a narrowly scoped Agent Skill with explicit routing, progressive disclosure, and validation.
+category: meta
+subject: skill-system
+scope: repository
+status: stable
+version: 1.0.0
 ---
 
 # Skill authoring
