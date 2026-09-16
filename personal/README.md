@@ -11,7 +11,7 @@ project-specific instructions or a textbook collection.
 | Product scope or MVP | [product](product/project-scoping/SKILL.md) |
 | Brainstorm or initialize work | [workflow](workflow/brainstorming/SKILL.md) |
 | Choose technology or architecture | [decision](decision/technology-selection/SKILL.md) |
-| Backend or data engineering | [engineering](engineering/SKILL.md) |
+| Backend, Node.js, data, or AI engineering | [engineering](engineering/SKILL.md) |
 | Education workflow | [education](education/SKILL.md) |
 | Quant research or trading | [quant](quant/SKILL.md) |
 
@@ -19,6 +19,7 @@ project-specific instructions or a textbook collection.
 
 - [Education](education/SKILL.md)
 - [Engineering](engineering/SKILL.md)
+- [AI engineering scaffold](engineering/ai/SKILL.md)
 - [Quant](quant/SKILL.md)
 - [Product](product/)
 - [Workflow](workflow/)
