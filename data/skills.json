@@ -310,6 +310,83 @@
       "path": "meta/skill-maintenance/SKILL.md"
     },
     {
+      "id": "personal/engineering/ai",
+      "name": "ai",
+      "description": "Reserved router for personal AI and agent engineering workflows; detailed AI skills are not built yet.",
+      "category": "personal",
+      "subject": "ai-engineering",
+      "scope": "personal",
+      "status": "draft",
+      "version": "0.1.0",
+      "path": "personal/engineering/ai/SKILL.md"
+    },
+    {
+      "id": "personal/engineering/ai/core",
+      "name": "core",
+      "description": "Reserved foundation for personal AI and agent engineering; use only for initial framing until dedicated AI skills are built.",
+      "category": "personal",
+      "subject": "ai-engineering",
+      "scope": "personal",
+      "status": "draft",
+      "version": "0.1.0",
+      "path": "personal/engineering/ai/core/SKILL.md"
+    },
+    {
+      "id": "personal/engineering/backend/api-design",
+      "name": "api-design",
+      "description": "Design personal service APIs with explicit contracts, validation, errors, compatibility, and usable client behavior.",
+      "category": "personal",
+      "subject": "backend",
+      "scope": "personal",
+      "status": "experimental",
+      "version": "1.0.0",
+      "path": "personal/engineering/backend/api-design/SKILL.md"
+    },
+    {
+      "id": "personal/engineering/backend/core",
+      "name": "core",
+      "description": "Apply personal backend foundations for service boundaries, contracts, persistence, errors, tests, and operations.",
+      "category": "personal",
+      "subject": "backend",
+      "scope": "personal",
+      "status": "experimental",
+      "version": "1.0.0",
+      "path": "personal/engineering/backend/core/SKILL.md"
+    },
+    {
+      "id": "personal/engineering/backend/nodejs",
+      "name": "nodejs",
+      "description": "Apply personal Node.js backend practices for APIs, services, runtime configuration, testing, and operations.",
+      "category": "personal",
+      "subject": "backend",
+      "scope": "personal",
+      "status": "experimental",
+      "version": "1.0.0",
+      "path": "personal/engineering/backend/nodejs/SKILL.md"
+    },
+    {
+      "id": "personal/engineering/backend/service-architecture",
+      "name": "service-architecture",
+      "description": "Shape personal backend service architecture around ownership, boundaries, data flow, operability, and change cost.",
+      "category": "personal",
+      "subject": "backend",
+      "scope": "personal",
+      "status": "experimental",
+      "version": "1.0.0",
+      "path": "personal/engineering/backend/service-architecture/SKILL.md"
+    },
+    {
+      "id": "personal/engineering/data-engineering/core",
+      "name": "core",
+      "description": "Apply personal data-engineering foundations for data contracts, lineage, quality, storage, and reproducible workflows.",
+      "category": "personal",
+      "subject": "data-engineering",
+      "scope": "personal",
+      "status": "experimental",
+      "version": "1.0.0",
+      "path": "personal/engineering/data-engineering/core/SKILL.md"
+    },
+    {
       "id": "personal/decision/architecture-tradeoff",
       "name": "architecture-tradeoff",
       "description": "Make explicit architecture trade-offs for personal systems across simplicity, performance, reliability, cost, and changeability.",
