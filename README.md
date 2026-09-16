@@ -116,10 +116,11 @@ evaluation, intake, and maintenance skills.
 - Canonical skill template and meta skills.
 - Structural validator.
 - Integration, authoring, discovery, evaluation, and compatibility guides.
+- Phase 1 integration model: portable agent directories, Codex priority, Git subtree guidance, and selected-skill sync helper.
 
 ### Remaining work
 
-- Confirm the target `.agents/` layout and integration behavior across the agent runtimes we intend to support.
+- Verify the `.agent/` integration with a real Codex project fixture and document confirmed runtime behavior.
 - Add a generated or maintained skill index as the library grows.
 - Build the first common skills, starting with Git, debugging, testing, and research.
 - Build the first personal skills for data, backend, AI/agent, and quantitative workflows.
