@@ -16,3 +16,7 @@ Choose the implementation language only after clarifying service boundaries, int
 | --- | --- |
 | Go backend | [go](go/SKILL.md) |
 | Python backend | [python](python/SKILL.md) |
+| Node.js backend | [nodejs](nodejs/SKILL.md) |
+| Backend foundations | [core](core/SKILL.md) |
+| API design | [api-design](api-design/SKILL.md) |
+| Service architecture | [service-architecture](service-architecture/SKILL.md) |
