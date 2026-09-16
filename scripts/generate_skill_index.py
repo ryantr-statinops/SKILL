@@ -39,7 +39,6 @@ def parse_frontmatter(path: Path) -> dict[str, str]:
 
 def collect() -> list[dict[str, str]]:
     records: list[dict[str, str]] = []
-    names: set[str] = set()
     ids: set[str] = set()
     for category in CATEGORIES:
         for skill_file in sorted((ROOT / category).rglob("SKILL.md")):
@@ -61,11 +60,8 @@ def collect() -> list[dict[str, str]]:
                     raise ValueError(f"invalid {field} in {relative}: {metadata[field]}")
             if not VERSION_RE.fullmatch(metadata["version"]):
                 raise ValueError(f"invalid version in {relative}: {metadata['version']}")
-            if metadata["name"] in names:
-                raise ValueError(f"duplicate skill name: {metadata['name']}")
             if skill_id in ids:
                 raise ValueError(f"duplicate skill id: {skill_id}")
-            names.add(metadata["name"])
             ids.add(skill_id)
             records.append(
                 {

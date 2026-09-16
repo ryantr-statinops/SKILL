@@ -19,7 +19,7 @@ version: 1.0.0
 
 ### Fields
 
-- `name`: lowercase skill name; it must match the final directory name.
+- `name`: lowercase local skill name; it must match the final directory name. Names may repeat in different scopes; canonical path IDs must not.
 - `description`: concise capability and activation boundary.
 - `category`: `common`, `personal`, or `meta`; it must match the root directory.
 - `subject`: lowercase topic grouping used for index sorting and discovery.
