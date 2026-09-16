@@ -1,6 +1,11 @@
 ---
 name: skill-discovery
 description: Select the smallest relevant skill for a task using descriptions, boundaries, and progressive disclosure.
+category: meta
+subject: skill-system
+scope: repository
+status: stable
+version: 1.0.0
 ---
 
 # Skill discovery
