@@ -20,13 +20,49 @@ preferences in `personal/` and skill-system procedures in `meta/`.
 
 ## Categories
 
-- [Foundation](foundation/)
-- [Engineering](engineering/)
-- [Research](research/)
-- [Data](data/)
-- [Security](security/)
-- [Delivery](delivery/)
-- [Agent](agent/)
+### Foundation
+
+- [repository-onboarding](foundation/repository-onboarding/SKILL.md)
+- [requirements-analysis](foundation/requirements-analysis/SKILL.md)
+- [task-planning](foundation/task-planning/SKILL.md)
+- [context-management](foundation/context-management/SKILL.md)
+
+### Engineering
+
+- [git-workflow](engineering/git-workflow/SKILL.md)
+- [debugging](engineering/debugging/SKILL.md)
+- [testing](engineering/testing/SKILL.md)
+- [refactoring](engineering/refactoring/SKILL.md)
+- [code-review](engineering/code-review/SKILL.md)
+- [dependency-management](engineering/dependency-management/SKILL.md)
+- [documentation](engineering/documentation/SKILL.md)
+
+### Research
+
+- [research](research/research/SKILL.md)
+- [comparison](research/comparison/SKILL.md)
+
+### Data
+
+- [data-inspection](data/data-inspection/SKILL.md)
+- [data-cleaning](data/data-cleaning/SKILL.md)
+- [schema-validation](data/schema-validation/SKILL.md)
+- [reproducible-analysis](data/reproducible-analysis/SKILL.md)
+
+### Security
+
+- [secure-development](security/secure-development/SKILL.md)
+- [security-review](security/security-review/SKILL.md)
+
+### Delivery
+
+- [change-review](delivery/change-review/SKILL.md)
+- [release](delivery/release/SKILL.md)
+
+### Agent
+
+- [context-loading](agent/context-loading/SKILL.md)
+- [failure-recovery](agent/failure-recovery/SKILL.md)
 
 ## Runtime notes
 
