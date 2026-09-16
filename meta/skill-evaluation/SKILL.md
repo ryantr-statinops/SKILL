@@ -1,6 +1,11 @@
 ---
 name: skill-evaluation
 description: Evaluate whether an Agent Skill produces useful, bounded, and repeatable behavior on realistic tasks.
+category: meta
+subject: skill-system
+scope: repository
+status: stable
+version: 1.0.0
 ---
 
 # Skill evaluation
