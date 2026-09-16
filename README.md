@@ -96,9 +96,37 @@ that attempt to solve an entire domain.
 
 ## Current index
 
-The initial implementation focuses on the meta layer. See the folders under
-`meta/` for the available authoring, discovery, evaluation, intake, and
-maintenance guidance.
+The initial implementation focuses on the meta layer and repository guides.
+
+- [Documentation index](docs/README.md)
+- [Integration guide](docs/integration.md)
+- [Authoring guide](docs/authoring.md)
+- [Discovery guide](docs/discovery.md)
+- [Evaluation guide](docs/evaluation.md)
+- [Compatibility guide](docs/compatibility.md)
+
+See the folders under `meta/` for the available authoring, discovery,
+evaluation, intake, and maintenance skills.
+
+## Roadmap
+
+### Completed foundation
+
+- Repository structure and `common` / `personal` / `meta` taxonomy.
+- Canonical skill template and meta skills.
+- Structural validator.
+- Integration, authoring, discovery, evaluation, and compatibility guides.
+
+### Remaining work
+
+- Confirm the target `.agents/` layout and integration behavior across the agent runtimes we intend to support.
+- Add a generated or maintained skill index as the library grows.
+- Build the first common skills, starting with Git, debugging, testing, and research.
+- Build the first personal skills for data, backend, AI/agent, and quantitative workflows.
+- Add representative and boundary evaluation cases for real skills.
+- Define versioning, update, and distribution conventions for integrated skills.
+- Add CI to run validation and link checks on every change.
+- Research external ecosystems and record adopted compatibility patterns.
 
 ## Contributing
 
