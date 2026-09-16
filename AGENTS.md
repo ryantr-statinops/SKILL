@@ -2,7 +2,7 @@
 
 ## Purpose
 
-`SKILL` is a portable library of agent skills: concise operational knowledge,
+`SKILLS` is a portable library of agent skills: concise operational knowledge,
 procedures, and judgment for engineering, data, AI, quantitative, and personal
 workflows.
 

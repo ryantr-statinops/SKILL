@@ -1,6 +1,6 @@
-# SKILL
+# SKILLS
 
-`SKILL` is a portable Agent Skill Library for engineering, data, AI,
+`SKILLS` is a portable Agent Skill Library for engineering, data, AI,
 quantitative research, and personal workflows.
 
 This repository is not a prompt dump. A skill encodes operational knowledge:
@@ -26,7 +26,7 @@ other conceptually.
 ## Architecture
 
 ```text
-SKILL/
+SKILLS/
 ├── common/       # broadly reusable skills
 ├── personal/     # Ryan's workflows and domain judgment
 ├── meta/         # skills about the skill system
