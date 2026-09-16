@@ -124,12 +124,13 @@ evaluation, intake, and maintenance skills.
 - Phase 2 skill metadata, generated Markdown/JSON indexes, and discovery routing.
 - Phase 3 common skill foundation, engineering, research, data, security, delivery, and agent skills.
 - Common skill representative and boundary evaluation cases.
+- Common skill evaluation report and enforced evaluation validation.
 
 ### Remaining work
 
 - Verify the `.agent/` integration with a real Codex project fixture and document confirmed runtime behavior.
 - Add skill-specific behavioral evaluation cases as the library grows.
-- Run the common skill evaluation cases against real Codex project tasks and record regressions.
+- Run the common skill evaluation cases inside a real consumer Codex project when integration testing is resumed.
 - Build the first personal skills for data, backend, AI/agent, and quantitative workflows.
 - Add representative and boundary evaluation cases for real skills.
 - Define versioning, update, and distribution conventions for integrated skills.
