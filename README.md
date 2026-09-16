@@ -102,6 +102,8 @@ The initial implementation focuses on the meta layer and repository guides.
 - [Integration guide](docs/integration.md)
 - [Authoring guide](docs/authoring.md)
 - [Discovery guide](docs/discovery.md)
+- [Metadata specification](docs/metadata.md)
+- [Generated skill index](docs/skill-index.md)
 - [Evaluation guide](docs/evaluation.md)
 - [Compatibility guide](docs/compatibility.md)
 

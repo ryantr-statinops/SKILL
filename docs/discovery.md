@@ -7,12 +7,26 @@ user task without loading the whole library into context.
 
 ```text
 task
-  → desired outcome and constraints
-  → category and candidate descriptions
+  → docs/skill-index.md or data/skills.json
+  → candidate descriptions and metadata
   → activation boundaries
   → selected SKILL.md
   → conditional references/scripts/assets
   → execution and validation
+```
+
+The generated index is a routing aid, not a replacement for the skill
+entrypoint. After selecting a candidate, read its `SKILL.md` before following
+instructions or loading supporting resources.
+
+## Querying the index
+
+Use `docs/skill-index.md` for human review and `data/skills.json` for tooling.
+Regenerate both after changing skill metadata:
+
+```bash
+python3 scripts/generate_skill_index.py
+python3 scripts/generate_skill_index.py --check
 ```
 
 ## Selection rules
@@ -25,9 +39,10 @@ task
 
 ## Writing discoverable descriptions
 
-A description should say what the skill does and when it applies. It should be
-specific enough to distinguish nearby skills and should include an exclusion
-when misrouting is likely.
+A description should say what the skill does and when it applies. Metadata also
+provides category, subject, scope, lifecycle status, and version. The
+description should be specific enough to distinguish nearby skills and should
+include an exclusion when misrouting is likely.
 
 Prefer:
 
