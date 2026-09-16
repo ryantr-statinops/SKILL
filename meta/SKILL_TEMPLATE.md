@@ -1,6 +1,11 @@
 ---
 name: skill-name
 description: Describe what this skill does and when it applies; include a useful boundary.
+category: meta
+subject: skill-system
+scope: repository
+status: draft
+version: 1.0.0
 ---
 
 # Skill Name
