@@ -104,6 +104,8 @@ The initial implementation focuses on the meta layer and repository guides.
 - [Discovery guide](docs/discovery.md)
 - [Metadata specification](docs/metadata.md)
 - [Generated skill index](docs/skill-index.md)
+- [Common skill index](common/README.md)
+- [Codex notes for common skills](common/CODEX.md)
 - [Evaluation guide](docs/evaluation.md)
 - [Compatibility guide](docs/compatibility.md)
 

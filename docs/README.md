@@ -10,6 +10,8 @@ This directory contains the human-facing guides for using and extending the
 - [Discovery](discovery.md) — route a task to the smallest relevant skill.
 - [Metadata](metadata.md) — define frontmatter fields and generated registry data.
 - [Skill index](skill-index.md) — generated human-readable skill registry.
+- [Common skill index](../common/README.md) — fast routing for portable skills.
+- [Codex common notes](../common/CODEX.md) — Codex-only operating guidance.
 - [Evaluation](evaluation.md) — test whether a skill is useful in practice.
 - [Compatibility](compatibility.md) — record assumptions about agent runtimes and layouts.
 

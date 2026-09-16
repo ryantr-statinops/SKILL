@@ -15,6 +15,10 @@ task
   → execution and validation
 ```
 
+For common skills, begin with [`common/README.md`](../common/README.md) for
+quick routing. Codex should also read [`common/CODEX.md`](../common/CODEX.md);
+other runtimes should use only the portable skill entrypoint.
+
 The generated index is a routing aid, not a replacement for the skill
 entrypoint. After selecting a candidate, read its `SKILL.md` before following
 instructions or loading supporting resources.
