@@ -5,6 +5,15 @@ from pathlib import Path
 import re
 import sys
 
+from generate_skill_index import (
+    ENUMS,
+    REQUIRED,
+    VERSION_RE,
+    collect,
+    render_json,
+    render_markdown,
+)
+
 ROOT = Path(__file__).resolve().parents[1]
 CATEGORIES = {"common", "personal", "meta"}
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -31,10 +40,29 @@ def validate_skill(path: Path) -> int:
         failures += 1
     else:
         frontmatter = text[4 : text.index("\n---\n", 4)]
-        for field in ("name:", "description:"):
+        for field in REQUIRED:
             if not re.search(rf"^\s*{re.escape(field)}\s*.+$", frontmatter, re.MULTILINE):
                 error(f"missing {field[:-1]} in {skill_file.relative_to(ROOT)}")
                 failures += 1
+        values = {}
+        for line in frontmatter.splitlines():
+            if ":" in line:
+                key, value = line.split(":", 1)
+                values[key.strip()] = value.strip().strip('"\'')
+        if values.get("name") != path.name:
+            error(f"name does not match directory in {skill_file.relative_to(ROOT)}")
+            failures += 1
+        category = path.relative_to(ROOT).parts[0]
+        if values.get("category") != category:
+            error(f"category does not match path in {skill_file.relative_to(ROOT)}")
+            failures += 1
+        for field, allowed in ENUMS.items():
+            if values.get(field) not in allowed:
+                error(f"invalid {field} in {skill_file.relative_to(ROOT)}")
+                failures += 1
+        if values.get("version") and not VERSION_RE.fullmatch(values["version"]):
+            error(f"invalid version in {skill_file.relative_to(ROOT)}")
+            failures += 1
 
     for placeholder in PLACEHOLDERS:
         if placeholder in text:
@@ -67,6 +95,19 @@ def main() -> int:
             continue
         for skill_file in sorted(category_path.rglob("SKILL.md")):
             failures += validate_skill(skill_file.parent)
+    try:
+        records = collect()
+        generated = {
+            ROOT / "docs/skill-index.md": render_markdown(records),
+            ROOT / "data/skills.json": render_json(records),
+        }
+        for path, expected in generated.items():
+            if not path.is_file() or path.read_text(encoding="utf-8") != expected:
+                error(f"stale or missing generated file: {path.relative_to(ROOT)}")
+                failures += 1
+    except ValueError as exc:
+        error(str(exc))
+        failures += 1
     if failures:
         print(f"Validation failed with {failures} issue(s).")
         return 1
