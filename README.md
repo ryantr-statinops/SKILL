@@ -122,12 +122,13 @@ evaluation, intake, and maintenance skills.
 - Integration, authoring, discovery, evaluation, and compatibility guides.
 - Phase 1 integration model: portable agent directories, Codex priority, Git subtree guidance, and selected-skill sync helper.
 - Phase 2 skill metadata, generated Markdown/JSON indexes, and discovery routing.
+- Phase 3 common skill foundation, engineering, research, data, security, delivery, and agent skills.
 
 ### Remaining work
 
 - Verify the `.agent/` integration with a real Codex project fixture and document confirmed runtime behavior.
 - Add skill-specific behavioral evaluation cases as the library grows.
-- Build the first common skills, starting with Git, debugging, testing, and research.
+- Add skill-specific behavioral evaluation cases for the common skills.
 - Build the first personal skills for data, backend, AI/agent, and quantitative workflows.
 - Add representative and boundary evaluation cases for real skills.
 - Define versioning, update, and distribution conventions for integrated skills.
