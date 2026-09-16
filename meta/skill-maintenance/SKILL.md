@@ -1,6 +1,11 @@
 ---
 name: skill-maintenance
 description: Maintain, refactor, version, and retire skills without causing routing drift or duplicated guidance.
+category: meta
+subject: skill-system
+scope: repository
+status: stable
+version: 1.0.0
 ---
 
 # Skill maintenance
