@@ -1,6 +1,11 @@
 ---
 name: skill-intake
 description: Decide whether to adopt, adapt, rebuild, or create a skill from an external repository or a new personal need.
+category: meta
+subject: skill-system
+scope: repository
+status: stable
+version: 1.0.0
 ---
 
 # Skill intake
