@@ -74,6 +74,18 @@ def validate_skill(path: Path) -> int:
             error(f"empty resource directory: {directory.relative_to(ROOT)}")
             failures += 1
 
+    if path.parts[0] == "common":
+        evaluation = path / "examples/evaluation.md"
+        if not evaluation.is_file():
+            error(f"missing common skill evaluation: {evaluation.relative_to(ROOT)}")
+            failures += 1
+        else:
+            evaluation_text = evaluation.read_text(encoding="utf-8")
+            for section in ("## Representative task", "## Boundary task", "Expected:"):
+                if section not in evaluation_text:
+                    error(f"missing evaluation section in {evaluation.relative_to(ROOT)}: {section}")
+                    failures += 1
+
     for match in re.finditer(r"\[[^\]]+\]\(([^)]+)\)", text):
         target = match.group(1).split("#", 1)[0]
         if target.startswith(("http://", "https://", "mailto:")):
