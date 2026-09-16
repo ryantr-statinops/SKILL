@@ -38,3 +38,6 @@ htmlcov/
 *.tmp
 *.swp
 *~
+
+# Local planning notes
+local.md
