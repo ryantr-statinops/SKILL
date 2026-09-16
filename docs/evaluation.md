@@ -45,3 +45,16 @@ boundary checks again.
 
 Fix the narrowest demonstrated problem. Do not add broad rules based on a
 single speculative failure.
+
+## Common skill evaluation
+
+Each common skill keeps its representative and boundary scenarios in
+`examples/evaluation.md`. These scenarios test routing intent and expected
+behavior; they are not a substitute for running the task in a real project.
+
+For Codex, additionally verify that:
+
+- `common/README.md` routes the task to the intended skill.
+- `common/CODEX.md` is read as runtime guidance without leaking into portable skill semantics.
+- The selected `SKILL.md` is loaded before conditional resources.
+- The portable procedure still makes sense outside Codex.
