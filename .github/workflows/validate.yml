@@ -1,0 +1,36 @@
+name: Validate skills
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate skill structure and metadata
+        run: python3 scripts/validate_skills.py
+
+      - name: Check generated indexes
+        run: python3 scripts/generate_skill_index.py --check
+
+      - name: Check evaluation contracts
+        run: python3 scripts/run_evaluations.py --format json
+
+      - name: Check local Markdown links
+        run: python3 scripts/check_markdown_links.py
+
+      - name: Check whitespace
+        run: git diff --check
