@@ -1,7 +1,7 @@
 # Evaluation
 
 ## Representative task
-Package an analysis with versioned inputs, parameters, transformations, outputs, and rerun instructions.
+Task: Package an analysis with versioned inputs, parameters, transformations, outputs, and rerun instructions.
 
 Expected: a clean second run produces equivalent results within stated tolerance.
 
@@ -10,7 +10,7 @@ Failure condition: Depend on undocumented manual state or mutable inputs.
 Validation: Run twice from a clean environment and compare declared outputs.
 
 ## Boundary task
-Present a manually edited result with no input or method record as reproducible.
+Task: Present a manually edited result with no input or method record as reproducible.
 
 Expected: disclose the reproducibility gap.
 

@@ -1,7 +1,7 @@
 # Evaluation
 
 ## Representative task
-Add a package required by a feature while checking compatibility, lockfiles, license, security, and tests.
+Task: Add a package required by a feature while checking compatibility, lockfiles, license, security, and tests.
 
 Expected: minimal synchronized dependency change with rationale.
 
@@ -10,7 +10,7 @@ Failure condition: Add unreviewed packages or leave lockfiles inconsistent.
 Validation: Run dependency, license, security, and test checks for the changed set.
 
 ## Boundary task
-Upgrade every outdated dependency during a focused feature change.
+Task: Upgrade every outdated dependency during a focused feature change.
 
 Expected: avoid unrelated upgrades and scope expansion.
 

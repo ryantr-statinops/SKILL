@@ -1,7 +1,7 @@
 # Evaluation
 
 ## Representative task
-Review an endpoint for authentication, authorization, injection, sensitive data, dependencies, and abuse cases.
+Task: Review an endpoint for authentication, authorization, injection, sensitive data, dependencies, and abuse cases.
 
 Expected: prioritized evidence-backed findings with remediation.
 
@@ -10,7 +10,7 @@ Failure condition: Claim security without checking scope, trust boundaries, or a
 Validation: Trace findings to code/configuration evidence and review coverage.
 
 ## Boundary task
-Declare an entire system secure after reading only one function.
+Task: Declare an entire system secure after reading only one function.
 
 Expected: state review scope and limitations.
 

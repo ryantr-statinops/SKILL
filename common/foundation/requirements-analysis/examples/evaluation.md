@@ -1,7 +1,7 @@
 # Evaluation
 
 ## Representative task
-Turn “add authentication” into outcomes, constraints, open questions, acceptance criteria, and exclusions.
+Task: Turn “add authentication” into outcomes, constraints, open questions, acceptance criteria, and exclusions.
 
 Expected: expose material ambiguity before implementation.
 
@@ -10,7 +10,7 @@ Failure condition: Convert an ambiguous request into implementation assumptions 
 Validation: Review outcomes, constraints, acceptance criteria, questions, and exclusions.
 
 ## Boundary task
-Rename a clearly identified local variable.
+Task: Rename a clearly identified local variable.
 
 Expected: proceed without inventing a requirements workshop.
 
