@@ -1,0 +1,179 @@
+#!/usr/bin/env python3
+"""Check skill evaluation contracts and emit a JSON or Markdown report."""
+
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+import shlex
+import subprocess
+import sys
+
+from generate_skill_index import collect
+
+ROOT = Path(__file__).resolve().parents[1]
+CATEGORIES = ("common", "personal")
+CASE_SECTIONS = ("## Representative task", "## Boundary task")
+CASE_FIELDS = ("Task:", "Expected:", "Failure condition:", "Validation:")
+
+# Validation commands are opt-in and exact-match only. New commands must be
+# reviewed here before an evaluation file can request their execution.
+ALLOWED_COMMANDS = {
+    "python3 scripts/validate_skills.py": [sys.executable, "scripts/validate_skills.py"],
+    "python3 scripts/generate_skill_index.py --check": [
+        sys.executable,
+        "scripts/generate_skill_index.py",
+        "--check",
+    ],
+}
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--format",
+        choices=("markdown", "json"),
+        default="markdown",
+        help="report format printed to stdout (default: markdown)",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        help="optional report file; otherwise the report is printed to stdout",
+    )
+    parser.add_argument(
+        "--run-commands",
+        action="store_true",
+        help="run exact allowlisted validation commands declared in cases",
+    )
+    return parser.parse_args()
+
+
+def case_body(text: str, heading: str) -> str:
+    marker = f"{heading}\n"
+    if marker not in text:
+        return ""
+    body = text.split(marker, 1)[1]
+    next_heading = body.find("\n## ")
+    return body if next_heading == -1 else body[:next_heading]
+
+
+def declared_commands(text: str) -> list[str]:
+    commands = []
+    for line in text.splitlines():
+        if line.startswith("Validation command:"):
+            commands.append(line.split(":", 1)[1].strip())
+    return commands
+
+
+def check_case(text: str, heading: str) -> list[str]:
+    body = case_body(text, heading)
+    errors = []
+    if not body:
+        errors.append(f"missing {heading}")
+        return errors
+    for field in CASE_FIELDS:
+        if field not in body:
+            errors.append(f"missing {field} in {heading}")
+    return errors
+
+
+def evaluate() -> tuple[list[dict[str, object]], int]:
+    registry_ids = {record["id"] for record in collect()}
+    results: list[dict[str, object]] = []
+    failures = 0
+    for category in CATEGORIES:
+        for skill_file in sorted((ROOT / category).rglob("SKILL.md")):
+            skill_dir = skill_file.parent
+            skill_id = skill_dir.relative_to(ROOT).as_posix()
+            evaluation = skill_dir / "examples/evaluation.md"
+            errors: list[str] = []
+            commands: list[dict[str, str]] = []
+            if skill_id not in registry_ids:
+                errors.append("skill id is absent from generated registry")
+            if not evaluation.is_file():
+                errors.append("missing examples/evaluation.md")
+            else:
+                text = evaluation.read_text(encoding="utf-8")
+                for heading in CASE_SECTIONS:
+                    errors.extend(check_case(text, heading))
+                for command in declared_commands(text):
+                    if command not in ALLOWED_COMMANDS:
+                        errors.append(f"command is not allowlisted: {command}")
+                        commands.append({"command": command, "status": "rejected"})
+                    elif not args_run_commands:
+                        commands.append({"command": command, "status": "skipped"})
+                    else:
+                        completed = subprocess.run(
+                            ALLOWED_COMMANDS[command],
+                            cwd=ROOT,
+                            capture_output=True,
+                            text=True,
+                            check=False,
+                        )
+                        status = "passed" if completed.returncode == 0 else "failed"
+                        commands.append({"command": command, "status": status})
+                        if completed.returncode != 0:
+                            errors.append(f"allowlisted command failed: {command}")
+            result = {
+                "id": skill_id,
+                "path": evaluation.relative_to(ROOT).as_posix(),
+                "status": "passed" if not errors else "failed",
+                "errors": errors,
+                "commands": commands,
+            }
+            results.append(result)
+            failures += bool(errors)
+    return results, failures
+
+
+def render_json(results: list[dict[str, object]]) -> str:
+    return json.dumps(
+        {"schema_version": 1, "total": len(results), "failed": sum(r["status"] == "failed" for r in results), "skills": results},
+        indent=2,
+        ensure_ascii=False,
+    ) + "\n"
+
+
+def render_markdown(results: list[dict[str, object]]) -> str:
+    failed = sum(result["status"] == "failed" for result in results)
+    lines = [
+        "# Skill evaluation report",
+        "",
+        "> Generated by `scripts/run_evaluations.py`; the harness checks contracts and registry references.",
+        "",
+        f"Total skills: **{len(results)}**",
+        f"Failed skills: **{failed}**",
+        "",
+        "| Skill | Evaluation file | Status | Errors |",
+        "| --- | --- | --- | --- |",
+    ]
+    for result in results:
+        errors = "; ".join(result["errors"]) or "—"
+        lines.append(
+            f"| `{result['id']}` | `{result['path']}` | `{result['status']}` | {errors} |"
+        )
+    return "\n".join(lines) + "\n"
+
+
+def main() -> int:
+    global args_run_commands
+    args = parse_args()
+    args_run_commands = args.run_commands
+    try:
+        results, failures = evaluate()
+    except ValueError as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 1
+    report = render_json(results) if args.format == "json" else render_markdown(results)
+    if args.output:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(report, encoding="utf-8")
+    else:
+        print(report, end="")
+    return 1 if failures else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
