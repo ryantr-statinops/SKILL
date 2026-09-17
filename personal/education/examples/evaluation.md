@@ -1,0 +1,21 @@
+# Evaluation
+
+## Representative task
+
+Task: Route a request asking how to learn probability with simulations and mathematical explanations.
+
+Expected: Select the probability skill and identify when statistics or R support is also needed.
+
+Failure condition: Load every education skill before identifying the learning objective.
+
+Validation: Confirm one primary route and only necessary follow-up skills are selected.
+
+## Boundary task
+
+Task: Design a production data pipeline.
+
+Expected: Route to data-engineering skills rather than the education router.
+
+Failure condition: Treat a production implementation request as a learning exercise without evidence.
+
+Validation: Confirm the selected route belongs to engineering.
