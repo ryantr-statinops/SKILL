@@ -126,17 +126,17 @@ evaluation, intake, and maintenance skills.
 - Common skill representative and boundary evaluation cases.
 - Common skill evaluation report and enforced evaluation validation.
 - Phase 4 personal taxonomy, routers, workflow, engineering, education, and quant foundations.
+- Phase 5 evaluation contract, personal evaluation cases, deterministic harness, and JSON/Markdown reports.
+- Phase 6 skill/repository versioning, changelog, and Git subtree distribution policy.
+- Phase 7 GitHub Actions validation, local Markdown link checking, and explicit release workflow.
+- Phase 8 ecosystem comparison matrix, adopted/rejected patterns, and compatibility guidance.
 
 ### Remaining work
 
 - Verify the `.agent/` integration with a real Codex project fixture and document confirmed runtime behavior.
-- Add skill-specific behavioral evaluation cases as the library grows.
 - Run the common skill evaluation cases inside a real consumer Codex project when integration testing is resumed.
-- Add representative personal tasks and boundary cases as real personal workflows are exercised.
-- Add representative and boundary evaluation cases for real skills.
-- Define versioning, update, and distribution conventions for integrated skills.
-- Add CI to run validation and link checks on every change.
-- Research external ecosystems and record adopted compatibility patterns.
+- Expand the evaluation harness with runtime fixtures and human scoring when real consumer projects are available.
+- Create a repository release tag when the next release-ready batch is approved.
 
 ## Contributing
 
