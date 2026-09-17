@@ -44,3 +44,11 @@ that runtime.
 
 Record confirmed runtime behavior here as evidence accumulates. Keep uncertain
 assumptions explicit instead of presenting them as a universal standard.
+
+## Ecosystem research
+
+The current comparison and adoption decisions are recorded in the
+[ecosystem matrix](ecosystem-matrix.md) and
+[ecosystem decisions](ecosystem-decisions.md). They are research inputs, not
+runtime support claims. A runtime becomes supported only after a fixture,
+version, layout, representative task, and validation result are recorded.

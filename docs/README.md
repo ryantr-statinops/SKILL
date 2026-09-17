@@ -21,6 +21,8 @@ This directory contains the human-facing guides for using and extending the
 - [Evaluation harness](evaluation-harness.md) — deterministic evaluation checks and future extensions.
 - [Common evaluation report](common-evaluation-report.md) — current common-skill review results.
 - [Compatibility](compatibility.md) — record assumptions about agent runtimes and layouts.
+- [Ecosystem matrix](ecosystem-matrix.md) — compare external skill ecosystems.
+- [Ecosystem decisions](ecosystem-decisions.md) — record adopted and deferred patterns.
 
 The guides explain repository-level practices. The actual instructions for a
 specific capability live in that capability's `SKILL.md`.
