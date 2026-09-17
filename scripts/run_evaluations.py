@@ -6,11 +6,8 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-import shlex
 import subprocess
 import sys
-
-from generate_skill_index import collect
 
 ROOT = Path(__file__).resolve().parents[1]
 CATEGORIES = ("common", "personal")
@@ -79,8 +76,18 @@ def check_case(text: str, heading: str) -> list[str]:
     return errors
 
 
-def evaluate() -> tuple[list[dict[str, object]], int]:
-    registry_ids = {record["id"] for record in collect()}
+def registry_ids() -> set[str]:
+    registry_path = ROOT / "data/skills.json"
+    try:
+        registry = json.loads(registry_path.read_text(encoding="utf-8"))
+        records = registry["skills"]
+        return {record["id"] for record in records}
+    except (OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
+        raise ValueError(f"invalid generated registry: {registry_path.relative_to(ROOT)}") from exc
+
+
+def evaluate(run_commands: bool) -> tuple[list[dict[str, object]], int]:
+    ids = registry_ids()
     results: list[dict[str, object]] = []
     failures = 0
     for category in CATEGORIES:
@@ -90,7 +97,7 @@ def evaluate() -> tuple[list[dict[str, object]], int]:
             evaluation = skill_dir / "examples/evaluation.md"
             errors: list[str] = []
             commands: list[dict[str, str]] = []
-            if skill_id not in registry_ids:
+            if skill_id not in ids:
                 errors.append("skill id is absent from generated registry")
             if not evaluation.is_file():
                 errors.append("missing examples/evaluation.md")
@@ -102,7 +109,7 @@ def evaluate() -> tuple[list[dict[str, object]], int]:
                     if command not in ALLOWED_COMMANDS:
                         errors.append(f"command is not allowlisted: {command}")
                         commands.append({"command": command, "status": "rejected"})
-                    elif not args_run_commands:
+                    elif not run_commands:
                         commands.append({"command": command, "status": "skipped"})
                     else:
                         completed = subprocess.run(
@@ -158,11 +165,9 @@ def render_markdown(results: list[dict[str, object]]) -> str:
 
 
 def main() -> int:
-    global args_run_commands
     args = parse_args()
-    args_run_commands = args.run_commands
     try:
-        results, failures = evaluate()
+        results, failures = evaluate(args.run_commands)
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
