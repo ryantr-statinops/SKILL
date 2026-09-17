@@ -74,14 +74,21 @@ def validate_skill(path: Path) -> int:
             error(f"empty resource directory: {directory.relative_to(ROOT)}")
             failures += 1
 
-    if path.parts[0] == "common":
+    if path.parts[0] in {"common", "personal"}:
         evaluation = path / "examples/evaluation.md"
         if not evaluation.is_file():
-            error(f"missing common skill evaluation: {evaluation.relative_to(ROOT)}")
+            error(f"missing skill evaluation: {evaluation.relative_to(ROOT)}")
             failures += 1
         else:
             evaluation_text = evaluation.read_text(encoding="utf-8")
-            for section in ("## Representative task", "## Boundary task", "Expected:"):
+            for section in (
+                "## Representative task",
+                "## Boundary task",
+                "Task:",
+                "Expected:",
+                "Failure condition:",
+                "Validation:",
+            ):
                 if section not in evaluation_text:
                     error(f"missing evaluation section in {evaluation.relative_to(ROOT)}: {section}")
                     failures += 1
