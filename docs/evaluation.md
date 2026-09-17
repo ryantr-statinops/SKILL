@@ -13,6 +13,10 @@ For every new or changed skill, define:
 4. Failure conditions and safe handling.
 5. The validation command or review criteria.
 
+The repository format for these cases is defined in the
+[evaluation case contract](evaluation-contract.md). Common and personal
+skills keep the case beside the skill in `examples/evaluation.md`.
+
 ## Evaluation levels
 
 ### Structural
@@ -48,8 +52,8 @@ single speculative failure.
 
 ## Common skill evaluation
 
-Each common skill keeps its representative and boundary scenarios in
-`examples/evaluation.md`. These scenarios test routing intent and expected
+Each common and personal skill keeps its representative and boundary scenarios
+in `examples/evaluation.md`. These scenarios test routing intent and expected
 behavior; they are not a substitute for running the task in a real project.
 
 For Codex, additionally verify that:
