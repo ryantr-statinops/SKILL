@@ -8,6 +8,7 @@ This directory contains the human-facing guides for using and extending the
 - [Integration](integration.md) — bring selected skills into a project's `.agents/` directory.
 - [Versioning](versioning.md) — skill SemVer and repository release tags.
 - [Distribution](distribution.md) — Git subtree updates and consumer boundaries.
+- [CI and release](ci-release.md) — automated checks and explicit release steps.
 - [Authoring](authoring.md) — create or revise a skill using repository conventions.
 - [Discovery](discovery.md) — route a task to the smallest relevant skill.
 - [Metadata](metadata.md) — define frontmatter fields and generated registry data.
