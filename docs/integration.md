@@ -5,6 +5,9 @@ project through a runtime-specific agent directory. Codex is the priority
 runtime; the integration remains portable by using the same skill payload under
 `.agent/`, `.claude/`, `.codex/`, or another documented adapter directory.
 
+For version and release semantics, see [versioning](versioning.md) and
+[distribution](distribution.md).
+
 ## Recommended project layout
 
 ```text
