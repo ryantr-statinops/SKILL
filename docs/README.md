@@ -14,6 +14,8 @@ This directory contains the human-facing guides for using and extending the
 - [Codex common notes](../common/CODEX.md) — Codex-only operating guidance.
 - [Personal skills](../personal/README.md) — personal workflow and domain index.
 - [Evaluation](evaluation.md) — test whether a skill is useful in practice.
+- [Evaluation contract](evaluation-contract.md) — required representative and boundary case format.
+- [Evaluation harness](evaluation-harness.md) — deterministic evaluation checks and future extensions.
 - [Common evaluation report](common-evaluation-report.md) — current common-skill review results.
 - [Compatibility](compatibility.md) — record assumptions about agent runtimes and layouts.
 
