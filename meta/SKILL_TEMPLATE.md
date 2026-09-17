@@ -46,7 +46,8 @@ State the boundaries, inputs, tools, and prerequisites that materially affect th
 
 Read only when needed:
 
-- [Reference](references/reference.md) — when ...
+- `references/` — add only when a real reference is needed; link the concrete
+  file from the skill.
 - `scripts/check.py` — when deterministic validation is useful.
 - `examples/` — when a concrete demonstration is needed.
 
