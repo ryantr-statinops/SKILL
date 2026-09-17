@@ -26,6 +26,8 @@ def error(message: str) -> None:
 
 def validate_skill(path: Path) -> int:
     failures = 0
+    relative = path.relative_to(ROOT)
+    category = relative.parts[0]
     skill_file = path / "SKILL.md"
     if not NAME_RE.fullmatch(path.name):
         error(f"invalid skill directory name: {path.relative_to(ROOT)}")
@@ -52,7 +54,6 @@ def validate_skill(path: Path) -> int:
         if values.get("name") != path.name:
             error(f"name does not match directory in {skill_file.relative_to(ROOT)}")
             failures += 1
-        category = path.relative_to(ROOT).parts[0]
         if values.get("category") != category:
             error(f"category does not match path in {skill_file.relative_to(ROOT)}")
             failures += 1
@@ -74,7 +75,7 @@ def validate_skill(path: Path) -> int:
             error(f"empty resource directory: {directory.relative_to(ROOT)}")
             failures += 1
 
-    if path.parts[0] in {"common", "personal"}:
+    if category in {"common", "personal"}:
         evaluation = path / "examples/evaluation.md"
         if not evaluation.is_file():
             error(f"missing skill evaluation: {evaluation.relative_to(ROOT)}")
