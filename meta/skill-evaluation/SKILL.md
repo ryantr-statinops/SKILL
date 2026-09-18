@@ -41,3 +41,11 @@ whether a skill is ready to publish.
 
 Agent-based evaluation is optional; use it when the skill is complex enough that
 independent behavioral review materially improves confidence.
+
+## Agent handoff
+
+- Selected when: The task changes authoring, discovery, evaluation, intake, or maintenance of this skill library.
+- Do not activate when: The task is domain implementation unrelated to the skill system.
+- Expected output: Produce a bounded skill-system decision, artifact, or validation result.
+- User-facing report: Summarize the rule applied, files or registry affected, checks, and risks.
+- Confirmation boundary: Ask before destructive repository changes, external writes, or irreversible lifecycle actions.

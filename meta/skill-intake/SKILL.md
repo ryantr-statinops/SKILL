@@ -50,3 +50,11 @@ and put the preference-specific extension in `personal/`.
 - License unclear: do not copy; request review or rebuild from observed behavior.
 - Source is a documentation dump: extract decisions and workflows instead.
 - Scope overlaps an existing skill: extend the existing skill or document a clear boundary.
+
+## Agent handoff
+
+- Selected when: The task changes authoring, discovery, evaluation, intake, or maintenance of this skill library.
+- Do not activate when: The task is domain implementation unrelated to the skill system.
+- Expected output: Produce a bounded skill-system decision, artifact, or validation result.
+- User-facing report: Summarize the rule applied, files or registry affected, checks, and risks.
+- Confirmation boundary: Ask before destructive repository changes, external writes, or irreversible lifecycle actions.

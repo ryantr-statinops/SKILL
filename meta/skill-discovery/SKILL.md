@@ -35,3 +35,11 @@ Use when routing a user task to one or more skills in this library.
 - Too many candidates: narrow by desired output and exclusions.
 - Missing context: inspect the repository or ask for the minimum required input.
 - Conflicting procedures: stop and surface the conflict instead of silently merging them.
+
+## Agent handoff
+
+- Selected when: The task changes authoring, discovery, evaluation, intake, or maintenance of this skill library.
+- Do not activate when: The task is domain implementation unrelated to the skill system.
+- Expected output: Produce a bounded skill-system decision, artifact, or validation result.
+- User-facing report: Summarize the rule applied, files or registry affected, checks, and risks.
+- Confirmation boundary: Ask before destructive repository changes, external writes, or irreversible lifecycle actions.
