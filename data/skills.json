@@ -673,6 +673,17 @@
       "path": "personal/quant/trading/mt5/SKILL.md"
     },
     {
+      "id": "personal/quant/production-workflow",
+      "name": "production-workflow",
+      "description": "Turn a validated quantitative research artifact into a reproducible, observable, recoverable production engineering workflow without authorizing trade execution.",
+      "category": "personal",
+      "subject": "quant",
+      "scope": "personal",
+      "status": "experimental",
+      "version": "1.0.0",
+      "path": "personal/quant/production-workflow/SKILL.md"
+    },
+    {
       "id": "personal/quant",
       "name": "quant",
       "description": "Route personal quantitative work to research or production-engineering workflows without authorizing financial execution.",
