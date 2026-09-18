@@ -4,11 +4,11 @@
 
 Task: Establish foundations for a data workflow with a source contract, lineage, quality checks, storage, and reproducible execution.
 
-Expected: Define data ownership, contract, quality gates, lineage, and rerun behavior before selecting tools.
+Expected: Define grain, ownership, source semantics, contract, quality gates, lineage, storage rationale, idempotency, rerun/recovery behavior, and observability before selecting tools.
 
-Failure condition: Choose a platform before identifying data semantics and failure recovery.
+Failure condition: Choose a platform before identifying data semantics, quality measures, lineage, or failure recovery, or silently discard invalid records without documenting the impact.
 
-Validation: Review the data contract, quality checks, and reproducibility plan.
+Validation: Review the data contract, quality checks, lineage, storage rationale, reproducibility plan, and recovery path.
 
 ## Boundary task
 

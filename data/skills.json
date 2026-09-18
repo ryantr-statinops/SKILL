@@ -378,7 +378,7 @@
     {
       "id": "personal/engineering/data/core",
       "name": "core",
-      "description": "Apply personal data engineering foundations for data contracts, lineage, quality, storage, and reproducible workflows.",
+      "description": "Apply personal data engineering foundations for contracts, lineage, quality, storage, reproducibility, and recoverable workflows.",
       "category": "personal",
       "subject": "data",
       "scope": "personal",
