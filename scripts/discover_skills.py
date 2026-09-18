@@ -35,7 +35,7 @@ def parse_args() -> argparse.Namespace:
 
 def normalize_registry(data: dict[str, object]) -> list[dict[str, str]]:
     schema_version = data.get("schema_version")
-    if schema_version not in {1, 2}:
+    if schema_version not in {1, 2, 3}:
         raise ValueError(f"unsupported registry schema version: {schema_version}")
     skills = data["skills"]
     if not isinstance(skills, list):
@@ -49,6 +49,12 @@ def normalize_registry(data: dict[str, object]) -> list[dict[str, str]]:
             item["invocation"] = "both"
         elif item.get("invocation") not in VALID_INVOCATIONS:
             raise ValueError("invalid invocation in registry")
+        if schema_version < 3:
+            item["requires"] = []
+        elif not isinstance(item.get("requires"), list) or any(
+            not isinstance(value, str) for value in item["requires"]
+        ):
+            raise ValueError("invalid requires in registry")
         normalized.append(item)
     return normalized
 

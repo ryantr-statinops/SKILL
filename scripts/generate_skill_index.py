@@ -27,24 +27,34 @@ ENUMS = {
     "status": {"draft", "experimental", "stable", "deprecated"},
     "invocation": {"user", "model", "both"},
 }
-REGISTRY_SCHEMA_VERSION = 2
+REGISTRY_SCHEMA_VERSION = 3
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 VERSION_RE = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
 
 
-def parse_frontmatter(path: Path) -> dict[str, str]:
+def parse_frontmatter(path: Path) -> dict[str, object]:
     text = path.read_text(encoding="utf-8")
     if not text.startswith("---\n") or "\n---\n" not in text[4:]:
         raise ValueError(f"missing YAML frontmatter: {path.relative_to(ROOT)}")
     end = text.index("\n---\n", 4)
-    values: dict[str, str] = {}
+    values: dict[str, object] = {}
     for line in text[4:end].splitlines():
         if not line.strip() or line.lstrip().startswith("#"):
             continue
         if ":" not in line:
             raise ValueError(f"invalid frontmatter line in {path.relative_to(ROOT)}: {line}")
         key, value = line.split(":", 1)
-        values[key.strip()] = value.strip().strip('"\'')
+        key = key.strip()
+        value = value.strip().strip('"\'')
+        if key == "requires":
+            if not (value.startswith("[") and value.endswith("]")):
+                raise ValueError(
+                    f"requires must be an inline list in {path.relative_to(ROOT)}"
+                )
+            items = [item.strip().strip('"\'') for item in value[1:-1].split(",") if item.strip()]
+            values[key] = items
+        else:
+            values[key] = value
     return values
 
 
@@ -69,8 +79,13 @@ def collect() -> list[dict[str, str]]:
             for field, allowed in ENUMS.items():
                 if metadata[field] not in allowed:
                     raise ValueError(f"invalid {field} in {relative}: {metadata[field]}")
-            if not VERSION_RE.fullmatch(metadata["version"]):
+            if not isinstance(metadata["version"], str) or not VERSION_RE.fullmatch(metadata["version"]):
                 raise ValueError(f"invalid version in {relative}: {metadata['version']}")
+            requires = metadata.get("requires", [])
+            if not isinstance(requires, list) or any(
+                not isinstance(item, str) or "/" not in item for item in requires
+            ):
+                raise ValueError(f"invalid requires in {relative}: {requires}")
             if skill_id in ids:
                 raise ValueError(f"duplicate skill id: {skill_id}")
             ids.add(skill_id)
@@ -86,6 +101,7 @@ def collect() -> list[dict[str, str]]:
                     "version": metadata["version"],
                     "invocation": metadata["invocation"],
                     "path": relative.as_posix(),
+                    "requires": requires,
                 }
             )
     return sorted(records, key=lambda item: (item["category"], item["subject"], item["name"]))
@@ -99,13 +115,14 @@ def render_markdown(records: list[dict[str, str]]) -> str:
         "",
         f"Total skills: **{len(records)}**",
         "",
-        "| ID | Description | Scope | Status | Version | Invocation | Path |",
-        "| --- | --- | --- | --- | --- | --- | --- |",
+        "| ID | Description | Scope | Status | Version | Invocation | Requires | Path |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- |",
     ]
     for item in records:
         description = item["description"].replace("|", "\\|")
+        requires = ", ".join(f"`{value}`" for value in item["requires"]) or "—"
         lines.append(
-            f"| `{item['id']}` | {description} | `{item['scope']}` | `{item['status']}` | `{item['version']}` | `{item['invocation']}` | `{item['path']}` |"
+            f"| `{item['id']}` | {description} | `{item['scope']}` | `{item['status']}` | `{item['version']}` | `{item['invocation']}` | {requires} | `{item['path']}` |"
         )
     return "\n".join(lines) + "\n"
 

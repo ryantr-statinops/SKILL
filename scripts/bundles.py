@@ -91,6 +91,36 @@ def validate_bundle_registry(
             if bundle["scope"] == "universal" and record["scope"] == "personal":
                 raise ValueError(f"universal bundle references personal skill: {identifier}: {member}")
 
+        member_set = set(members)
+        for member in members:
+            record = skills_by_id[member]
+            for required in record.get("requires", []):
+                if required not in skills_by_id:
+                    raise ValueError(
+                        f"skill dependency is missing from registry: {member}: {required}"
+                    )
+                if required not in member_set:
+                    raise ValueError(
+                        f"bundle is missing skill dependency: {identifier}: {member}: {required}"
+                    )
+
+        visiting: set[str] = set()
+        visited: set[str] = set()
+
+        def visit(skill_id: str) -> None:
+            if skill_id in visiting:
+                raise ValueError(f"cyclic skill dependency: {identifier}: {skill_id}")
+            if skill_id in visited:
+                return
+            visiting.add(skill_id)
+            for required in skills_by_id[skill_id].get("requires", []):
+                visit(required)
+            visiting.remove(skill_id)
+            visited.add(skill_id)
+
+        for member in members:
+            visit(member)
+
         validated.append(bundle)
 
     return validated

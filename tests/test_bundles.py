@@ -13,8 +13,18 @@ from bundles import validate_bundle_registry  # noqa: E402
 from discover_skills import discover  # noqa: E402
 
 
-def record(identifier: str, scope: str = "universal", status: str = "experimental") -> dict[str, str]:
-    return {"id": identifier, "scope": scope, "status": status}
+def record(
+    identifier: str,
+    scope: str = "universal",
+    status: str = "experimental",
+    requires: list[str] | None = None,
+) -> dict[str, object]:
+    return {
+        "id": identifier,
+        "scope": scope,
+        "status": status,
+        "requires": requires or [],
+    }
 
 
 class BundleRegistryTests(unittest.TestCase):
@@ -79,6 +89,34 @@ class BundleRegistryTests(unittest.TestCase):
                 {"schema_version": 1, "bundles": [bundle]},
                 [record("common/old", status="deprecated")],
             )
+
+    def test_bundle_requires_declared_dependencies(self) -> None:
+        bundle = {
+            "id": "workflow",
+            "description": "Workflow bundle.",
+            "scope": "universal",
+            "runtime_target": "portable",
+            "allow_deprecated": False,
+            "skills": ["common/workflow/example"],
+        }
+        with self.assertRaisesRegex(ValueError, "missing skill dependency"):
+            validate_bundle_registry(
+                {"schema_version": 1, "bundles": [bundle]},
+                [record("common/workflow/example", requires=["common/engineering/testing"]), record("common/engineering/testing")],
+            )
+
+    def test_bundle_rejects_cyclic_dependencies(self) -> None:
+        bundle = {
+            "id": "cycle",
+            "description": "Cyclic bundle.",
+            "scope": "universal",
+            "runtime_target": "portable",
+            "allow_deprecated": False,
+            "skills": ["common/a", "common/b"],
+        }
+        records = [record("common/a", requires=["common/b"]), record("common/b", requires=["common/a"])]
+        with self.assertRaisesRegex(ValueError, "cyclic"):
+            validate_bundle_registry({"schema_version": 1, "bundles": [bundle]}, records)
 
     def test_discovery_filters_to_bundle_members(self) -> None:
         args = type(

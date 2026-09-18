@@ -42,10 +42,11 @@ class InvocationContractTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             expected_invocation("common/new-skill")
 
-    def test_registry_uses_schema_v2_and_exposes_invocation(self) -> None:
+    def test_registry_uses_schema_v3_and_exposes_dependencies(self) -> None:
         registry = json.loads(render_json(collect()))
         self.assertEqual(registry["schema_version"], REGISTRY_SCHEMA_VERSION)
         self.assertTrue(all("invocation" in item for item in registry["skills"]))
+        self.assertTrue(all("requires" in item for item in registry["skills"]))
 
     def test_schema_v1_defaults_legacy_records_to_both(self) -> None:
         legacy = {
@@ -62,6 +63,13 @@ class InvocationContractTests(unittest.TestCase):
         }
         with self.assertRaises(ValueError):
             normalize_registry(current)
+
+    def test_schema_v2_defaults_dependencies(self) -> None:
+        current = {
+            "schema_version": 2,
+            "skills": [{"id": "example", "invocation": "both"}],
+        }
+        self.assertEqual(normalize_registry(current)[0]["requires"], [])
 
     def test_model_invocation_requires_activation_contract(self) -> None:
         incomplete = "## When to use\n\nUse this skill.\n"

@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "skills": [
     {
       "id": "common/agent/context-loading",
@@ -11,7 +11,8 @@
       "status": "stable",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/agent/context-loading/SKILL.md"
+      "path": "common/agent/context-loading/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/agent/failure-recovery",
@@ -23,7 +24,8 @@
       "status": "stable",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/agent/failure-recovery/SKILL.md"
+      "path": "common/agent/failure-recovery/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/data/data-cleaning",
@@ -35,7 +37,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/data/data-cleaning/SKILL.md"
+      "path": "common/data/data-cleaning/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/data/data-inspection",
@@ -47,7 +50,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/data/data-inspection/SKILL.md"
+      "path": "common/data/data-inspection/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/data/reproducible-analysis",
@@ -59,7 +63,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/data/reproducible-analysis/SKILL.md"
+      "path": "common/data/reproducible-analysis/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/data/schema-validation",
@@ -71,7 +76,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/data/schema-validation/SKILL.md"
+      "path": "common/data/schema-validation/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/delivery/change-review",
@@ -83,7 +89,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/delivery/change-review/SKILL.md"
+      "path": "common/delivery/change-review/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/delivery/release",
@@ -95,7 +102,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "common/delivery/release/SKILL.md"
+      "path": "common/delivery/release/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/engineering/code-review",
@@ -107,7 +115,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/engineering/code-review/SKILL.md"
+      "path": "common/engineering/code-review/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/engineering/debugging",
@@ -119,7 +128,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/engineering/debugging/SKILL.md"
+      "path": "common/engineering/debugging/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/engineering/dependency-management",
@@ -131,7 +141,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/engineering/dependency-management/SKILL.md"
+      "path": "common/engineering/dependency-management/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/engineering/documentation",
@@ -143,7 +154,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/engineering/documentation/SKILL.md"
+      "path": "common/engineering/documentation/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/engineering/git-workflow",
@@ -155,7 +167,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/engineering/git-workflow/SKILL.md"
+      "path": "common/engineering/git-workflow/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/engineering/refactoring",
@@ -167,7 +180,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/engineering/refactoring/SKILL.md"
+      "path": "common/engineering/refactoring/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/engineering/testing",
@@ -179,7 +193,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/engineering/testing/SKILL.md"
+      "path": "common/engineering/testing/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/foundation/context-management",
@@ -191,7 +206,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/foundation/context-management/SKILL.md"
+      "path": "common/foundation/context-management/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/foundation/repository-onboarding",
@@ -203,7 +219,8 @@
       "status": "stable",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/foundation/repository-onboarding/SKILL.md"
+      "path": "common/foundation/repository-onboarding/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/foundation/requirements-analysis",
@@ -215,7 +232,8 @@
       "status": "stable",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/foundation/requirements-analysis/SKILL.md"
+      "path": "common/foundation/requirements-analysis/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/foundation/task-planning",
@@ -227,7 +245,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "common/foundation/task-planning/SKILL.md"
+      "path": "common/foundation/task-planning/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/research/comparison",
@@ -239,7 +258,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/research/comparison/SKILL.md"
+      "path": "common/research/comparison/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/research/research",
@@ -251,7 +271,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/research/research/SKILL.md"
+      "path": "common/research/research/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/security/secure-development",
@@ -263,7 +284,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/security/secure-development/SKILL.md"
+      "path": "common/security/secure-development/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/security/security-review",
@@ -275,7 +297,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "common/security/security-review/SKILL.md"
+      "path": "common/security/security-review/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/workflow/bug-fixing",
@@ -287,7 +310,8 @@
       "status": "stable",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "common/workflow/bug-fixing/SKILL.md"
+      "path": "common/workflow/bug-fixing/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/workflow/data-analysis",
@@ -299,7 +323,8 @@
       "status": "stable",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "common/workflow/data-analysis/SKILL.md"
+      "path": "common/workflow/data-analysis/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/workflow/feature-delivery",
@@ -311,7 +336,8 @@
       "status": "stable",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "common/workflow/feature-delivery/SKILL.md"
+      "path": "common/workflow/feature-delivery/SKILL.md",
+      "requires": []
     },
     {
       "id": "common/workflow/research-decision",
@@ -323,7 +349,8 @@
       "status": "stable",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "common/workflow/research-decision/SKILL.md"
+      "path": "common/workflow/research-decision/SKILL.md",
+      "requires": []
     },
     {
       "id": "meta/skill-authoring",
@@ -335,7 +362,8 @@
       "status": "stable",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "meta/skill-authoring/SKILL.md"
+      "path": "meta/skill-authoring/SKILL.md",
+      "requires": []
     },
     {
       "id": "meta/skill-discovery",
@@ -347,7 +375,8 @@
       "status": "stable",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "meta/skill-discovery/SKILL.md"
+      "path": "meta/skill-discovery/SKILL.md",
+      "requires": []
     },
     {
       "id": "meta/skill-evaluation",
@@ -359,7 +388,8 @@
       "status": "stable",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "meta/skill-evaluation/SKILL.md"
+      "path": "meta/skill-evaluation/SKILL.md",
+      "requires": []
     },
     {
       "id": "meta/skill-intake",
@@ -371,7 +401,8 @@
       "status": "stable",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "meta/skill-intake/SKILL.md"
+      "path": "meta/skill-intake/SKILL.md",
+      "requires": []
     },
     {
       "id": "meta/skill-maintenance",
@@ -383,7 +414,8 @@
       "status": "stable",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "meta/skill-maintenance/SKILL.md"
+      "path": "meta/skill-maintenance/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/ai",
@@ -395,7 +427,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "personal/engineering/ai/SKILL.md"
+      "path": "personal/engineering/ai/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/ai/core",
@@ -407,7 +440,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/ai/core/SKILL.md"
+      "path": "personal/engineering/ai/core/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/backend/api-design",
@@ -419,7 +453,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/backend/api-design/SKILL.md"
+      "path": "personal/engineering/backend/api-design/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/backend/core",
@@ -431,7 +466,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/backend/core/SKILL.md"
+      "path": "personal/engineering/backend/core/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/backend/nodejs",
@@ -443,7 +479,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/backend/nodejs/SKILL.md"
+      "path": "personal/engineering/backend/nodejs/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/backend/service-architecture",
@@ -455,7 +492,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/backend/service-architecture/SKILL.md"
+      "path": "personal/engineering/backend/service-architecture/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/data/core",
@@ -467,7 +505,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/data/core/SKILL.md"
+      "path": "personal/engineering/data/core/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/decision/architecture-tradeoff",
@@ -479,7 +518,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/decision/architecture-tradeoff/SKILL.md"
+      "path": "personal/decision/architecture-tradeoff/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/decision/scope-control",
@@ -491,7 +531,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/decision/scope-control/SKILL.md"
+      "path": "personal/decision/scope-control/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/decision/technology-selection",
@@ -503,7 +544,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/decision/technology-selection/SKILL.md"
+      "path": "personal/decision/technology-selection/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/education",
@@ -515,7 +557,8 @@
       "status": "experimental",
       "version": "1.1.0",
       "invocation": "user",
-      "path": "personal/education/SKILL.md"
+      "path": "personal/education/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/education/latex",
@@ -527,7 +570,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/education/latex/SKILL.md"
+      "path": "personal/education/latex/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/education/r",
@@ -539,7 +583,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/education/r/SKILL.md"
+      "path": "personal/education/r/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/backend",
@@ -551,7 +596,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "personal/engineering/backend/SKILL.md"
+      "path": "personal/engineering/backend/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/core",
@@ -563,7 +609,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/core/SKILL.md"
+      "path": "personal/engineering/core/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/data",
@@ -575,7 +622,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "personal/engineering/data/SKILL.md"
+      "path": "personal/engineering/data/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/data/databases",
@@ -587,7 +635,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/data/databases/SKILL.md"
+      "path": "personal/engineering/data/databases/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/infrastructure/docker",
@@ -599,7 +648,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/infrastructure/docker/SKILL.md"
+      "path": "personal/engineering/infrastructure/docker/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering",
@@ -611,7 +661,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "personal/engineering/SKILL.md"
+      "path": "personal/engineering/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/frontend",
@@ -623,7 +674,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "personal/engineering/frontend/SKILL.md"
+      "path": "personal/engineering/frontend/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/backend/go",
@@ -635,7 +687,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/backend/go/SKILL.md"
+      "path": "personal/engineering/backend/go/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/infrastructure",
@@ -647,7 +700,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "personal/engineering/infrastructure/SKILL.md"
+      "path": "personal/engineering/infrastructure/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/frontend/lightweight-web",
@@ -659,7 +713,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/frontend/lightweight-web/SKILL.md"
+      "path": "personal/engineering/frontend/lightweight-web/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/infrastructure/linux",
@@ -671,7 +726,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/infrastructure/linux/SKILL.md"
+      "path": "personal/engineering/infrastructure/linux/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/infrastructure/networking",
@@ -683,7 +739,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/infrastructure/networking/SKILL.md"
+      "path": "personal/engineering/infrastructure/networking/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/data/orchestration",
@@ -695,7 +752,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/data/orchestration/SKILL.md"
+      "path": "personal/engineering/data/orchestration/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/data/pipelines",
@@ -707,7 +765,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/data/pipelines/SKILL.md"
+      "path": "personal/engineering/data/pipelines/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/engineering/backend/python",
@@ -719,7 +778,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/engineering/backend/python/SKILL.md"
+      "path": "personal/engineering/backend/python/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/product/architecture-review",
@@ -731,7 +791,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/product/architecture-review/SKILL.md"
+      "path": "personal/product/architecture-review/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/product/mvp-design",
@@ -743,7 +804,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/product/mvp-design/SKILL.md"
+      "path": "personal/product/mvp-design/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/product/project-scoping",
@@ -755,7 +817,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/product/project-scoping/SKILL.md"
+      "path": "personal/product/project-scoping/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/quant/production-workflow",
@@ -767,7 +830,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/quant/production-workflow/SKILL.md"
+      "path": "personal/quant/production-workflow/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/quant",
@@ -779,7 +843,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "user",
-      "path": "personal/quant/SKILL.md"
+      "path": "personal/quant/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/quant/research",
@@ -791,7 +856,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/quant/research/SKILL.md"
+      "path": "personal/quant/research/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/statistics",
@@ -803,7 +869,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/statistics/SKILL.md"
+      "path": "personal/statistics/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/workflow/brainstorming",
@@ -815,7 +882,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/workflow/brainstorming/SKILL.md"
+      "path": "personal/workflow/brainstorming/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/workflow/personal-debugging",
@@ -827,7 +895,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/workflow/personal-debugging/SKILL.md"
+      "path": "personal/workflow/personal-debugging/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/workflow/personal-research",
@@ -839,7 +908,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/workflow/personal-research/SKILL.md"
+      "path": "personal/workflow/personal-research/SKILL.md",
+      "requires": []
     },
     {
       "id": "personal/workflow/project-init",
@@ -851,7 +921,8 @@
       "status": "experimental",
       "version": "1.0.0",
       "invocation": "both",
-      "path": "personal/workflow/project-init/SKILL.md"
+      "path": "personal/workflow/project-init/SKILL.md",
+      "requires": []
     }
   ]
 }
