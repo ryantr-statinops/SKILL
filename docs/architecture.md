@@ -78,8 +78,7 @@ in adapters or runtime notes, not in the portable meaning of a common skill.
 
 ## Related guides
 
-- Agent operating model will be linked here when the agent protocol guide is
-  added.
+- [Agent operating model](agent-operating-model.md)
 - [Integration](integration.md)
 - [Discovery](discovery.md)
 - [Metadata](metadata.md)
