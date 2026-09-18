@@ -1,0 +1,22 @@
+[
+  {
+    "name": "bug-not-reproduced",
+    "skill": "common/workflow/bug-fixing",
+    "required_terms": ["failure cannot be reproduced", "next observation needed"]
+  },
+  {
+    "name": "feature-check-failed",
+    "skill": "common/workflow/feature-delivery",
+    "required_terms": ["tests or checks fail", "do not claim completion"]
+  },
+  {
+    "name": "data-not-reproducible",
+    "skill": "common/workflow/data-analysis",
+    "required_terms": ["analysis cannot be reproduced", "missing command"]
+  },
+  {
+    "name": "agent-command-failed",
+    "skill": "common/agent/failure-recovery",
+    "required_terms": ["Do not repeat an unknown failure blindly", "final state is inspected"]
+  }
+]
