@@ -20,3 +20,11 @@ design, and agent evaluation.
 
 No AI leaf skill is active yet. Use the common agent skills for portable
 context loading and failure recovery until this category is built.
+
+## Agent handoff
+
+- Selected when: Use only for initial AI/agent engineering framing described by this draft scaffold.
+- Do not activate when: Do not activate for production AI implementation until a reviewed leaf skill exists.
+- Expected output: State the foundation scope, missing capability, and safe next step.
+- User-facing report: Explain the scaffold limitation, assumptions, and any common skill used instead.
+- Confirmation boundary: Ask before destructive, external, or irreversible actions.

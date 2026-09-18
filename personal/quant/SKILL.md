@@ -17,3 +17,11 @@ version: 1.0.0
 | Time-series foundations | [time-series](time-series/SKILL.md) |
 
 This category is research guidance, not financial advice or trade authorization.
+
+## Agent handoff
+
+- Selected when: Route a task to the narrowest child skill listed by this router.
+- Do not activate when: Do not activate when the task is outside this category or no child boundary matches.
+- Expected output: Name the selected child skill(s), reason, and any supporting route.
+- User-facing report: Summarize the route, excluded children, loaded resources, and validation.
+- Confirmation boundary: Ask before destructive, external, or irreversible actions.
