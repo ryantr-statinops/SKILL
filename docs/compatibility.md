@@ -2,8 +2,9 @@
 
 `SKILLS` stores skills as plain Markdown plus optional local resources. This
 makes the library portable, but each agent runtime may differ in discovery,
-directory conventions, symlink support, and script execution. Codex is the
-first verified target; other runtimes require explicit adapter validation.
+directory conventions, symlink support, and script execution. Codex and
+OpenCode now have verified discovery layouts; only Codex has an optional model
+evaluation job.
 
 ## Baseline assumptions
 
@@ -29,9 +30,18 @@ roots, conflicts, and recommended integration methods.
 
 ## Directory adapters
 
-Use `.agent/` as the portable baseline. A runtime-specific project may map the
-same payload to another directory, such as `.claude/` or `.codex/`, but the
-adapter must be verified before it is treated as supported.
+Use `.agent/` as the portable baseline. Codex and OpenCode can consume the
+generated `.agents/skills/` adapter. Generate it with:
+
+```bash
+python3 scripts/export_runtime_adapter.py \
+  /path/to/project/.agent/skills /path/to/project/.agents/skills
+```
+
+The adapter uses symlinked skill directories so portable relative resources
+remain valid. A runtime-specific project may map the same payload to another
+directory, such as `.claude/` or `.codex/`, but that adapter must be verified
+before it is treated as supported.
 
 The directory name alone does not prove that a runtime will discover skills.
 Record the tested runtime version, layout, and representative task result.
@@ -63,6 +73,11 @@ breaking change is explicitly documented.
 
 Record confirmed runtime behavior here as evidence accumulates. Keep uncertain
 assumptions explicit instead of presenting them as a universal standard.
+
+| Runtime | Layout | Verification | Scope of guarantee |
+| --- | --- | --- | --- |
+| Codex | `.agents/skills/<path-id>/SKILL.md` | adapter unit test; Codex Action smoke/nightly when `OPENAI_API_KEY` is configured | static discovery always; model behavior only when the CI job runs |
+| OpenCode 1.18.31 | `.agents/skills/<path-id>/SKILL.md` | `opencode debug skill --pure` fixture test | discovery and frontmatter loading; no model quality claim |
 
 ## Ecosystem research
 

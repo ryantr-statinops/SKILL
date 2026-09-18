@@ -23,6 +23,9 @@ pattern without making that pattern appropriate for this repository.
   independent from adapters, hooks, plugins, and always-on instructions.
 - **Proposal for SKILLS:** Continue using path-based IDs, generated registry
   metadata, progressive disclosure, and explicit runtime notes.
+- **Verified integration:** The `.agents/skills/` adapter is tested with Codex's
+  repository layout and OpenCode 1.18.31's `debug skill --pure` discovery. This
+  confirms loading and paths; it does not establish model quality.
 
 ## Research limitations
 

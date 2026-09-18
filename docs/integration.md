@@ -138,6 +138,11 @@ hyphens (for example `common-engineering-debugging`) so repeated leaf names do
 not collide. The adapter keeps the portable source content and its relative
 resources intact.
 
+```bash
+python3 scripts/export_runtime_adapter.py \
+  /path/to/project/.agent/skills /path/to/project/.agents/skills
+```
+
 ## Bringing in an existing skill
 
 When a user provides a skill from another repository or an existing local

@@ -3,7 +3,11 @@
 The repository evaluation harness is intentionally lightweight. It checks that
 every common and personal skill has a valid representative case, boundary case,
 required observable fields, and a skill ID present in the generated registry.
-It does not claim to score an agent's reasoning.
+It does not claim to score an agent's reasoning. The observable workflow cases
+in `tests/fixtures/observable-agent-evaluations.json` additionally verify the
+required terms in all four workflow representative and boundary artifacts.
+Codex Action reports are evidence from a configured run, not a substitute for
+these deterministic checks.
 
 ## Current commands
 
@@ -11,6 +15,7 @@ It does not claim to score an agent's reasoning.
 python3 scripts/run_evaluations.py
 python3 scripts/run_evaluations.py --format json
 python3 scripts/run_evaluations.py --output /tmp/skill-evaluation.md
+python3 scripts/check_observable_evaluations.py --format json
 ```
 
 The default output is Markdown. JSON is intended for CI and later tooling.

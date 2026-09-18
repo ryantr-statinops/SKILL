@@ -3,6 +3,21 @@
 All notable repository releases are recorded here. Individual skill versions
 remain in each skill's frontmatter.
 
+## Unreleased
+
+### Added
+
+- Transitive `requires` metadata, schema v3 registry support, safe sync updates,
+  provenance manifests, installed catalogs, and native runtime adapters.
+- Deterministic representative and boundary evaluations for all four workflow
+  bundles plus optional Codex Action smoke and nightly jobs.
+
+### Changed
+
+- Discovery now works from an installed catalog without the source registry.
+- Common and personal activation boundaries state concrete outcomes and nearby
+  exclusions.
+
 ## [0.1.0] - 2026-09-18
 
 ### Added

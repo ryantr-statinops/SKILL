@@ -6,6 +6,14 @@ GitHub Actions runs on pull requests and pushes to `main`. The workflow checks
 skill metadata, generated indexes, evaluation contracts, local Markdown links,
 and whitespace. It does not require network access for external URLs.
 
+Two separate Codex workflows are available. The pull-request smoke job and the
+nightly job print `chưa cấu hình OPENAI_API_KEY` and leave agent behavior
+unverified when the secret is absent. Once the repository secret is added they
+run `openai/codex-action@v1` with Codex CLI `0.154.0` and model
+`gpt-5.3-codex`; configure the small smoke job as a required check only after
+that secret is available. The static validator and deterministic evaluations do
+not depend on the key.
+
 Run the same checks locally:
 
 ```bash
