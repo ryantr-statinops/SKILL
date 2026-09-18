@@ -1,0 +1,42 @@
+[
+  {
+    "task": "Build a Node.js API with validation and tests.",
+    "expected_skill": "personal/engineering/backend/nodejs",
+    "boundary_skill": "personal/engineering/frontend/lightweight-web",
+    "expected_explanation": true,
+    "confirmation": "before_mutation",
+    "expected_validation": true
+  },
+  {
+    "task": "Investigate a reproducible failing test and verify the fix.",
+    "expected_skill": "common/engineering/debugging",
+    "boundary_skill": "common/engineering/refactoring",
+    "expected_explanation": true,
+    "confirmation": "before_mutation",
+    "expected_validation": true
+  },
+  {
+    "task": "Ingest source files, validate records, and schedule a data workflow.",
+    "expected_skill": "personal/engineering/data-engineering/pipelines",
+    "boundary_skill": "personal/engineering/backend/nodejs",
+    "expected_explanation": true,
+    "confirmation": "before_mutation",
+    "expected_validation": true
+  },
+  {
+    "task": "Inspect MT5 connectivity without placing or modifying trades.",
+    "expected_skill": "personal/quant/trading/mt5",
+    "boundary_skill": "personal/quant/quant-research/backtesting",
+    "expected_explanation": true,
+    "confirmation": "before_external",
+    "expected_validation": true
+  },
+  {
+    "task": "Choose a technology for a new personal project before implementation.",
+    "expected_skill": "personal/decision/technology-selection",
+    "boundary_skill": "common/engineering/dependency-management",
+    "expected_explanation": true,
+    "confirmation": "never",
+    "expected_validation": true
+  }
+]
