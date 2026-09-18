@@ -5,6 +5,7 @@ This directory contains the human-facing guides for using and extending the
 
 ## Guides
 
+- [Architecture](architecture.md) — map the skill library, discovery, integration, and lifecycle layers.
 - [Integration](integration.md) — bring selected skills into a project's `.agents/` directory.
 - [Versioning](versioning.md) — skill SemVer and repository release tags.
 - [Distribution](distribution.md) — Git subtree updates and consumer boundaries.
