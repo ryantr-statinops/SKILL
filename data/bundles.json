@@ -66,6 +66,18 @@
         "common/delivery/change-review",
         "common/agent/failure-recovery"
       ]
+    },
+    {
+      "id": "research-decision",
+      "description": "Turn a research question into an evidence-backed technical or operational decision.",
+      "scope": "universal",
+      "runtime_target": "portable",
+      "allow_deprecated": false,
+      "skills": [
+        "common/workflow/research-decision",
+        "common/research/research",
+        "common/research/comparison"
+      ]
     }
   ]
 }
