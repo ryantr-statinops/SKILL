@@ -28,6 +28,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--invocation", choices=tuple(sorted(VALID_INVOCATIONS)))
     parser.add_argument("--bundle", help="restrict results to a named bundle")
+    parser.add_argument("--registry", type=Path, help="use an installed skill catalog")
     parser.add_argument("--limit", type=int, default=10)
     parser.add_argument("--format", choices=("markdown", "json"), default="markdown")
     return parser.parse_args()
@@ -59,8 +60,8 @@ def normalize_registry(data: dict[str, object]) -> list[dict[str, str]]:
     return normalized
 
 
-def load_registry() -> list[dict[str, str]]:
-    path = ROOT / "data/skills.json"
+def load_registry(path: Path | None = None) -> list[dict[str, str]]:
+    path = path or ROOT / "data/skills.json"
     try:
         return normalize_registry(json.loads(path.read_text(encoding="utf-8")))
     except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError) as exc:
@@ -107,7 +108,8 @@ def discover(args: argparse.Namespace) -> list[dict[str, object]]:
         if bundle_members is None:
             raise ValueError(f"unknown bundle: {args.bundle}")
     candidates = []
-    for record in load_registry():
+    registry_path = getattr(args, "registry", None)
+    for record in load_registry(registry_path):
         if bundle_members is not None and record["id"] not in bundle_members:
             continue
         if args.category and record["category"] != args.category:

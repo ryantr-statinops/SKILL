@@ -85,6 +85,20 @@ class ConsumerSmokeTests(unittest.TestCase):
             results = json.loads(discovered.stdout)["skills"]
             self.assertEqual(results[0]["id"], "common/workflow/feature-delivery")
 
+            catalog_discovered = self.run_script(
+                DISCOVER,
+                "--registry",
+                str(skills_root / ".skill-catalog.json"),
+                "--format",
+                "json",
+                "repository",
+            )
+            self.assertEqual(catalog_discovered.returncode, 0, catalog_discovered.stderr)
+            self.assertEqual(
+                json.loads(catalog_discovered.stdout)["skills"][0]["id"],
+                "common/foundation/repository-onboarding",
+            )
+
             boundary = self.run_script(
                 DISCOVER,
                 "--format",

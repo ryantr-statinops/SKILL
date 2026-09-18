@@ -44,6 +44,7 @@ class SyncSkillsTests(unittest.TestCase):
             self.assertTrue(copied.is_file())
             manifest = destination / ".skill-sync.json"
             self.assertTrue(manifest.is_file())
+            self.assertTrue((destination / ".skill-catalog.json").is_file())
             payload = json.loads(manifest.read_text(encoding="utf-8"))
             self.assertEqual(payload["bundle"], "feature-delivery")
             self.assertTrue(

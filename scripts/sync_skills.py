@@ -16,6 +16,7 @@ from bundles import load_bundle_registry, validate_bundle_registry
 
 MARKDOWN_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 MANIFEST_NAME = ".skill-sync.json"
+CATALOG_NAME = ".skill-catalog.json"
 
 
 def parse_args() -> argparse.Namespace:
@@ -183,6 +184,14 @@ def manifest_for(
     }
 
 
+def catalog_for(source: Path, selected: list[str]) -> dict[str, object]:
+    records = {str(record["id"]): record for record in load_source_skill_records(source)}
+    return {
+        "schema_version": 2,
+        "skills": [records[identifier] for identifier in selected],
+    }
+
+
 def flattened_files(targets: list[tuple[Path, Path]]) -> dict[str, tuple[Path, Path]]:
     flattened: dict[str, tuple[Path, Path]] = {}
     for source_path, target_path in targets:
@@ -274,6 +283,10 @@ def update_destination(
                 json.dumps(manifest_for(source, bundle, selected, targets), indent=2, ensure_ascii=False) + "\n",
                 encoding="utf-8",
             )
+            (destination / CATALOG_NAME).write_text(
+                json.dumps(catalog_for(source, selected), indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
         except Exception:
             for target, content in backups.items():
                 target.parent.mkdir(parents=True, exist_ok=True)
@@ -342,6 +355,10 @@ def main() -> int:
                 ensure_ascii=False,
             )
             + "\n",
+            encoding="utf-8",
+        )
+        (destination / CATALOG_NAME).write_text(
+            json.dumps(catalog_for(source, selected), indent=2, ensure_ascii=False) + "\n",
             encoding="utf-8",
         )
 
