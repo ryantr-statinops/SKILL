@@ -10,6 +10,7 @@ from pathlib import Path
 import shutil
 import sys
 import re
+import tempfile
 
 from bundles import load_bundle_registry, validate_bundle_registry
 
@@ -39,6 +40,7 @@ def parse_args() -> argparse.Namespace:
         help="SKILLS repository root (defaults to this script's repository)",
     )
     parser.add_argument("--check", action="store_true", help="Validate inputs without copying")
+    parser.add_argument("--update", action="store_true", help="Update a previously managed destination")
     parser.add_argument("--bundle", help="sync a named bundle instead of explicit skills")
     parser.add_argument("--list-bundles", action="store_true", help="list available bundles")
     return parser.parse_args()
@@ -181,6 +183,104 @@ def manifest_for(
     }
 
 
+def flattened_files(targets: list[tuple[Path, Path]]) -> dict[str, tuple[Path, Path]]:
+    flattened: dict[str, tuple[Path, Path]] = {}
+    for source_path, target_path in targets:
+        if source_path.is_file():
+            flattened[str(source_path)] = (source_path, target_path)
+        elif source_path.is_dir():
+            for source_file in source_path.rglob("*"):
+                if source_file.is_file():
+                    target_file = target_path / source_file.relative_to(source_path)
+                    flattened[str(source_file)] = (source_file, target_file)
+    return flattened
+
+
+def update_destination(
+    source: Path,
+    destination: Path,
+    bundle: str | None,
+    selected: list[str],
+    targets: list[tuple[Path, Path]],
+    check: bool,
+) -> None:
+    manifest_path = destination / MANIFEST_NAME
+    if not manifest_path.is_file():
+        raise ValueError("--update requires an existing .skill-sync.json manifest")
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        old_files = {str(item["path"]): str(item["sha256"]) for item in manifest["files"]}
+    except (OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
+        raise ValueError("invalid .skill-sync.json manifest") from exc
+
+    new_files = flattened_files(targets)
+    new_relative = {
+        str(Path(source_path).relative_to(source)): pair
+        for source_path, pair in new_files.items()
+    }
+    modified = []
+    for relative, expected_hash in old_files.items():
+        target = destination / relative
+        if target.is_file() and sha256(target) != expected_hash:
+            modified.append(str(target))
+    if modified:
+        raise ValueError("managed files were modified locally: " + ", ".join(modified))
+
+    collisions = []
+    for relative, (_, target) in new_relative.items():
+        if target.exists() and relative not in old_files:
+            collisions.append(str(target))
+    if collisions:
+        raise ValueError("update would overwrite unmanaged files: " + ", ".join(collisions))
+
+    old_paths = set(old_files)
+    new_paths = set(new_relative)
+    removed = sorted(old_paths - new_paths)
+    added = sorted(new_paths - old_paths)
+    changed = sorted(
+        relative
+        for relative in old_paths & new_paths
+        if old_files[relative] != sha256(new_relative[relative][0])
+    )
+    for relative in added:
+        print(f"{'would add' if check else 'adding'} {destination / relative}")
+    for relative in changed:
+        print(f"{'would update' if check else 'updating'} {destination / relative}")
+    for relative in removed:
+        print(f"{'would remove' if check else 'removing'} {destination / relative}")
+    if check:
+        return
+
+    with tempfile.TemporaryDirectory(prefix=".skill-sync-", dir=destination.parent) as staging_name:
+        staging = Path(staging_name)
+        for relative, (source_file, _) in new_relative.items():
+            staged_file = staging / relative
+            staged_file.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source_file, staged_file)
+        backups: dict[Path, bytes] = {}
+        try:
+            for relative in removed:
+                target = destination / relative
+                if target.is_file():
+                    backups[target] = target.read_bytes()
+                    target.unlink()
+            for relative in sorted(added + changed):
+                target = destination / relative
+                if target.is_file():
+                    backups[target] = target.read_bytes()
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(staging / relative, target)
+            manifest_path.write_text(
+                json.dumps(manifest_for(source, bundle, selected, targets), indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+        except Exception:
+            for target, content in backups.items():
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(content)
+            raise
+
+
 def main() -> int:
     args = parse_args()
     source = args.source.resolve()
@@ -209,6 +309,13 @@ def main() -> int:
         return 2
 
     targets = export_targets(source, destination, skills)
+    if args.update:
+        try:
+            update_destination(source, destination, args.bundle, selected, targets, args.check)
+        except ValueError as exc:
+            print(f"error: {exc}", file=sys.stderr)
+            return 2
+        return 0
     conflicts = [str(target) for _, target in targets if target.exists()]
     if conflicts:
         print("error: target paths already exist; no files were changed:", file=sys.stderr)
