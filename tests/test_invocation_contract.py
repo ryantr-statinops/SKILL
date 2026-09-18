@@ -17,7 +17,7 @@ from migrate_invocation_metadata import expected_invocation, migrate_text  # noq
 class InvocationContractTests(unittest.TestCase):
     def test_all_skills_have_expected_invocation(self) -> None:
         records = collect()
-        self.assertEqual(len(records), 69)
+        self.assertEqual(len(records), 70)
         self.assertEqual({record["invocation"] for record in records}, {"user", "both"})
         for record in records:
             self.assertEqual(record["invocation"], expected_invocation(record["id"]))

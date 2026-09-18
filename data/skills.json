@@ -302,6 +302,18 @@
       "path": "common/workflow/feature-delivery/SKILL.md"
     },
     {
+      "id": "common/workflow/research-decision",
+      "name": "research-decision",
+      "description": "Turn a research question into an evidence-backed decision by defining criteria, comparing alternatives, and recording uncertainty.",
+      "category": "common",
+      "subject": "workflow",
+      "scope": "universal",
+      "status": "experimental",
+      "version": "1.0.0",
+      "invocation": "user",
+      "path": "common/workflow/research-decision/SKILL.md"
+    },
+    {
       "id": "meta/skill-authoring",
       "name": "skill-authoring",
       "description": "Design or revise a narrowly scoped Agent Skill with explicit routing, progressive disclosure, and validation.",
