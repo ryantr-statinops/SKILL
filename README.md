@@ -95,12 +95,19 @@ read the [consumer smoke test](docs/consumer-smoke-test.md).
 
 ```text
 common/     reusable skills
-personal/   Ryan-specific workflows
-meta/       skill-system skills
-data/       generated registries
-scripts/    discovery, sync, validation, evaluation
-docs/       detailed guides
-templates/  context and artifact templates
+personal/   Ryan-specific workflows and domain practices
+meta/       skill-system authoring, discovery, and maintenance
+data/       generated skill, bundle, and promotion registries
+scripts/    discovery, sync, validation, and evaluation tools
+docs/       integration, workflow, lifecycle, and quality guides
+templates/  consumer context and workflow artifact templates
+tests/      regression, evaluation, routing, and consumer fixtures
+.github/    CI workflow and repository automation
+
+AGENTS.md   repository instructions for coding agents
+CHANGELOG.md release history
+LICENSE     project license
+README.md   public project overview
 ```
 
 ## Documentation and contribution
@@ -112,6 +119,10 @@ review the [authoring guide](docs/authoring.md), [evaluation contract](docs/eval
 A contribution should keep each skill narrow, define explicit activation and
 exclusion boundaries, include representative and boundary evaluation cases,
 and pass repository validation before commit.
+
+The [test suite](tests/) contains regression and consumer fixtures,
+[AGENTS.md](AGENTS.md) defines repository operating rules, and
+[CHANGELOG.md](CHANGELOG.md) records release history.
 
 ## License
 
