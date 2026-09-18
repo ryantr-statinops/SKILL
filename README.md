@@ -111,6 +111,43 @@ explains how an agent selects and progressively loads a skill.
 The repository's current development checklist is intentionally local-only in
 `local.md`; it is not part of the public project contract.
 
+## Start here by outcome
+
+Use a bundle when you want a coherent set of skills for a common agent task:
+
+| Outcome | Bundle |
+| --- | --- |
+| Set up portable agent context and recovery | `portable-agent-baseline` |
+| General engineering work | `engineering-core` |
+| Build a feature | `feature-delivery` |
+| Diagnose and fix a defect | `bug-fixing` |
+| Research a technical decision | `research-decision` |
+| Analyze data reproducibly | `data-analysis` |
+| Work on a personal Python backend | `personal-python` |
+
+List the available bundles:
+
+```bash
+python3 scripts/sync_skills.py --list-bundles
+```
+
+Preview and then sync a bundle into a consumer project:
+
+```bash
+python3 scripts/sync_skills.py \
+  --bundle feature-delivery \
+  --check \
+  /path/to/project/.agent/skills
+
+python3 scripts/sync_skills.py \
+  --bundle feature-delivery \
+  /path/to/project/.agent/skills
+```
+
+Copy [`templates/CONTEXT.md`](templates/CONTEXT.md) into the consumer project
+when the agent needs shared vocabulary, architecture boundaries, test seams,
+or project-specific artifact paths.
+
 ## Contributing
 
 Keep changes focused. Validate before committing, use small Conventional

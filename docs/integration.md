@@ -90,6 +90,17 @@ selected skill directory structure and copies supporting resources with it.
 The agent must inspect existing target paths and report any overwrite before
 syncing.
 
+When the project needs a complete workflow, use a named bundle:
+
+```bash
+python3 scripts/sync_skills.py --list-bundles
+python3 scripts/sync_skills.py --bundle feature-delivery --check /path/to/project/.agent/skills
+python3 scripts/sync_skills.py --bundle feature-delivery /path/to/project/.agent/skills
+```
+
+Bundle sync validates every referenced skill and stops if any target path
+already exists. It never overwrites a selected skill implicitly.
+
 ### Direct copy or development symlink
 
 Direct copy is appropriate for a one-time, small integration. A symlink can be

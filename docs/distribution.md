@@ -34,6 +34,19 @@ Do not silently update a production project to a moving branch.
 - Use `scripts/sync_skills.py` when a project needs a selected export instead
   of the complete library.
 
+For a reviewed capability set, sync a named bundle instead of listing skill
+paths manually:
+
+```bash
+python3 scripts/sync_skills.py --list-bundles
+python3 scripts/sync_skills.py --bundle bug-fixing --check /path/to/project/.agent/skills
+python3 scripts/sync_skills.py --bundle bug-fixing /path/to/project/.agent/skills
+```
+
+Bundle sync is conflict-safe: check mode never writes, and a normal sync stops
+when a selected target path already exists. Review or remove the existing
+target deliberately before retrying.
+
 ## Contributing back
 
 Use subtree push only when the consumer intentionally contributes a portable

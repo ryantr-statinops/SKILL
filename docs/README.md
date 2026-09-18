@@ -14,6 +14,8 @@ This directory contains the human-facing guides for using and extending the
 - [Compatibility](compatibility.md) — record assumptions about agent runtimes and layouts.
 - [Versioning](versioning.md) — skill SemVer and repository release tags.
 - [Distribution](distribution.md) — Git subtree updates and consumer boundaries.
+- [Bundles](bundles.md) — bundle schema, scope, and selected distribution.
+- [Workflow skills](workflows.md) — workflow contract, context, and artifacts.
 - [CI and release](ci-release.md) — automated checks and explicit release steps.
 - [Metadata](metadata.md) — define frontmatter fields and generated registry data.
 - [Skill index](skill-index.md) — generated human-readable skill registry.
