@@ -12,6 +12,7 @@ sys.path.insert(0, str(SCRIPTS))
 from discover_skills import normalize_registry  # noqa: E402
 from generate_skill_index import REGISTRY_SCHEMA_VERSION, collect, render_json  # noqa: E402
 from migrate_invocation_metadata import expected_invocation, migrate_text  # noqa: E402
+from validate_skills import activation_contract_errors  # noqa: E402
 
 
 class InvocationContractTests(unittest.TestCase):
@@ -61,6 +62,28 @@ class InvocationContractTests(unittest.TestCase):
         }
         with self.assertRaises(ValueError):
             normalize_registry(current)
+
+    def test_model_invocation_requires_activation_contract(self) -> None:
+        incomplete = "## When to use\n\nUse this skill.\n"
+        errors = activation_contract_errors(incomplete, "model")
+        self.assertIn("## Do not activate when", " ".join(errors))
+        self.assertIn("## Expected output", " ".join(errors))
+        self.assertIn("## Validation", " ".join(errors))
+
+    def test_complete_model_activation_contract_is_accepted(self) -> None:
+        complete = "\n".join(
+            (
+                "## When to use",
+                "## Do not activate when",
+                "## Expected output",
+                "## Validation",
+                "## Agent handoff",
+            )
+        )
+        self.assertEqual(activation_contract_errors(complete, "model"), [])
+
+    def test_non_model_invocation_does_not_require_model_contract(self) -> None:
+        self.assertEqual(activation_contract_errors("", "both"), [])
 
 
 if __name__ == "__main__":

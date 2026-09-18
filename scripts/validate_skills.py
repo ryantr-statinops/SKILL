@@ -29,6 +29,24 @@ HANDOFF_FIELDS = (
     "User-facing report:",
     "Confirmation boundary:",
 )
+MODEL_ACTIVATION_FIELDS = (
+    "## When to use",
+    "## Do not activate when",
+    "## Expected output",
+    "## Validation",
+    "## Agent handoff",
+)
+
+
+def activation_contract_errors(text: str, invocation: str) -> list[str]:
+    """Return missing activation-boundary sections for model-invoked skills."""
+    if invocation != "model":
+        return []
+    return [
+        f"missing model activation contract section: {section}"
+        for section in MODEL_ACTIVATION_FIELDS
+        if section not in text
+    ]
 
 
 def error(message: str) -> None:
@@ -74,6 +92,9 @@ def validate_skill(path: Path) -> int:
                 failures += 1
         if values.get("version") and not VERSION_RE.fullmatch(values["version"]):
             error(f"invalid version in {skill_file.relative_to(ROOT)}")
+
+        for message in activation_contract_errors(text, values.get("invocation", "")):
+            error(f"{message} in {skill_file.relative_to(ROOT)}")
             failures += 1
 
     for placeholder in PLACEHOLDERS:
