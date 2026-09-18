@@ -31,3 +31,11 @@ Provide pass/fail status, violations, affected records, and compatibility impact
 
 ## Validation
 Validation is deterministic and can be rerun against the same input.
+
+## Agent handoff
+
+- Selected when: Use the activation boundary and outcome described in this skill.
+- Do not activate when: The task matches the stated exclusion or a narrower skill.
+- Expected output: Produce the observable result and validation described by the workflow.
+- User-facing report: Summarize scope, result, checks, and unresolved risks.
+- Confirmation boundary: Ask before destructive, external, or irreversible actions.

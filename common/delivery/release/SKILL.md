@@ -31,3 +31,11 @@ Return release checklist, artifacts, checks, blockers, and rollback notes.
 
 ## Validation
 The release can be reproduced, inspected, and rolled back according to project policy.
+
+## Agent handoff
+
+- Selected when: Use the activation boundary and outcome described in this skill.
+- Do not activate when: The task matches the stated exclusion or a narrower skill.
+- Expected output: Produce the observable result and validation described by the workflow.
+- User-facing report: Summarize scope, result, checks, and unresolved risks.
+- Confirmation boundary: Ask before destructive, external, or irreversible actions.

@@ -31,3 +31,11 @@ Provide findings by severity, validation evidence, and handoff recommendation.
 
 ## Validation
 All blocking findings are resolved or explicitly accepted by the responsible owner.
+
+## Agent handoff
+
+- Selected when: Use the activation boundary and outcome described in this skill.
+- Do not activate when: The task matches the stated exclusion or a narrower skill.
+- Expected output: Produce the observable result and validation described by the workflow.
+- User-facing report: Summarize scope, result, checks, and unresolved risks.
+- Confirmation boundary: Ask before destructive, external, or irreversible actions.
