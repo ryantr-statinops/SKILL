@@ -78,6 +78,20 @@
         "common/research/research",
         "common/research/comparison"
       ]
+    },
+    {
+      "id": "data-analysis",
+      "description": "Inspect, clean, validate, analyze, and report data reproducibly.",
+      "scope": "universal",
+      "runtime_target": "portable",
+      "allow_deprecated": false,
+      "skills": [
+        "common/workflow/data-analysis",
+        "common/data/data-inspection",
+        "common/data/data-cleaning",
+        "common/data/schema-validation",
+        "common/data/reproducible-analysis"
+      ]
     }
   ]
 }
