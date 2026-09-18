@@ -1,0 +1,23 @@
+[
+  {
+    "name": "feature-without-context",
+    "workflow": "common/workflow/feature-delivery",
+    "artifact_root": "docs/agent/specs/",
+    "confirmation": "before_mutation",
+    "required_terms": ["CONTEXT.md", "feature-spec.md", "Confirmation boundary:"]
+  },
+  {
+    "name": "data-without-contract",
+    "workflow": "common/workflow/data-analysis",
+    "artifact_root": "docs/agent/reports/",
+    "confirmation": "before_external",
+    "required_terms": ["data contract", "input or data contract is missing", "data-analysis-report.md"]
+  },
+  {
+    "name": "research-with-external-evidence",
+    "workflow": "common/workflow/research-decision",
+    "artifact_root": "docs/agent/decisions/",
+    "confirmation": "before_external",
+    "required_terms": ["high-trust primary sources", "cited decision artifact", "Confirmation boundary:"]
+  }
+]
