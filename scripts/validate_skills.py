@@ -18,6 +18,13 @@ ROOT = Path(__file__).resolve().parents[1]
 CATEGORIES = {"common", "personal", "meta"}
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 PLACEHOLDERS = ("skill-name", "Describe what this skill", "Use this skill when ...")
+HANDOFF_FIELDS = (
+    "Selected when:",
+    "Do not activate when:",
+    "Expected output:",
+    "User-facing report:",
+    "Confirmation boundary:",
+)
 
 
 def error(message: str) -> None:
@@ -69,6 +76,15 @@ def validate_skill(path: Path) -> int:
         if placeholder in text:
             error(f"unfinished placeholder in {skill_file.relative_to(ROOT)}: {placeholder}")
             failures += 1
+
+    if "## Agent handoff" not in text:
+        error(f"missing agent handoff section: {skill_file.relative_to(ROOT)}")
+        failures += 1
+    else:
+        for field in HANDOFF_FIELDS:
+            if field not in text:
+                error(f"missing agent handoff field in {skill_file.relative_to(ROOT)}: {field}")
+                failures += 1
 
     for directory in path.iterdir():
         if directory.is_dir() and not any(directory.iterdir()):
