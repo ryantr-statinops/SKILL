@@ -46,6 +46,21 @@ that runtime.
 - Keep executable helpers self-contained and state their prerequisites.
 - Separate portable procedure from personal or runtime-specific integration.
 
+## Change compatibility contract
+
+Changes to the library must preserve existing consumer integrations unless a
+breaking change is explicitly documented.
+
+- Additive metadata fields require a migration path or a documented default
+  for readers of older registries.
+- Generated registry schema changes must update the schema version and keep a
+  compatibility reader when an older consumer can be supported safely.
+- Sync changes must preserve the selected target layout, report conflicts, and
+  provide a check or dry-run path before overwriting files.
+- A runtime adapter must not change the portable meaning of a `SKILL.md`.
+- Runtime support claims require a fixture, tested layout, runtime version,
+  representative task, and validation result.
+
 Record confirmed runtime behavior here as evidence accumulates. Keep uncertain
 assumptions explicit instead of presenting them as a universal standard.
 

@@ -3,6 +3,18 @@
 This document turns the comparison matrix into repository decisions. It does
 not claim that every source pattern is universally correct.
 
+## Scope guardrails
+
+- Keep `common/`, `personal/`, and `meta/` as the repository taxonomy unless a
+  concrete compatibility or discovery problem requires a reviewed change.
+- Treat portable `SKILL.md` files as the canonical behavior layer; runtime
+  adapters, plugins, hooks, and always-on instructions remain outside it.
+- Use patterns from external skill repositories as design input only. Do not
+  copy their skill content, hidden assumptions, or runtime-specific commands
+  into this repository without an explicit intake review.
+- Keep Python-specific guidance under personal or domain-specific routes rather
+  than making Python the default for portable skills.
+
 ## Adopted patterns
 
 - Keep one portable `SKILL.md` as the canonical behavior layer.
