@@ -16,6 +16,6 @@ Task: Build a generic sales forecasting pipeline unrelated to trading or financi
 
 Expected: Route to data engineering or statistics foundations as appropriate.
 
-Failure condition: Activate quant trading guidance because the data is temporal.
+Failure condition: Activate quant research guidance because the data is temporal when the domain is unrelated to quantitative research.
 
 Validation: Confirm the route follows the domain and authorization boundary.

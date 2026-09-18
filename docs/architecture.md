@@ -36,8 +36,28 @@ validation close together.
 
 - `common/` contains reusable engineering, data, security, delivery, and agent
   workflows.
-- `personal/` contains Ryan's workflow preferences and domain foundations.
+- `personal/` contains Ryan's workflow preferences and domain foundations. Its
+  primary career axis is `engineering/core` plus Data, AI, and Backend
+  Engineering cores; `statistics` supports those domains and `quant` focuses
+  on research and production workflow.
 - `meta/` contains guidance about the skill system itself.
+
+The personal engineering hierarchy is intentionally layered:
+
+```text
+engineering/core
+├── data/core
+├── ai/core
+└── backend/core
+
+statistics ── supports data, AI, and quant reasoning
+quant/research ── quant hypothesis and evaluation
+quant/production-workflow ── research-to-production engineering
+```
+
+Language-specific backend skills, infrastructure, frontend, product, workflow,
+and decision skills remain narrower implementation or operating routes. They do
+not replace the shared engineering foundations.
 
 Use `common/README.md`, `personal/README.md`, and `meta/README.md` as curated
 category navigation. Use the generated global registry for complete discovery.
