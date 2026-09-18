@@ -59,6 +59,13 @@ preferences in `personal/` and skill-system procedures in `meta/`.
 - [change-review](delivery/change-review/SKILL.md)
 - [release](delivery/release/SKILL.md)
 
+### Workflows
+
+- [feature-delivery](workflow/feature-delivery/SKILL.md)
+- [bug-fixing](workflow/bug-fixing/SKILL.md)
+- [research-decision](workflow/research-decision/SKILL.md)
+- [data-analysis](workflow/data-analysis/SKILL.md)
+
 ### Agent
 
 - [context-loading](agent/context-loading/SKILL.md)
