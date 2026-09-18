@@ -85,6 +85,26 @@ class ConsumerSmokeTests(unittest.TestCase):
             results = json.loads(discovered.stdout)["skills"]
             self.assertEqual(results[0]["id"], "common/workflow/feature-delivery")
 
+            boundary = self.run_script(
+                DISCOVER,
+                "--format",
+                "json",
+                "investigate",
+                "software",
+                "failure",
+                "reproduce",
+                "isolate",
+                "root",
+                "cause",
+            )
+            self.assertEqual(boundary.returncode, 0, boundary.stderr)
+            boundary_results = json.loads(boundary.stdout)["skills"]
+            self.assertTrue(boundary_results)
+            self.assertEqual(boundary_results[0]["id"], "common/engineering/debugging")
+            self.assertNotEqual(
+                boundary_results[0]["id"], "common/workflow/feature-delivery"
+            )
+
             consumer_test = subprocess.run(
                 [sys.executable, "-m", "unittest", "discover", "-s", "tests"],
                 cwd=project,
