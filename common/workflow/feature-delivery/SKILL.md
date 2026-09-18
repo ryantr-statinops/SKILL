@@ -5,8 +5,9 @@ category: common
 subject: workflow
 scope: universal
 status: stable
-version: 1.0.0
+version: 1.1.0
 invocation: user
+requires: [common/foundation/requirements-analysis, common/foundation/task-planning, common/engineering/testing, common/engineering/code-review, common/delivery/change-review]
 ---
 
 # Feature delivery

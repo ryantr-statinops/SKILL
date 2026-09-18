@@ -308,10 +308,17 @@
       "subject": "workflow",
       "scope": "universal",
       "status": "stable",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "invocation": "user",
       "path": "common/workflow/bug-fixing/SKILL.md",
-      "requires": []
+      "requires": [
+        "common/engineering/debugging",
+        "common/engineering/testing",
+        "common/engineering/refactoring",
+        "common/engineering/code-review",
+        "common/delivery/change-review",
+        "common/agent/failure-recovery"
+      ]
     },
     {
       "id": "common/workflow/data-analysis",
@@ -321,10 +328,15 @@
       "subject": "workflow",
       "scope": "universal",
       "status": "stable",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "invocation": "user",
       "path": "common/workflow/data-analysis/SKILL.md",
-      "requires": []
+      "requires": [
+        "common/data/data-inspection",
+        "common/data/data-cleaning",
+        "common/data/schema-validation",
+        "common/data/reproducible-analysis"
+      ]
     },
     {
       "id": "common/workflow/feature-delivery",
@@ -334,10 +346,16 @@
       "subject": "workflow",
       "scope": "universal",
       "status": "stable",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "invocation": "user",
       "path": "common/workflow/feature-delivery/SKILL.md",
-      "requires": []
+      "requires": [
+        "common/foundation/requirements-analysis",
+        "common/foundation/task-planning",
+        "common/engineering/testing",
+        "common/engineering/code-review",
+        "common/delivery/change-review"
+      ]
     },
     {
       "id": "common/workflow/research-decision",
@@ -347,10 +365,13 @@
       "subject": "workflow",
       "scope": "universal",
       "status": "stable",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "invocation": "user",
       "path": "common/workflow/research-decision/SKILL.md",
-      "requires": []
+      "requires": [
+        "common/research/research",
+        "common/research/comparison"
+      ]
     },
     {
       "id": "meta/skill-authoring",

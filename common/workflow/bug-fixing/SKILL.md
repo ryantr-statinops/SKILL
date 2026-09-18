@@ -5,8 +5,9 @@ category: common
 subject: workflow
 scope: universal
 status: stable
-version: 1.0.0
+version: 1.1.0
 invocation: user
+requires: [common/engineering/debugging, common/engineering/testing, common/engineering/refactoring, common/engineering/code-review, common/delivery/change-review, common/agent/failure-recovery]
 ---
 
 # Bug fixing

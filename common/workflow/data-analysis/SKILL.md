@@ -5,8 +5,9 @@ category: common
 subject: workflow
 scope: universal
 status: stable
-version: 1.0.0
+version: 1.1.0
 invocation: user
+requires: [common/data/data-inspection, common/data/data-cleaning, common/data/schema-validation, common/data/reproducible-analysis]
 ---
 
 # Data analysis

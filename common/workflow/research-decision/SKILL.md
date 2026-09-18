@@ -5,8 +5,9 @@ category: common
 subject: workflow
 scope: universal
 status: stable
-version: 1.0.0
+version: 1.1.0
 invocation: user
+requires: [common/research/research, common/research/comparison]
 ---
 
 # Research decision
