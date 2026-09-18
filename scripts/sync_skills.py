@@ -71,11 +71,48 @@ def load_source_bundles(source: Path) -> list[dict[str, object]]:
         raise ValueError(f"invalid source bundle registry: {registry_path}: {exc}") from exc
 
 
+def load_source_skill_records(source: Path) -> list[dict[str, object]]:
+    try:
+        data = json.loads((source / "data/skills.json").read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError("invalid source skill registry") from exc
+    records = data.get("skills")
+    if not isinstance(records, list):
+        raise ValueError("invalid source skill registry")
+    return records
+
+
 def resolve_bundle(source: Path, identifier: str) -> list[str]:
     for bundle in load_source_bundles(source):
         if bundle["id"] == identifier:
             return list(bundle["skills"])
     raise ValueError(f"unknown bundle: {identifier}")
+
+
+def resolve_dependencies(source: Path, selected: list[str]) -> list[str]:
+    records = {str(record["id"]): record for record in load_source_skill_records(source)}
+    ordered: list[str] = []
+    visiting: set[str] = set()
+    visited: set[str] = set()
+
+    def visit(identifier: str) -> None:
+        if identifier in visiting:
+            raise ValueError(f"cyclic skill dependency: {identifier}")
+        if identifier in visited:
+            return
+        record = records.get(identifier)
+        if record is None:
+            raise ValueError(f"skill dependency is missing from registry: {identifier}")
+        visiting.add(identifier)
+        for required in record.get("requires", []):
+            visit(str(required))
+        visiting.remove(identifier)
+        visited.add(identifier)
+        ordered.append(identifier)
+
+    for identifier in selected:
+        visit(identifier)
+    return ordered
 
 
 def linked_resources(source: Path, skill: Path) -> list[Path]:
@@ -127,6 +164,7 @@ def main() -> int:
         selected = resolve_bundle(source, args.bundle) if args.bundle else args.skills
         if not selected:
             raise ValueError("provide explicit skills or --bundle")
+        selected = resolve_dependencies(source, selected)
         destination = args.destination.resolve()
         skills = [(relative, resolve_skill(source, relative)) for relative in selected]
     except ValueError as exc:
