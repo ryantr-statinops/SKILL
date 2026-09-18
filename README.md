@@ -3,181 +3,116 @@
 `SKILLS` is a portable Agent Skill Library for engineering, data, AI,
 quantitative research, and personal workflows.
 
-This repository is not a prompt dump. A skill encodes operational knowledge:
-when to act, how to act, which decisions matter, and how to validate the result.
+**Current release: `v0.1.0`**
 
-## Mental model
+## What SKILLS provides
 
-| Component | Role |
-| --- | --- |
-| Model | Reasoning engine |
-| Agent | Orchestration |
-| Skill | Knowledge, procedure, and judgment |
-| Workflow | A concrete execution sequence |
-| Tool / MCP | Capability or interface exposed to the agent |
-| Memory | Persistent context |
-| Reference | Deeper knowledge loaded when needed |
-| Script | Deterministic execution |
-| Evaluation | Evidence that a skill works |
+Skills encode operational knowledge: when to act, how to act, which decisions
+matter, and how to validate the result. Workflows provide outcome-oriented
+entry points, while bundles provide reviewed capability sets for consumer
+projects.
 
-Skills can guide an agent's use of tools and MCPs, but neither contains the
-other conceptually.
+Portable Markdown is the source of truth. The `.agent/skills/` directory is the
+runtime-independent baseline for Codex-compatible agents and other runtimes
+with thin adapters.
 
-## Architecture
+## Start here
 
-```text
-SKILLS/
-├── common/       # broadly reusable skills
-├── personal/     # Ryan's workflows and domain judgment
-├── meta/         # skills about the skill system
-├── docs/         # discovery, integration, quality, and lifecycle guides
-├── scripts/      # deterministic registry, sync, validation, and evaluation tools
-├── data/         # generated machine-readable registry
-├── AGENTS.md     # agent bootstrap and repository working conventions
-└── LICENSE
+From a checkout of this repository, preview the portable baseline before
+installing it into a consumer project:
+
+```bash
+python3 scripts/sync_skills.py \
+  --bundle portable-agent-baseline \
+  --check \
+  /path/to/project/.agent/skills
+
+python3 scripts/sync_skills.py \
+  --bundle portable-agent-baseline \
+  /path/to/project/.agent/skills
 ```
 
-Each skill is a folder with a required `SKILL.md` and optional resources:
+Check mode does not write files. A normal sync preserves the repository-relative
+skill layout and stops before overwriting an existing target path.
 
-```text
-<skill>/
-├── SKILL.md
-├── references/   # deep, conditional knowledge
-├── scripts/      # deterministic helpers
-├── examples/     # demonstrations and fixtures
-└── assets/       # reusable output templates or artifacts
-```
+Copy [`templates/CONTEXT.md`](templates/CONTEXT.md) into the consumer project
+when the agent needs shared vocabulary, architecture boundaries, test seams, or
+artifact paths. Record the source tag `v0.1.0` or a reviewed commit in the
+consumer project's integration notes.
 
-Do not create empty resource folders. Keep the entrypoint small and disclose
-detail progressively.
+## Choose by outcome
 
-## Discovery model
+| Outcome | Bundle | Purpose |
+| --- | --- | --- |
+| Agent context and recovery | `portable-agent-baseline` | Establish portable context, onboarding, requirements, recovery, and discovery. |
+| General engineering | `engineering-core` | Support repository work, implementation, testing, review, and handoff. |
+| Build a feature | `feature-delivery` | Coordinate requirements, planning, vertical slices, testing, review, and handoff. |
+| Fix a defect | `bug-fixing` | Reproduce, isolate, fix, regression-test, review, and hand off a defect. |
+| Make a research decision | `research-decision` | Compare alternatives with evidence, trade-offs, and uncertainty. |
+| Analyze data | `data-analysis` | Inspect, clean, validate, analyze, and report data reproducibly. |
+| Python backend workflow | `personal-python` | Apply Ryan's Python backend, API, testing, debugging, and review practices. |
 
-```text
-user task
-  → repository/category index
-  → skill description and boundaries
-  → SKILL.md
-  → only relevant references/scripts/assets
-  → execution
-  → validation and output
-```
-
-The agent should reject a skill when the task is outside its activation
-conditions. Overlapping skills should be resolved by scope, specificity, and
-explicit exclusions rather than by loading everything.
-
-## Taxonomy
-
-- `common/` contains practices that should transfer between users and repos.
-- `personal/` contains preferences, conventions, and domain workflows that
-  reflect Ryan's actual way of working.
-- `meta/` contains authoring, discovery, evaluation, intake, and maintenance
-  guidance for this library itself.
-
-See `meta/skill-authoring/SKILL.md` and `meta/skill-intake/SKILL.md` before
-adding a skill.
-
-## Creating a skill
-
-1. Start from the canonical structure in `meta/skill-authoring/`.
-2. Define a narrow capability and explicit `when to use` / `when not to use`.
-3. Put only essential instructions in `SKILL.md`.
-4. Move conditional depth into linked references.
-5. Add scripts only for repeatable deterministic operations.
-6. Add examples or evaluation cases when they improve confidence.
-7. Run the repository validator and review the skill against a real task.
-
-## Quality bar
-
-A useful skill has bounded scope, discriminating activation conditions,
-actionable procedure, decision rules, failure handling, progressive disclosure,
-and observable validation. Avoid generic textbook material, giant prompts,
-duplicated documentation, vague triggers, unnecessary abstractions, and skills
-that attempt to solve an entire domain.
-
-## Public usage
-
-Start with the [architecture overview](docs/architecture.md) to understand the
-repository layers. Use the [documentation index](docs/README.md) for detailed
-guides, the [common skill index](common/README.md) for portable workflows, and
-the [personal skill index](personal/README.md) for Ryan-specific workflows.
-
-To integrate the library into an existing coding agent or project, follow the
-[integration guide](docs/integration.md). It covers runtime adapters, selected
-sync, and Git subtree distribution. The [discovery guide](docs/discovery.md)
-explains how an agent selects and progressively loads a skill.
-
-The initial supported set is recorded in
-[`data/promoted.json`](data/promoted.json). Promoted skills are stable,
-documented, evaluated, and included in a supported bundle; skills outside the
-set may still be useful but remain experimental or repository-specific.
-
-The repository's current development checklist is intentionally local-only in
-`local.md`; it is not part of the public project contract.
-
-## Start here by outcome
-
-Use a bundle when you want a coherent set of skills for a common agent task:
-
-| Outcome | Bundle |
-| --- | --- |
-| Set up portable agent context and recovery | `portable-agent-baseline` |
-| General engineering work | `engineering-core` |
-| Build a feature | `feature-delivery` |
-| Diagnose and fix a defect | `bug-fixing` |
-| Research a technical decision | `research-decision` |
-| Analyze data reproducibly | `data-analysis` |
-| Work on a personal Python backend | `personal-python` |
-
-List the available bundles:
+List available bundles with:
 
 ```bash
 python3 scripts/sync_skills.py --list-bundles
 ```
 
-Preview and then sync a bundle into a consumer project:
+See [bundle documentation](docs/bundles.md) for the registry contract and
+distribution behavior.
 
-```bash
-python3 scripts/sync_skills.py \
-  --bundle feature-delivery \
-  --check \
-  /path/to/project/.agent/skills
+## Supported status
 
-python3 scripts/sync_skills.py \
-  --bundle feature-delivery \
-  /path/to/project/.agent/skills
+- **Promoted/stable** — the supported set recorded in
+  [`data/promoted.json`](data/promoted.json); each skill is documented,
+  evaluated, and included in a supported bundle.
+- **Experimental** — usable skills that are still collecting evidence and
+  feedback from real workflows.
+- **Personal** — Ryan-specific preferences, conventions, and domain workflows.
+- **Deprecated** — excluded from new bundles and workflows unless explicitly
+  requested through a reviewed compatibility path.
+
+The promoted set is intentionally smaller than the full library. See the
+[promotion policy](docs/promotion.md) for lifecycle and distribution rules.
+
+## How an agent uses SKILLS
+
+```text
+user outcome
+  → discover a bundle or skill
+  → inspect project context
+  → load SKILL.md
+  → execute the workflow
+  → validate and hand off
 ```
 
-Copy [`templates/CONTEXT.md`](templates/CONTEXT.md) into the consumer project
-when the agent needs shared vocabulary, architecture boundaries, test seams,
-or project-specific artifact paths.
+For integration and runtime layout, read the [integration guide](docs/integration.md).
+For routing, read the [discovery guide](docs/discovery.md). For coordinated
+outcomes, read the [workflow guide](docs/workflows.md). For consumer validation,
+read the [consumer smoke test](docs/consumer-smoke-test.md).
 
-## Contributing
+## Repository map
 
-Keep changes focused. Validate before committing, use small Conventional
-Commits, and explain any new dependency or taxonomy change in the relevant
-documentation. See `AGENTS.md` for repository conventions.
-
-### Contribution checklist
-
-- [ ] The skill has a narrow outcome and clear activation boundaries.
-- [ ] `SKILL.md` contains only essential instructions.
-- [ ] Supporting resources are linked and conditionally loaded.
-- [ ] The validator passes.
-- [ ] A representative task and a boundary case were reviewed.
-- [ ] Commit scope is focused and the message is descriptive.
-
-### Evaluation workflow
-
-For each new or changed skill, record one representative task and one nearby
-task that should not activate it. Check routing, procedure, decisions, failure
-handling, expected output, and context size. Re-run these cases after changes;
-keep the cases close to the skill or in a future evaluation harness when they
-become reusable regression tests.
-
-Run the structural check with:
-
-```bash
-python3 scripts/validate_skills.py
+```text
+common/     reusable skills
+personal/   Ryan-specific workflows
+meta/       skill-system skills
+data/       generated registries
+scripts/    discovery, sync, validation, evaluation
+docs/       detailed guides
+templates/  context and artifact templates
 ```
+
+## Documentation and contribution
+
+Start with the [documentation index](docs/README.md). Contributors should
+review the [authoring guide](docs/authoring.md), [evaluation contract](docs/evaluation-contract.md),
+[promotion policy](docs/promotion.md), and [versioning policy](docs/versioning.md).
+
+A contribution should keep each skill narrow, define explicit activation and
+exclusion boundaries, include representative and boundary evaluation cases,
+and pass repository validation before commit.
+
+## License
+
+See [LICENSE](LICENSE).
