@@ -108,6 +108,11 @@ To integrate the library into an existing coding agent or project, follow the
 sync, and Git subtree distribution. The [discovery guide](docs/discovery.md)
 explains how an agent selects and progressively loads a skill.
 
+The initial supported set is recorded in
+[`data/promoted.json`](data/promoted.json). Promoted skills are stable,
+documented, evaluated, and included in a supported bundle; skills outside the
+set may still be useful but remain experimental or repository-specific.
+
 The repository's current development checklist is intentionally local-only in
 `local.md`; it is not part of the public project contract.
 

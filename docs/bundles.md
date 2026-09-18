@@ -47,3 +47,8 @@ Adding a bundle is additive. Removing or changing a member is a distribution
 change and must be recorded in the changelog or release notes. Consumers that
 need reproducibility should record the source commit or release tag together
 with the bundle ID.
+
+Promotion is tracked separately in `data/promoted.json`. A promoted skill must
+be a member of at least one supported bundle, but not every bundle member is
+promoted. This keeps experimental primitives available for deliberate use
+without presenting the entire library as a stable default.

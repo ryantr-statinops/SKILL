@@ -98,6 +98,10 @@ python3 scripts/sync_skills.py --bundle feature-delivery --check /path/to/projec
 python3 scripts/sync_skills.py --bundle feature-delivery /path/to/project/.agent/skills
 ```
 
+For the supported baseline, inspect `data/promoted.json` and record the source
+commit or release tag alongside the selected bundle. Promotion is a support
+boundary, not a second copy of the skill content.
+
 Bundle sync validates every referenced skill and stops if any target path
 already exists. It never overwrites a selected skill implicitly.
 
