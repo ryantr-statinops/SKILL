@@ -50,6 +50,22 @@
         "common/engineering/code-review",
         "common/delivery/change-review"
       ]
+    },
+    {
+      "id": "bug-fixing",
+      "description": "Diagnose, fix, regression-test, review, and hand off a software defect.",
+      "scope": "universal",
+      "runtime_target": "portable",
+      "allow_deprecated": false,
+      "skills": [
+        "common/workflow/bug-fixing",
+        "common/engineering/debugging",
+        "common/engineering/testing",
+        "common/engineering/refactoring",
+        "common/engineering/code-review",
+        "common/delivery/change-review",
+        "common/agent/failure-recovery"
+      ]
     }
   ]
 }
