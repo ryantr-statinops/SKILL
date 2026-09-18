@@ -16,17 +16,23 @@ Use when a repository, specification, or task has more context than the current 
 
 ## Workflow
 1. Identify the requested outcome and relevant subsystem.
-2. Read entrypoints, instructions, schemas, and tests before deep implementation files.
-3. Load references only when a decision requires them.
-4. Keep a concise evidence summary and discard unrelated detail.
-5. Re-check source files when assumptions become uncertain.
+2. Read `CONTEXT.md` when present, especially its vocabulary, architecture boundaries, test seams, constraints, and artifact paths.
+3. Read entrypoints, instructions, schemas, and tests before deep implementation files.
+4. Load references only when a decision requires them.
+5. Keep a concise evidence summary and discard unrelated detail.
+6. Re-check source files when assumptions become uncertain.
 
 ## Decision rules
 - Prefer primary project artifacts over summaries.
 - Expand context only in response to a concrete unknown or failure.
+- Treat project-defined artifact paths as the source of truth; when they are
+  absent, use `docs/agent/` with `specs/`, `diagnostics/`, `decisions/`,
+  `reports/`, and `handoffs/` subdirectories.
 
 ## Failure modes
 If context is insufficient, state exactly which artifact or decision is missing.
+If `CONTEXT.md` is absent, continue with repository evidence and report the
+default assumptions used for artifact paths and terminology.
 
 ## Expected output
 Maintain a task-focused context map rather than a repository dump.
