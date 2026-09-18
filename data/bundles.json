@@ -1,4 +1,19 @@
 {
   "schema_version": 1,
-  "bundles": []
+  "bundles": [
+    {
+      "id": "portable-agent-baseline",
+      "description": "Minimal portable context, recovery, onboarding, requirements, and discovery skills for an agent.",
+      "scope": "universal",
+      "runtime_target": "portable",
+      "allow_deprecated": false,
+      "skills": [
+        "common/agent/context-loading",
+        "common/agent/failure-recovery",
+        "common/foundation/repository-onboarding",
+        "common/foundation/requirements-analysis",
+        "meta/skill-discovery"
+      ]
+    }
+  ]
 }
