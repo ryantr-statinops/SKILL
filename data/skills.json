@@ -290,6 +290,18 @@
       "path": "common/workflow/bug-fixing/SKILL.md"
     },
     {
+      "id": "common/workflow/data-analysis",
+      "name": "data-analysis",
+      "description": "Structure a data analysis from inspection and data contracts through traceable cleaning, validation, reproducible analysis, and reporting.",
+      "category": "common",
+      "subject": "workflow",
+      "scope": "universal",
+      "status": "experimental",
+      "version": "1.0.0",
+      "invocation": "user",
+      "path": "common/workflow/data-analysis/SKILL.md"
+    },
+    {
       "id": "common/workflow/feature-delivery",
       "name": "feature-delivery",
       "description": "Lead a feature from clarified outcome through planning, vertical implementation, testing, review, and handoff.",
