@@ -11,7 +11,10 @@ invocation: user
 
 # AI engineering router
 
-Use this router for systems where a model, retrieval component, tool, or agent is part of the user-facing outcome. Load `core` first for problem framing, model/system boundaries, evaluation, and production constraints.
+Use this router when a model, retrieval component, tool, or agent is part of the user-facing outcome. Load `core` first for problem framing, model/system boundaries, evaluation, and production constraints.
+
+## When not to use
+Do not use for ordinary software with no AI system boundary, or for a standalone data analysis whose output does not depend on a model or agent.
 
 | Need | Skill |
 | --- | --- |

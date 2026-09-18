@@ -11,6 +11,11 @@ invocation: user
 
 # Data engineering router
 
+Use this router when the primary artifact is a data pipeline, storage design, or its scheduled operation.
+
+## When not to use
+Do not use it for statistical interpretation without an engineering artifact, or for an API service whose data layer is incidental; route those to `personal/statistics` or `personal/engineering/backend`.
+
 | Need | Skill |
 | --- | --- |
 | Ingestion and transformation | [pipelines](pipelines/SKILL.md) |

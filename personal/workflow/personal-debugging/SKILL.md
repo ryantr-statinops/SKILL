@@ -12,7 +12,10 @@ invocation: both
 # Personal debugging workflow
 
 ## When to use
-Use for failures in personal projects when a reproducible root-cause investigation is needed.
+Use for failures in personal projects when a reproducible root-cause investigation is needed and the fix must preserve the project's local conventions.
+
+## When not to use
+Do not use for selecting a technology, planning a new project, or reviewing a completed diff; use the matching decision, project, or review skill.
 
 ## Personal principles
 Prefer minimal reproduction, explicit hypotheses, and a verified small fix.

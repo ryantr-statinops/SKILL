@@ -11,7 +11,10 @@ invocation: user
 
 # Backend router
 
-Choose the implementation language only after clarifying service boundaries, interfaces, persistence, and operational needs. Use `core` first when those foundations are not yet explicit, then load API, architecture, and runtime-specific guidance as needed.
+Choose the implementation language only after clarifying service boundaries, interfaces, persistence, and operational needs. Use `core` first when those foundations are not yet explicit, then load one API, architecture, or runtime-specific route that matches the open decision.
+
+## When not to use
+Do not use this router for data pipelines, model systems, or frontend-only work; route those to the corresponding personal engineering router.
 
 | Need | Skill |
 | --- | --- |

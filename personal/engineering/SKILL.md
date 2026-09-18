@@ -11,7 +11,10 @@ invocation: user
 
 # Engineering router
 
-Use for engineering decisions that should reflect Ryan's preferences. Start with `core` when the task involves shared computational or systems reasoning, then route to the narrowest domain or implementation skill.
+Use for engineering decisions that should reflect Ryan's preferences. Start with `core` when the task involves shared computational or systems reasoning, then route to exactly one narrowest domain or implementation skill.
+
+## When not to use
+Do not use this router for a generic engineering question with no personal preference or project context; use the matching `common/` skill directly.
 
 | Need | Skill |
 | --- | --- |
@@ -23,6 +26,8 @@ Use for engineering decisions that should reflect Ryan's preferences. Start with
 | Lightweight web UI | [frontend](frontend/SKILL.md) |
 
 Keep generic engineering guidance in `common/` and personal preferences here.
+
+Choose `core` for algorithms or systems foundations, then choose one child for the concrete language, data, AI, infrastructure, or UI boundary. Keep sibling routes out unless the task explicitly spans them.
 
 ## Agent handoff
 
