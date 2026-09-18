@@ -9,6 +9,9 @@ from pathlib import Path
 import re
 import sys
 
+from bundles import load_and_validate_bundles
+from generate_skill_index import collect
+
 ROOT = Path(__file__).resolve().parents[1]
 TOKEN_RE = re.compile(r"[a-z0-9]+")
 VALID_INVOCATIONS = {"user", "model", "both"}
@@ -24,6 +27,7 @@ def parse_args() -> argparse.Namespace:
         choices=("draft", "experimental", "stable", "deprecated"),
     )
     parser.add_argument("--invocation", choices=tuple(sorted(VALID_INVOCATIONS)))
+    parser.add_argument("--bundle", help="restrict results to a named bundle")
     parser.add_argument("--limit", type=int, default=10)
     parser.add_argument("--format", choices=("markdown", "json"), default="markdown")
     return parser.parse_args()
@@ -57,6 +61,11 @@ def load_registry() -> list[dict[str, str]]:
         raise ValueError(f"invalid generated registry: {path.relative_to(ROOT)}") from exc
 
 
+def load_bundle_map() -> dict[str, set[str]]:
+    bundles = load_and_validate_bundles(collect())
+    return {bundle["id"]: set(bundle["skills"]) for bundle in bundles}
+
+
 def tokens(value: str) -> set[str]:
     return set(TOKEN_RE.findall(value.lower()))
 
@@ -86,8 +95,15 @@ def score(record: dict[str, str], query_tokens: set[str]) -> int:
 
 def discover(args: argparse.Namespace) -> list[dict[str, object]]:
     query_tokens = tokens(" ".join(args.query))
+    bundle_members = None
+    if args.bundle:
+        bundle_members = load_bundle_map().get(args.bundle)
+        if bundle_members is None:
+            raise ValueError(f"unknown bundle: {args.bundle}")
     candidates = []
     for record in load_registry():
+        if bundle_members is not None and record["id"] not in bundle_members:
+            continue
         if args.category and record["category"] != args.category:
             continue
         if args.scope and record["scope"] != args.scope:
@@ -104,11 +120,14 @@ def discover(args: argparse.Namespace) -> list[dict[str, object]]:
     return candidates[: max(args.limit, 0)]
 
 
-def render_markdown(candidates: list[dict[str, object]], query: str) -> str:
+def render_markdown(
+    candidates: list[dict[str, object]], query: str, bundle: str | None = None
+) -> str:
     lines = [
         "# Skill candidates",
         "",
         f"Query: `{query or '(all)'}`",
+        f"Bundle: `{bundle or '(all)'}`",
         "",
         "| ID | Description | Scope | Status | Invocation | Score |",
         "| --- | --- | --- | --- | --- | ---: |",
@@ -134,9 +153,19 @@ def main() -> int:
         print(f"error: {exc}", file=sys.stderr)
         return 1
     if args.format == "json":
-        print(json.dumps({"query": " ".join(args.query), "skills": candidates}, indent=2, ensure_ascii=False))
+        print(
+            json.dumps(
+                {
+                    "query": " ".join(args.query),
+                    "bundle": args.bundle,
+                    "skills": candidates,
+                },
+                indent=2,
+                ensure_ascii=False,
+            )
+        )
     else:
-        print(render_markdown(candidates, " ".join(args.query)), end="")
+        print(render_markdown(candidates, " ".join(args.query), args.bundle), end="")
     return 0
 
 

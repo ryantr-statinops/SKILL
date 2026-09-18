@@ -10,6 +10,7 @@ SCRIPTS = ROOT / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 from bundles import validate_bundle_registry  # noqa: E402
+from discover_skills import discover  # noqa: E402
 
 
 def record(identifier: str, scope: str = "universal", status: str = "experimental") -> dict[str, str]:
@@ -78,6 +79,38 @@ class BundleRegistryTests(unittest.TestCase):
                 {"schema_version": 1, "bundles": [bundle]},
                 [record("common/old", status="deprecated")],
             )
+
+    def test_discovery_filters_to_bundle_members(self) -> None:
+        args = type(
+            "Args",
+            (),
+            {
+                "query": ["feature"],
+                "category": None,
+                "scope": None,
+                "status": None,
+                "invocation": None,
+                "bundle": "feature-delivery",
+                "limit": 20,
+            },
+        )()
+        results = discover(args)
+        self.assertTrue(results)
+        self.assertIn("common/workflow/feature-delivery", {item["id"] for item in results})
+        self.assertTrue(
+            all(
+                item["id"]
+                in {
+                    "common/workflow/feature-delivery",
+                    "common/foundation/requirements-analysis",
+                    "common/foundation/task-planning",
+                    "common/engineering/testing",
+                    "common/engineering/code-review",
+                    "common/delivery/change-review",
+                }
+                for item in results
+            )
+        )
 
 
 if __name__ == "__main__":
