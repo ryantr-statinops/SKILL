@@ -30,8 +30,10 @@ SKILLS/
 ├── common/       # broadly reusable skills
 ├── personal/     # Ryan's workflows and domain judgment
 ├── meta/         # skills about the skill system
-├── README.md     # map and guide
-├── AGENTS.md     # repository working conventions
+├── docs/         # discovery, integration, quality, and lifecycle guides
+├── scripts/      # deterministic registry, sync, validation, and evaluation tools
+├── data/         # generated machine-readable registry
+├── AGENTS.md     # agent bootstrap and repository working conventions
 └── LICENSE
 ```
 
@@ -94,49 +96,20 @@ and observable validation. Avoid generic textbook material, giant prompts,
 duplicated documentation, vague triggers, unnecessary abstractions, and skills
 that attempt to solve an entire domain.
 
-## Current index
+## Public usage
 
-The initial implementation focuses on the meta layer and repository guides.
+Start with the [architecture overview](docs/architecture.md) to understand the
+repository layers. Use the [documentation index](docs/README.md) for detailed
+guides, the [common skill index](common/README.md) for portable workflows, and
+the [personal skill index](personal/README.md) for Ryan-specific workflows.
 
-- [Documentation index](docs/README.md)
-- [Integration guide](docs/integration.md)
-- [Authoring guide](docs/authoring.md)
-- [Discovery guide](docs/discovery.md)
-- [Metadata specification](docs/metadata.md)
-- [Generated skill index](docs/skill-index.md)
-- [Common skill index](common/README.md)
-- [Codex notes for common skills](common/CODEX.md)
-- [Evaluation guide](docs/evaluation.md)
-- [Compatibility guide](docs/compatibility.md)
+To integrate the library into an existing coding agent or project, follow the
+[integration guide](docs/integration.md). It covers runtime adapters, selected
+sync, and Git subtree distribution. The [discovery guide](docs/discovery.md)
+explains how an agent selects and progressively loads a skill.
 
-See the folders under `meta/` for the available authoring, discovery,
-evaluation, intake, and maintenance skills.
-
-## Roadmap
-
-### Completed foundation
-
-- Repository structure and `common` / `personal` / `meta` taxonomy.
-- Canonical skill template and meta skills.
-- Structural validator.
-- Integration, authoring, discovery, evaluation, and compatibility guides.
-- Phase 1 integration model: portable agent directories, Codex priority, Git subtree guidance, and selected-skill sync helper.
-- Phase 2 skill metadata, generated Markdown/JSON indexes, and discovery routing.
-- Phase 3 common skill foundation, engineering, research, data, security, delivery, and agent skills.
-- Common skill representative and boundary evaluation cases.
-- Common skill evaluation report and enforced evaluation validation.
-- Phase 4 personal taxonomy, routers, workflow, engineering, education, and quant foundations.
-- Phase 5 evaluation contract, personal evaluation cases, deterministic harness, and JSON/Markdown reports.
-- Phase 6 skill/repository versioning, changelog, and Git subtree distribution policy.
-- Phase 7 GitHub Actions validation, local Markdown link checking, and explicit release workflow.
-- Phase 8 ecosystem comparison matrix, adopted/rejected patterns, and compatibility guidance.
-
-### Remaining work
-
-- Verify the `.agent/` integration with a real Codex project fixture and document confirmed runtime behavior.
-- Run the common skill evaluation cases inside a real consumer Codex project when integration testing is resumed.
-- Expand the evaluation harness with runtime fixtures and human scoring when real consumer projects are available.
-- Create a repository release tag when the next release-ready batch is approved.
+The repository's current development checklist is intentionally local-only in
+`local.md`; it is not part of the public project contract.
 
 ## Contributing
 
