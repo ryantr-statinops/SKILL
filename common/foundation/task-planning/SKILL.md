@@ -12,7 +12,7 @@ invocation: user
 # Task planning
 
 ## When to use
-Use before multi-step engineering work or any change with meaningful dependencies.
+Use before multi-step work, meaningful dependencies, or a change whose implementation sequence needs to be agreed.
 
 ## When not to use
 Do not create a large plan for a trivial one-file correction.
@@ -27,6 +27,7 @@ Do not create a large plan for a trivial one-file correction.
 ## Decision rules
 - Prefer small reversible steps and the narrowest scope.
 - Plan tests alongside behavior, not after implementation.
+- Choose this skill when the user needs an executable sequence, interfaces, risks, and acceptance checks before implementation begins.
 
 ## Failure modes
 If implementation choices depend on unknown facts, mark them as decisions or gather evidence before planning.

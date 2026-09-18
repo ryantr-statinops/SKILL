@@ -12,7 +12,10 @@ invocation: both
 # Change review
 
 ## When to use
-Use before merging, handing off, or publishing a meaningful code or configuration change.
+Use when a completed change needs a final scope, readiness, or handoff decision before merging, handing off, or publishing.
+
+## When not to use
+Do not use for line-by-line defect finding; use `code-review`. Do not use before the change has a reviewable artifact.
 
 ## Workflow
 1. Read the requested behavior and inspect the complete diff.
@@ -23,6 +26,7 @@ Use before merging, handing off, or publishing a meaningful code or configuratio
 ## Decision rules
 - Block handoff on correctness or security defects; separate style suggestions.
 - Verify changed behavior instead of trusting a green unrelated test suite.
+- Choose this skill when the output is a release or handoff decision with explicit follow-up ownership.
 
 ## Failure modes
 If the diff or validation context is incomplete, report the review as limited.

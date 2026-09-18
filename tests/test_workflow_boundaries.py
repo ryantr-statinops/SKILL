@@ -12,6 +12,18 @@ from discover_skills import discover  # noqa: E402
 
 
 class WorkflowBoundaryTests(unittest.TestCase):
+    def test_common_engineering_skills_state_distinct_activation_boundaries(self) -> None:
+        expectations = {
+            "debugging": ("root-cause investigation", "planned feature"),
+            "testing": ("deliberate coverage", "unknown root cause"),
+            "refactoring": ("externally visible behavior must stay the same", "new feature"),
+            "code-review": ("evidence-based review", "implementation workflow"),
+        }
+        for name, terms in expectations.items():
+            text = (ROOT / "common/engineering" / name / "SKILL.md").read_text(encoding="utf-8")
+            for term in terms:
+                self.assertIn(term, text, name)
+
     def test_fixture_routes_user_workflows_without_cross_activation(self) -> None:
         cases = json.loads(
             (ROOT / "tests/fixtures/workflow-boundaries.json").read_text(encoding="utf-8")

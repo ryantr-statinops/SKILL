@@ -12,7 +12,10 @@ invocation: both
 # Code review
 
 ## When to use
-Use when assessing a diff, pull request, patch, or proposed implementation.
+Use after an implementation exists and the requested outcome is an evidence-based review of its diff, patch, or pull request.
+
+## When not to use
+Do not use as the implementation workflow, and do not substitute it for a test plan when no change is ready to inspect.
 
 ## Workflow
 1. Read the requested behavior and relevant surrounding code.
@@ -23,6 +26,7 @@ Use when assessing a diff, pull request, patch, or proposed implementation.
 ## Decision rules
 - Prioritize concrete defects over style preferences.
 - Report no issue when the evidence supports correctness; do not invent concerns.
+- Choose this skill when findings, severity, and file-level evidence are the requested output.
 
 ## Failure modes
 If context or tests are missing, state the review limitation explicitly.

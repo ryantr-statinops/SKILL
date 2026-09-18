@@ -12,7 +12,10 @@ invocation: both
 # Testing
 
 ## When to use
-Use when adding behavior, fixing a bug, changing a contract, or assessing regression risk.
+Use when a behavior or contract needs deliberate coverage, including success, boundary, invalid, or regression cases.
+
+## When not to use
+Do not use as the primary route for finding an unknown root cause; use `debugging`. Do not use it to coordinate a multi-step feature; use the delivery workflow and load this skill for its test step.
 
 ## Workflow
 1. Identify the behavior and its public contract.
@@ -24,6 +27,7 @@ Use when adding behavior, fixing a bug, changing a contract, or assessing regres
 ## Decision rules
 - Test observable behavior rather than implementation details.
 - Prefer deterministic, fast tests for repeated feedback.
+- Choose this skill when the requested outcome includes a test plan, test changes, or an explicit coverage decision.
 
 ## Failure modes
 Do not report success when tests were skipped, flaky, or unrelated to the changed behavior.
