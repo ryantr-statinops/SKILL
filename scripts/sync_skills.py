@@ -8,8 +8,11 @@ import json
 from pathlib import Path
 import shutil
 import sys
+import re
 
 from bundles import load_bundle_registry, validate_bundle_registry
+
+MARKDOWN_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 
 
 def parse_args() -> argparse.Namespace:
@@ -75,6 +78,35 @@ def resolve_bundle(source: Path, identifier: str) -> list[str]:
     raise ValueError(f"unknown bundle: {identifier}")
 
 
+def linked_resources(source: Path, skill: Path) -> list[Path]:
+    """Return existing repository files referenced by a skill entrypoint."""
+    entrypoint = skill / "SKILL.md"
+    resources: list[Path] = []
+    for raw_target in MARKDOWN_LINK_RE.findall(entrypoint.read_text(encoding="utf-8")):
+        target = raw_target.split("#", 1)[0].strip().strip("<>")
+        if not target or target.startswith(("http://", "https://", "mailto:")):
+            continue
+        resolved = (entrypoint.parent / target).resolve()
+        try:
+            resolved.relative_to(source.resolve())
+        except ValueError as exc:
+            raise ValueError(f"linked resource escapes source repository: {target}") from exc
+        if not resolved.exists():
+            raise ValueError(f"linked resource does not exist: {target}")
+        if not resolved.is_relative_to(skill.resolve()):
+            resources.append(resolved)
+    return resources
+
+
+def export_targets(source: Path, destination: Path, skills: list[tuple[str, Path]]) -> list[tuple[Path, Path]]:
+    targets: dict[Path, Path] = {}
+    for relative, path in skills:
+        targets[path] = destination / path.relative_to(source)
+        for resource in linked_resources(source, path):
+            targets[resource] = destination / resource.relative_to(source)
+    return sorted(targets.items(), key=lambda item: str(item[1]))
+
+
 def main() -> int:
     args = parse_args()
     source = args.source.resolve()
@@ -101,7 +133,7 @@ def main() -> int:
         print(f"error: {exc}", file=sys.stderr)
         return 2
 
-    targets = [(relative, destination / path.relative_to(source)) for relative, path in skills]
+    targets = export_targets(source, destination, skills)
     conflicts = [str(target) for _, target in targets if target.exists()]
     if conflicts:
         print("error: target paths already exist; no files were changed:", file=sys.stderr)
@@ -109,12 +141,15 @@ def main() -> int:
             print(f"  {target}", file=sys.stderr)
         return 2
 
-    for relative, target in targets:
+    for path, target in targets:
+        relative = path.relative_to(source)
         print(f"{'would sync' if args.check else 'syncing'} {relative} -> {target}")
         if not args.check:
-            path = source / relative
             target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copytree(path, target)
+            if path.is_dir():
+                shutil.copytree(path, target)
+            else:
+                shutil.copy2(path, target)
 
     return 0
 
