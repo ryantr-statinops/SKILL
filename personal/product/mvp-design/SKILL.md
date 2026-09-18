@@ -6,6 +6,7 @@ subject: product
 scope: personal
 status: experimental
 version: 1.0.0
+invocation: both
 ---
 
 # MVP design

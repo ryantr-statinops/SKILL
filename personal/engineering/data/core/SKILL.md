@@ -6,6 +6,7 @@ subject: data
 scope: personal
 status: experimental
 version: 1.0.0
+invocation: both
 ---
 
 # Data engineering foundations

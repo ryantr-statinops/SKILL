@@ -41,6 +41,18 @@ knowledge across the entrypoint and references.
 If a skill has both reusable and personal parts, keep the reusable procedure
 separate from the preference-specific extension.
 
+## Invocation
+
+Every skill declares an `invocation` metadata value:
+
+- `user` for explicit workflow entry points and side-effectful orchestration;
+- `both` for skills that users may select or agents may discover automatically;
+- `model` only when automatic agent selection is intentional and explicit.
+
+A user-invoked skill may direct the agent to read a `both` skill, but should not
+silently delegate to another user-invoked workflow. Invocation metadata is
+portable and must not contain runtime-specific plugin or slash-command rules.
+
 ## Before committing
 
 1. Check the activation and exclusion boundaries.

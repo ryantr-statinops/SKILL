@@ -11,12 +11,23 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 CATEGORIES = ("common", "personal", "meta")
-REQUIRED = ("name", "description", "category", "subject", "scope", "status", "version")
+REQUIRED = (
+    "name",
+    "description",
+    "category",
+    "subject",
+    "scope",
+    "status",
+    "version",
+    "invocation",
+)
 ENUMS = {
     "category": set(CATEGORIES),
     "scope": {"universal", "personal", "repository"},
     "status": {"draft", "experimental", "stable", "deprecated"},
+    "invocation": {"user", "model", "both"},
 }
+REGISTRY_SCHEMA_VERSION = 2
 NAME_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 VERSION_RE = re.compile(r"^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$")
 
@@ -73,6 +84,7 @@ def collect() -> list[dict[str, str]]:
                     "scope": metadata["scope"],
                     "status": metadata["status"],
                     "version": metadata["version"],
+                    "invocation": metadata["invocation"],
                     "path": relative.as_posix(),
                 }
             )
@@ -87,19 +99,23 @@ def render_markdown(records: list[dict[str, str]]) -> str:
         "",
         f"Total skills: **{len(records)}**",
         "",
-        "| ID | Description | Scope | Status | Version | Path |",
-        "| --- | --- | --- | --- | --- | --- |",
+        "| ID | Description | Scope | Status | Version | Invocation | Path |",
+        "| --- | --- | --- | --- | --- | --- | --- |",
     ]
     for item in records:
         description = item["description"].replace("|", "\\|")
         lines.append(
-            f"| `{item['id']}` | {description} | `{item['scope']}` | `{item['status']}` | `{item['version']}` | `{item['path']}` |"
+            f"| `{item['id']}` | {description} | `{item['scope']}` | `{item['status']}` | `{item['version']}` | `{item['invocation']}` | `{item['path']}` |"
         )
     return "\n".join(lines) + "\n"
 
 
 def render_json(records: list[dict[str, str]]) -> str:
-    return json.dumps({"schema_version": 1, "skills": records}, indent=2, ensure_ascii=False) + "\n"
+    return json.dumps(
+        {"schema_version": REGISTRY_SCHEMA_VERSION, "skills": records},
+        indent=2,
+        ensure_ascii=False,
+    ) + "\n"
 
 
 def main() -> int:

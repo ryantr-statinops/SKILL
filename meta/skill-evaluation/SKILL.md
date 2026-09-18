@@ -6,6 +6,7 @@ subject: skill-system
 scope: repository
 status: stable
 version: 1.0.0
+invocation: both
 ---
 
 # Skill evaluation

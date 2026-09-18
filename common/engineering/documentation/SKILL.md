@@ -6,6 +6,7 @@ subject: engineering
 scope: universal
 status: experimental
 version: 1.0.0
+invocation: both
 ---
 
 # Documentation

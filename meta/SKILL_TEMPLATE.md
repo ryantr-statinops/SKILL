@@ -6,6 +6,7 @@ subject: skill-system
 scope: repository
 status: draft
 version: 1.0.0
+invocation: both
 ---
 
 # Skill Name

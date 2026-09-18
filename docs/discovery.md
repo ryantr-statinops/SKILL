@@ -51,6 +51,12 @@ statistical reasoning and `personal/quant/research` or
 The command returns deterministic candidates only. The agent must read the
 selected `SKILL.md` before activating any procedure.
 
+Use `--invocation user`, `--invocation both`, or `--invocation model` when the
+activation boundary matters. User-invoked skills are explicit workflow entry
+points. Skills marked `both` can be selected by the agent when their
+description and boundaries match the task. Invocation filtering describes
+activation eligibility; it does not define a dependency graph between skills.
+
 ## Selection rules
 
 1. Match the desired outcome, not only a technology keyword.

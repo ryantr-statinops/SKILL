@@ -6,6 +6,7 @@ subject: quant
 scope: personal
 status: experimental
 version: 1.0.0
+invocation: both
 ---
 
 # Quant production workflow

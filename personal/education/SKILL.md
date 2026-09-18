@@ -6,6 +6,7 @@ subject: education
 scope: personal
 status: experimental
 version: 1.1.0
+invocation: user
 ---
 
 # Education router

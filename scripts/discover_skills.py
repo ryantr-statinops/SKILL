@@ -11,6 +11,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 TOKEN_RE = re.compile(r"[a-z0-9]+")
+VALID_INVOCATIONS = {"user", "model", "both"}
 
 
 def parse_args() -> argparse.Namespace:
@@ -22,20 +23,37 @@ def parse_args() -> argparse.Namespace:
         "--status",
         choices=("draft", "experimental", "stable", "deprecated"),
     )
+    parser.add_argument("--invocation", choices=tuple(sorted(VALID_INVOCATIONS)))
     parser.add_argument("--limit", type=int, default=10)
     parser.add_argument("--format", choices=("markdown", "json"), default="markdown")
     return parser.parse_args()
 
 
+def normalize_registry(data: dict[str, object]) -> list[dict[str, str]]:
+    schema_version = data.get("schema_version")
+    if schema_version not in {1, 2}:
+        raise ValueError(f"unsupported registry schema version: {schema_version}")
+    skills = data["skills"]
+    if not isinstance(skills, list):
+        raise TypeError("skills is not a list")
+    normalized = []
+    for record in skills:
+        if not isinstance(record, dict):
+            raise TypeError("skill record is not an object")
+        item = dict(record)
+        if schema_version == 1:
+            item["invocation"] = "both"
+        elif item.get("invocation") not in VALID_INVOCATIONS:
+            raise ValueError("invalid invocation in registry")
+        normalized.append(item)
+    return normalized
+
+
 def load_registry() -> list[dict[str, str]]:
     path = ROOT / "data/skills.json"
     try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        skills = data["skills"]
-        if not isinstance(skills, list):
-            raise TypeError("skills is not a list")
-        return skills
-    except (OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
+        return normalize_registry(json.loads(path.read_text(encoding="utf-8")))
+    except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError) as exc:
         raise ValueError(f"invalid generated registry: {path.relative_to(ROOT)}") from exc
 
 
@@ -76,6 +94,8 @@ def discover(args: argparse.Namespace) -> list[dict[str, object]]:
             continue
         if args.status and record["status"] != args.status:
             continue
+        if args.invocation and record["invocation"] != args.invocation:
+            continue
         ranking = score(record, query_tokens)
         if query_tokens and ranking < 0:
             continue
@@ -90,13 +110,13 @@ def render_markdown(candidates: list[dict[str, object]], query: str) -> str:
         "",
         f"Query: `{query or '(all)'}`",
         "",
-        "| ID | Description | Scope | Status | Score |",
-        "| --- | --- | --- | --- | ---: |",
+        "| ID | Description | Scope | Status | Invocation | Score |",
+        "| --- | --- | --- | --- | --- | ---: |",
     ]
     for item in candidates:
         description = str(item["description"]).replace("|", "\\|")
         lines.append(
-            f"| `{item['id']}` | {description} | `{item['scope']}` | `{item['status']}` | {item['score']} |"
+            f"| `{item['id']}` | {description} | `{item['scope']}` | `{item['status']}` | `{item['invocation']}` | {item['score']} |"
         )
     if not candidates:
         lines.append("| — | No matching skills. | — | — | — |")

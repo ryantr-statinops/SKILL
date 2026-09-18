@@ -2,6 +2,7 @@
 """Validate the repository's skill layout without external dependencies."""
 
 from pathlib import Path
+import json
 import re
 import sys
 
@@ -9,6 +10,7 @@ from generate_skill_index import (
     ENUMS,
     REQUIRED,
     VERSION_RE,
+    REGISTRY_SCHEMA_VERSION,
     collect,
     render_json,
     render_markdown,
@@ -137,6 +139,12 @@ def main() -> int:
             ROOT / "docs/skill-index.md": render_markdown(records),
             ROOT / "data/skills.json": render_json(records),
         }
+        registry = json.loads((ROOT / "data/skills.json").read_text(encoding="utf-8"))
+        if registry.get("schema_version") != REGISTRY_SCHEMA_VERSION:
+            error(
+                f"invalid registry schema version: expected {REGISTRY_SCHEMA_VERSION}"
+            )
+            failures += 1
         for path, expected in generated.items():
             if not path.is_file() or path.read_text(encoding="utf-8") != expected:
                 error(f"stale or missing generated file: {path.relative_to(ROOT)}")

@@ -14,6 +14,7 @@ subject: skill-system
 scope: repository
 status: stable
 version: 1.0.0
+invocation: both
 ---
 ```
 
@@ -26,6 +27,14 @@ version: 1.0.0
 - `scope`: `universal`, `personal`, or `repository`.
 - `status`: `draft`, `experimental`, `stable`, or `deprecated`.
 - `version`: semantic version in `MAJOR.MINOR.PATCH` form.
+- `invocation`: `user`, `model`, or `both`; describes whether the skill is
+  explicitly selected by a user, automatically selected by an agent, or both.
+
+`invocation` is portable metadata. It does not encode Claude, Codex, plugin, or
+other runtime-specific commands. A `user` skill is an explicit workflow entry
+point; a `both` skill may also be selected from its description and metadata.
+The `model` value is reserved for skills that are intentionally agent-selected
+without requiring an explicit user invocation.
 
 The canonical skill ID is derived from the path, for example
 `meta/skill-authoring`. Do not duplicate it in frontmatter.
