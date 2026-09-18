@@ -5,12 +5,14 @@ category: personal
 subject: education
 scope: personal
 status: experimental
-version: 1.0.0
+version: 1.1.0
 ---
 
 # Education router
 
 Use this router for foundational learning, explanation, study planning, or mathematical writing. Choose one child skill before loading detailed references.
+
+Statistics is maintained as the independent `personal/statistics` foundation so it can support engineering and quant work as well as education. R and LaTeX remain supporting learning/tooling routes under this category.
 
 | Need | Skill |
 | --- | --- |
