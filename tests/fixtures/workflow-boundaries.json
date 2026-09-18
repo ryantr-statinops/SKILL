@@ -1,0 +1,52 @@
+[
+  {
+    "name": "feature-over-bug",
+    "task": "Use feature delivery to add an export feature with a vertical slice, tests, and review.",
+    "expected_workflow": "common/workflow/feature-delivery",
+    "excluded_workflows": ["common/workflow/bug-fixing"],
+    "confirmation": "before_mutation",
+    "artifact": "feature-spec.md",
+    "validation": "feature scope, test seams, review result, and unresolved risks"
+  },
+  {
+    "name": "bug-over-feature",
+    "task": "Use bug fixing to reproduce a regression, isolate the root cause, and add a regression test.",
+    "expected_workflow": "common/workflow/bug-fixing",
+    "excluded_workflows": ["common/workflow/feature-delivery"],
+    "confirmation": "before_mutation",
+    "artifact": "bug-diagnosis.md",
+    "validation": "reproduction status, evidence, fix, regression test, and review result"
+  },
+  {
+    "name": "research-over-data",
+    "task": "Use research decision to compare database alternatives with sources, recommendation, and uncertainty.",
+    "expected_workflow": "common/workflow/research-decision",
+    "excluded_workflows": ["common/workflow/data-analysis"],
+    "confirmation": "before_external",
+    "artifact": "research-decision.md",
+    "validation": "cited sources, comparison, recommendation, trade-offs, and uncertainty"
+  },
+  {
+    "name": "data-over-bug",
+    "task": "Use data analysis to inspect a dataset, define a contract, clean, validate, reproduce, and report.",
+    "expected_workflow": "common/workflow/data-analysis",
+    "excluded_workflows": ["common/workflow/bug-fixing"],
+    "confirmation": "before_external",
+    "artifact": "data-analysis-report.md",
+    "validation": "data contract, transformations, validation, reproduction path, and limitations"
+  },
+  {
+    "name": "out-of-scope-lookup",
+    "task": "What is the capital of France?",
+    "expected_workflow": null,
+    "excluded_workflows": [
+      "common/workflow/feature-delivery",
+      "common/workflow/bug-fixing",
+      "common/workflow/research-decision",
+      "common/workflow/data-analysis"
+    ],
+    "confirmation": "never",
+    "artifact": null,
+    "validation": "no workflow is activated"
+  }
+]
