@@ -2,13 +2,13 @@
 
 ## Representative task
 
-Task: Frame a future AI feature by identifying model, context, evaluation, safety, and integration questions.
+Task: Design an LLM application with retrieval, structured output, tool boundaries, evaluation, monitoring, and a fallback path.
 
-Expected: Produce a foundation checklist and explicitly defer detailed implementation to a future AI leaf skill.
+Expected: Define the user outcome and deterministic baseline, separate model/context/retrieval/tool/application boundaries, specify structured-output and tool validation, include representative and boundary evaluations, and state production constraints and human approval boundaries.
 
-Failure condition: Claim that the foundation checklist is a production agent design or execution authorization.
+Failure condition: Treat a demo as production evidence, grant broad tool permissions, or omit evaluation, cost, privacy, rate-limit, fallback, and side-effect controls.
 
-Validation: Confirm assumptions, risks, and unresolved scopes are recorded.
+Validation: Confirm the response includes system boundaries, evaluation cases, permission controls, monitoring, fallback, and unresolved risks.
 
 ## Boundary task
 

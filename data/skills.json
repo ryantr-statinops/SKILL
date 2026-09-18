@@ -312,23 +312,23 @@
     {
       "id": "personal/engineering/ai",
       "name": "ai",
-      "description": "Reserved router for personal AI and agent engineering workflows; detailed AI skills are not built yet.",
+      "description": "Route personal AI engineering work through a shared foundation for ML, LLM, agent, evaluation, and production system decisions.",
       "category": "personal",
       "subject": "ai-engineering",
       "scope": "personal",
-      "status": "draft",
-      "version": "0.1.0",
+      "status": "experimental",
+      "version": "1.0.0",
       "path": "personal/engineering/ai/SKILL.md"
     },
     {
       "id": "personal/engineering/ai/core",
       "name": "core",
-      "description": "Reserved foundation for personal AI and agent engineering; use only for initial framing until dedicated AI skills are built.",
+      "description": "Design personal AI systems across problem framing, ML/LLM foundations, agents, tools, evaluation, and production constraints.",
       "category": "personal",
       "subject": "ai-engineering",
       "scope": "personal",
-      "status": "draft",
-      "version": "0.1.0",
+      "status": "experimental",
+      "version": "1.0.0",
       "path": "personal/engineering/ai/core/SKILL.md"
     },
     {
