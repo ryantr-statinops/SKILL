@@ -345,7 +345,7 @@
     {
       "id": "personal/engineering/backend/core",
       "name": "core",
-      "description": "Apply personal backend foundations for service boundaries, contracts, persistence, errors, tests, and operations.",
+      "description": "Design personal backend services around boundaries, contracts, persistence, security, failure behavior, testing, and operations.",
       "category": "personal",
       "subject": "backend",
       "scope": "personal",
@@ -488,7 +488,7 @@
     {
       "id": "personal/engineering/backend",
       "name": "backend",
-      "description": "Route personal backend work to Go or Python service engineering workflows.",
+      "description": "Route personal backend work through service foundations to API, architecture, runtime, and operations workflows.",
       "category": "personal",
       "subject": "engineering",
       "scope": "personal",
