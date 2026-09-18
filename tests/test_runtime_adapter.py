@@ -2,6 +2,8 @@
 
 import subprocess
 import tempfile
+import json
+import shutil
 from pathlib import Path
 import unittest
 
@@ -42,6 +44,35 @@ class RuntimeAdapterTests(unittest.TestCase):
                 ).stdout,
                 "",
             )
+
+    def test_fixed_opencode_cli_discovers_adapter(self) -> None:
+        executable = shutil.which("opencode")
+        if executable is None:
+            self.skipTest("opencode CLI is not installed")
+        version = subprocess.run([executable, "--version"], check=True, capture_output=True, text=True).stdout.strip()
+        self.assertEqual(version, "1.18.31")
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source = root / ".agent/skills/common/engineering/debugging"
+            source.mkdir(parents=True)
+            (source / "SKILL.md").write_text(
+                "---\nname: debugging\ndescription: Debug a failing behavior\n---\n# Debugging\n",
+                encoding="utf-8",
+            )
+            portable = root / ".agent/skills"
+            native = root / ".agents/skills"
+            subprocess.run(["python3", str(SCRIPT), str(portable), str(native)], check=True)
+            result = subprocess.run(
+                [executable, "debug", "skill", "--pure"],
+                cwd=root,
+                check=True,
+                capture_output=True,
+                text=True,
+            )
+            skills = json.loads(result.stdout)
+            discovered = [item for item in skills if item["name"] == "debugging"]
+            self.assertEqual(len(discovered), 1)
+            self.assertTrue(discovered[0]["location"].endswith(".agents/skills/common-engineering-debugging/SKILL.md"))
 
 
 if __name__ == "__main__":
