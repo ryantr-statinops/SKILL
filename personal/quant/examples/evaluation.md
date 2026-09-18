@@ -14,7 +14,7 @@ Validation: Confirm the route names the evidence needed and explicitly preserves
 
 Task: Build a generic sales forecasting pipeline unrelated to trading or financial signals.
 
-Expected: Route to data-engineering or time-series foundations as appropriate.
+Expected: Route to data engineering or statistics foundations as appropriate.
 
 Failure condition: Activate quant trading guidance because the data is temporal.
 

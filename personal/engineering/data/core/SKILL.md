@@ -1,8 +1,8 @@
 ---
 name: core
-description: Apply personal data-engineering foundations for data contracts, lineage, quality, storage, and reproducible workflows.
+description: Apply personal data engineering foundations for data contracts, lineage, quality, storage, and reproducible workflows.
 category: personal
-subject: data-engineering
+subject: data
 scope: personal
 status: experimental
 version: 1.0.0

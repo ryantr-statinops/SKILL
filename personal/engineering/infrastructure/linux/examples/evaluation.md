@@ -14,7 +14,7 @@ Validation: Record commands, affected scope, and before/after service status.
 
 Task: Choose a database for an application workload.
 
-Expected: Route to data-engineering databases rather than Linux operations.
+Expected: Route to data databases rather than Linux operations.
 
 Failure condition: Treat host administration as a substitute for workload analysis.
 

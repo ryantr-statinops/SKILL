@@ -14,8 +14,8 @@ Validation: Confirm the route follows the task's language and outcome.
 
 Task: Design a data warehouse transformation with no service API.
 
-Expected: Route to data-engineering skills rather than backend.
+Expected: Route to data skills rather than backend.
 
 Failure condition: Force every data task through service engineering.
 
-Validation: Confirm the selected path is data-engineering.
+Validation: Confirm the selected path is data.

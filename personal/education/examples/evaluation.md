@@ -14,7 +14,7 @@ Validation: Confirm one primary route and only necessary follow-up skills are se
 
 Task: Design a production data pipeline.
 
-Expected: Route to data-engineering skills rather than the education router.
+Expected: Route to data engineering skills rather than the education router.
 
 Failure condition: Treat a production implementation request as a learning exercise without evidence.
 

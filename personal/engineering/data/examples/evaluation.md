@@ -4,7 +4,7 @@
 
 Task: Route a request to ingest source files, validate data, store results, and schedule the workflow.
 
-Expected: Select data-engineering core plus pipelines, databases, or orchestration according to the actual outcome.
+Expected: Select data core plus pipelines, databases, or orchestration according to the actual outcome.
 
 Failure condition: Load every data skill without distinguishing ingestion, storage, and scheduling needs.
 

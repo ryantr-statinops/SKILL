@@ -1,6 +1,6 @@
 ---
-name: data-engineering
-description: Route personal data engineering work to pipeline, database, or orchestration workflows.
+name: data
+description: Route personal data engineering work to core, pipeline, database, or orchestration workflows.
 category: personal
 subject: engineering
 scope: personal

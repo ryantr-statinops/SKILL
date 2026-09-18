@@ -17,7 +17,7 @@
   },
   {
     "task": "Ingest source files, validate records, and schedule a data workflow.",
-    "expected_skill": "personal/engineering/data-engineering/pipelines",
+    "expected_skill": "personal/engineering/data/pipelines",
     "boundary_skill": "personal/engineering/backend/nodejs",
     "expected_explanation": true,
     "confirmation": "before_mutation",

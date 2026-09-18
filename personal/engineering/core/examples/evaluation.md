@@ -16,4 +16,4 @@ Expected: Route to `personal/engineering/data/core` and its narrower pipeline/or
 
 Failure condition: Provide a complete pipeline design while ignoring data contracts, lineage, quality, or orchestration concerns.
 
-Validation: Confirm the response identifies the data-engineering route and explains why the engineering foundation alone is insufficient.
+Validation: Confirm the response identifies the data engineering route and explains why the engineering foundation alone is insufficient.

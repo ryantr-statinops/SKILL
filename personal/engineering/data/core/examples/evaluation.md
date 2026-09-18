@@ -14,7 +14,7 @@ Validation: Review the data contract, quality checks, and reproducibility plan.
 
 Task: Tune an API response schema without changing the underlying dataset.
 
-Expected: Use API design guidance rather than data-engineering core.
+Expected: Use API design guidance rather than data core.
 
 Failure condition: Add lineage and pipeline infrastructure to a presentation contract change.
 
