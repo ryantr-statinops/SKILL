@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -13,6 +14,7 @@ import re
 from bundles import load_bundle_registry, validate_bundle_registry
 
 MARKDOWN_LINK_RE = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
+MANIFEST_NAME = ".skill-sync.json"
 
 
 def parse_args() -> argparse.Namespace:
@@ -144,6 +146,41 @@ def export_targets(source: Path, destination: Path, skills: list[tuple[str, Path
     return sorted(targets.items(), key=lambda item: str(item[1]))
 
 
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def manifest_for(
+    source: Path,
+    bundle: str | None,
+    selected: list[str],
+    targets: list[tuple[Path, Path]],
+) -> dict[str, object]:
+    files: list[Path] = []
+    for path, _ in targets:
+        if path.is_file():
+            files.append(path)
+        elif path.is_dir():
+            files.extend(item for item in path.rglob("*") if item.is_file())
+    return {
+        "schema_version": 1,
+        "source": str(source),
+        "bundle": bundle,
+        "skills": selected,
+        "files": [
+            {
+                "path": str(path.relative_to(source)),
+                "sha256": sha256(path),
+            }
+            for path in sorted(files)
+        ],
+    }
+
+
 def main() -> int:
     args = parse_args()
     source = args.source.resolve()
@@ -188,6 +225,18 @@ def main() -> int:
                 shutil.copytree(path, target)
             else:
                 shutil.copy2(path, target)
+
+    if not args.check:
+        destination.mkdir(parents=True, exist_ok=True)
+        (destination / MANIFEST_NAME).write_text(
+            json.dumps(
+                manifest_for(source, args.bundle, selected, targets),
+                indent=2,
+                ensure_ascii=False,
+            )
+            + "\n",
+            encoding="utf-8",
+        )
 
     return 0
 

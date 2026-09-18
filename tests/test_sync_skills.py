@@ -5,6 +5,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import json
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts/sync_skills.py"
@@ -32,6 +33,7 @@ class SyncSkillsTests(unittest.TestCase):
             result = self.run_sync("--bundle", "feature-delivery", "--check", str(destination))
             self.assertEqual(result.returncode, 0, result.stderr)
             self.assertFalse(destination.exists())
+            self.assertFalse((destination / ".skill-sync.json").exists())
 
     def test_sync_copies_bundle_and_rejects_existing_target(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -40,6 +42,13 @@ class SyncSkillsTests(unittest.TestCase):
             self.assertEqual(first.returncode, 0, first.stderr)
             copied = destination / "common/workflow/feature-delivery/SKILL.md"
             self.assertTrue(copied.is_file())
+            manifest = destination / ".skill-sync.json"
+            self.assertTrue(manifest.is_file())
+            payload = json.loads(manifest.read_text(encoding="utf-8"))
+            self.assertEqual(payload["bundle"], "feature-delivery")
+            self.assertTrue(
+                any(item["path"].endswith("feature-delivery/SKILL.md") for item in payload["files"])
+            )
             for template in (
                 "CONTEXT.md",
                 "feature-spec.md",
