@@ -14,6 +14,27 @@
         "common/foundation/requirements-analysis",
         "meta/skill-discovery"
       ]
+    },
+    {
+      "id": "engineering-core",
+      "description": "Portable engineering foundations for repository work, implementation, testing, review, and handoff.",
+      "scope": "universal",
+      "runtime_target": "portable",
+      "allow_deprecated": false,
+      "skills": [
+        "common/foundation/repository-onboarding",
+        "common/foundation/requirements-analysis",
+        "common/foundation/task-planning",
+        "common/engineering/git-workflow",
+        "common/engineering/debugging",
+        "common/engineering/testing",
+        "common/engineering/refactoring",
+        "common/engineering/code-review",
+        "common/engineering/dependency-management",
+        "common/engineering/documentation",
+        "common/delivery/change-review",
+        "common/agent/failure-recovery"
+      ]
     }
   ]
 }
