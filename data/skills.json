@@ -651,28 +651,6 @@
       "path": "personal/product/project-scoping/SKILL.md"
     },
     {
-      "id": "personal/quant/trading/execution",
-      "name": "execution",
-      "description": "Review quantitative execution and risk controls without independently placing, modifying, or cancelling orders.",
-      "category": "personal",
-      "subject": "quant",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/quant/trading/execution/SKILL.md"
-    },
-    {
-      "id": "personal/quant/trading/mt5",
-      "name": "mt5",
-      "description": "Analyze MT5 account, market, and integration workflows without placing or modifying trades automatically.",
-      "category": "personal",
-      "subject": "quant",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/quant/trading/mt5/SKILL.md"
-    },
-    {
       "id": "personal/quant/production-workflow",
       "name": "production-workflow",
       "description": "Turn a validated quantitative research artifact into a reproducible, observable, recoverable production engineering workflow without authorizing trade execution.",
@@ -704,17 +682,6 @@
       "status": "experimental",
       "version": "1.0.0",
       "path": "personal/quant/research/SKILL.md"
-    },
-    {
-      "id": "personal/quant/trading",
-      "name": "trading",
-      "description": "Route personal trading-related analysis to MT5 integration or execution-risk workflows without placing trades.",
-      "category": "personal",
-      "subject": "quant",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/quant/trading/SKILL.md"
     },
     {
       "id": "personal/statistics",
