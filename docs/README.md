@@ -15,6 +15,8 @@ This directory contains the human-facing guides for using and extending the
 - [Versioning](versioning.md) — skill SemVer and repository release tags.
 - [Distribution](distribution.md) — Git subtree updates and consumer boundaries.
 - [Bundles](bundles.md) — bundle schema, scope, and selected distribution.
+- [Promotion](promotion.md) — promoted, experimental, stable, and deprecated lifecycle policy.
+- [Consumer smoke test](consumer-smoke-test.md) — verify a Codex-compatible project integration.
 - [Workflow skills](workflows.md) — workflow contract, context, and artifacts.
 - [CI and release](ci-release.md) — automated checks and explicit release steps.
 - [Metadata](metadata.md) — define frontmatter fields and generated registry data.
