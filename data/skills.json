@@ -278,6 +278,18 @@
       "path": "common/security/security-review/SKILL.md"
     },
     {
+      "id": "common/workflow/bug-fixing",
+      "name": "bug-fixing",
+      "description": "Diagnose and fix a software defect through reproduction, isolation, evidence, regression testing, review, and handoff.",
+      "category": "common",
+      "subject": "workflow",
+      "scope": "universal",
+      "status": "experimental",
+      "version": "1.0.0",
+      "invocation": "user",
+      "path": "common/workflow/bug-fixing/SKILL.md"
+    },
+    {
       "id": "common/workflow/feature-delivery",
       "name": "feature-delivery",
       "description": "Lead a feature from clarified outcome through planning, vertical implementation, testing, review, and handoff.",
