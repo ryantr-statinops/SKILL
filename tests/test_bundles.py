@@ -1,0 +1,84 @@
+"""Regression tests for the bundle registry contract."""
+
+import json
+from pathlib import Path
+import sys
+import unittest
+
+ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS = ROOT / "scripts"
+sys.path.insert(0, str(SCRIPTS))
+
+from bundles import validate_bundle_registry  # noqa: E402
+
+
+def record(identifier: str, scope: str = "universal", status: str = "experimental") -> dict[str, str]:
+    return {"id": identifier, "scope": scope, "status": status}
+
+
+class BundleRegistryTests(unittest.TestCase):
+    def test_empty_registry_is_valid(self) -> None:
+        self.assertEqual(
+            validate_bundle_registry({"schema_version": 1, "bundles": []}, []), []
+        )
+
+    def test_valid_bundle_is_returned(self) -> None:
+        bundle = {
+            "id": "engineering-core",
+            "description": "Reusable engineering skills.",
+            "scope": "universal",
+            "runtime_target": "portable",
+            "allow_deprecated": False,
+            "skills": ["common/engineering/testing"],
+        }
+        result = validate_bundle_registry(
+            {"schema_version": 1, "bundles": [bundle]},
+            [record("common/engineering/testing")],
+        )
+        self.assertEqual(result, [bundle])
+
+    def test_missing_skill_is_rejected(self) -> None:
+        bundle = {
+            "id": "broken",
+            "description": "Broken bundle.",
+            "scope": "universal",
+            "runtime_target": "portable",
+            "allow_deprecated": False,
+            "skills": ["common/missing"],
+        }
+        with self.assertRaisesRegex(ValueError, "missing skill"):
+            validate_bundle_registry({"schema_version": 1, "bundles": [bundle]}, [])
+
+    def test_universal_bundle_cannot_contain_personal_skill(self) -> None:
+        bundle = {
+            "id": "broken",
+            "description": "Broken bundle.",
+            "scope": "universal",
+            "runtime_target": "portable",
+            "allow_deprecated": False,
+            "skills": ["personal/example"],
+        }
+        with self.assertRaisesRegex(ValueError, "personal skill"):
+            validate_bundle_registry(
+                {"schema_version": 1, "bundles": [bundle]},
+                [record("personal/example", scope="personal")],
+            )
+
+    def test_deprecated_skill_requires_explicit_opt_in(self) -> None:
+        bundle = {
+            "id": "broken",
+            "description": "Broken bundle.",
+            "scope": "universal",
+            "runtime_target": "portable",
+            "allow_deprecated": False,
+            "skills": ["common/old"],
+        }
+        with self.assertRaisesRegex(ValueError, "deprecated skill"):
+            validate_bundle_registry(
+                {"schema_version": 1, "bundles": [bundle]},
+                [record("common/old", status="deprecated")],
+            )
+
+
+if __name__ == "__main__":
+    unittest.main()

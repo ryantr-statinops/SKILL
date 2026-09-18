@@ -15,6 +15,7 @@ from generate_skill_index import (
     render_json,
     render_markdown,
 )
+from bundles import load_and_validate_bundles
 
 ROOT = Path(__file__).resolve().parents[1]
 CATEGORIES = {"common", "personal", "meta"}
@@ -135,6 +136,7 @@ def main() -> int:
             failures += validate_skill(skill_file.parent)
     try:
         records = collect()
+        load_and_validate_bundles(records)
         generated = {
             ROOT / "docs/skill-index.md": render_markdown(records),
             ROOT / "data/skills.json": render_json(records),
