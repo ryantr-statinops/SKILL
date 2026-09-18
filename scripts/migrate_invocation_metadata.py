@@ -9,7 +9,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 CATEGORIES = ("common", "personal", "meta")
-EXPECTED_SKILL_COUNT = 67
+EXPECTED_SKILL_COUNT = 68
 VALID_INVOCATIONS = {"user", "model", "both"}
 
 # These are the only existing skills that are explicit user workflows or
@@ -17,6 +17,7 @@ VALID_INVOCATIONS = {"user", "model", "both"}
 USER_INVOCATION_IDS = {
     "common/delivery/release",
     "common/foundation/task-planning",
+    "common/workflow/feature-delivery",
     "meta/skill-authoring",
     "meta/skill-intake",
     "meta/skill-maintenance",

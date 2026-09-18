@@ -278,6 +278,18 @@
       "path": "common/security/security-review/SKILL.md"
     },
     {
+      "id": "common/workflow/feature-delivery",
+      "name": "feature-delivery",
+      "description": "Lead a feature from clarified outcome through planning, vertical implementation, testing, review, and handoff.",
+      "category": "common",
+      "subject": "workflow",
+      "scope": "universal",
+      "status": "experimental",
+      "version": "1.0.0",
+      "invocation": "user",
+      "path": "common/workflow/feature-delivery/SKILL.md"
+    },
+    {
       "id": "meta/skill-authoring",
       "name": "skill-authoring",
       "description": "Design or revise a narrowly scoped Agent Skill with explicit routing, progressive disclosure, and validation.",
