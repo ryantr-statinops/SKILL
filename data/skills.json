@@ -497,6 +497,17 @@
       "path": "personal/engineering/backend/SKILL.md"
     },
     {
+      "id": "personal/engineering/core",
+      "name": "core",
+      "description": "Analyze and improve software systems using computational thinking, complexity, measurement, and explicit engineering trade-offs before choosing an implementation.",
+      "category": "personal",
+      "subject": "engineering",
+      "scope": "personal",
+      "status": "experimental",
+      "version": "1.0.0",
+      "path": "personal/engineering/core/SKILL.md"
+    },
+    {
       "id": "personal/engineering/data-engineering",
       "name": "data-engineering",
       "description": "Route personal data engineering work to pipeline, database, or orchestration workflows.",
@@ -532,7 +543,7 @@
     {
       "id": "personal/engineering",
       "name": "engineering",
-      "description": "Route personal engineering work to backend, data engineering, infrastructure, or lightweight frontend workflows.",
+      "description": "Route personal engineering work through shared foundations to data, AI, backend, infrastructure, or lightweight frontend workflows.",
       "category": "personal",
       "subject": "engineering",
       "scope": "personal",
