@@ -4,7 +4,7 @@ description: Understand an unfamiliar repository before making changes by inspec
 category: common
 subject: foundation
 scope: universal
-status: experimental
+status: stable
 version: 1.0.0
 invocation: both
 ---

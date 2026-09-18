@@ -4,7 +4,7 @@ description: Structure a data analysis from inspection and data contracts throug
 category: common
 subject: workflow
 scope: universal
-status: experimental
+status: stable
 version: 1.0.0
 invocation: user
 ---

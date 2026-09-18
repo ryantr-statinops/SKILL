@@ -4,7 +4,7 @@ description: Select and load only the context needed for an agent task while pre
 category: common
 subject: agent
 scope: universal
-status: experimental
+status: stable
 version: 1.0.0
 invocation: both
 ---

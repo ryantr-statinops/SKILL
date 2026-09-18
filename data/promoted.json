@@ -1,4 +1,14 @@
 {
   "schema_version": 1,
-  "skills": []
+  "skills": [
+    "common/workflow/feature-delivery",
+    "common/workflow/bug-fixing",
+    "common/workflow/research-decision",
+    "common/workflow/data-analysis",
+    "common/agent/context-loading",
+    "common/agent/failure-recovery",
+    "common/foundation/repository-onboarding",
+    "common/foundation/requirements-analysis",
+    "meta/skill-discovery"
+  ]
 }

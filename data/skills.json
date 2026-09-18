@@ -8,7 +8,7 @@
       "category": "common",
       "subject": "agent",
       "scope": "universal",
-      "status": "experimental",
+      "status": "stable",
       "version": "1.0.0",
       "invocation": "both",
       "path": "common/agent/context-loading/SKILL.md"
@@ -20,7 +20,7 @@
       "category": "common",
       "subject": "agent",
       "scope": "universal",
-      "status": "experimental",
+      "status": "stable",
       "version": "1.0.0",
       "invocation": "both",
       "path": "common/agent/failure-recovery/SKILL.md"
@@ -200,7 +200,7 @@
       "category": "common",
       "subject": "foundation",
       "scope": "universal",
-      "status": "experimental",
+      "status": "stable",
       "version": "1.0.0",
       "invocation": "both",
       "path": "common/foundation/repository-onboarding/SKILL.md"
@@ -212,7 +212,7 @@
       "category": "common",
       "subject": "foundation",
       "scope": "universal",
-      "status": "experimental",
+      "status": "stable",
       "version": "1.0.0",
       "invocation": "both",
       "path": "common/foundation/requirements-analysis/SKILL.md"
@@ -284,7 +284,7 @@
       "category": "common",
       "subject": "workflow",
       "scope": "universal",
-      "status": "experimental",
+      "status": "stable",
       "version": "1.0.0",
       "invocation": "user",
       "path": "common/workflow/bug-fixing/SKILL.md"
@@ -296,7 +296,7 @@
       "category": "common",
       "subject": "workflow",
       "scope": "universal",
-      "status": "experimental",
+      "status": "stable",
       "version": "1.0.0",
       "invocation": "user",
       "path": "common/workflow/data-analysis/SKILL.md"
@@ -308,7 +308,7 @@
       "category": "common",
       "subject": "workflow",
       "scope": "universal",
-      "status": "experimental",
+      "status": "stable",
       "version": "1.0.0",
       "invocation": "user",
       "path": "common/workflow/feature-delivery/SKILL.md"
@@ -320,7 +320,7 @@
       "category": "common",
       "subject": "workflow",
       "scope": "universal",
-      "status": "experimental",
+      "status": "stable",
       "version": "1.0.0",
       "invocation": "user",
       "path": "common/workflow/research-decision/SKILL.md"

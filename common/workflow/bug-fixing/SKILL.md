@@ -4,7 +4,7 @@ description: Diagnose and fix a software defect through reproduction, isolation,
 category: common
 subject: workflow
 scope: universal
-status: experimental
+status: stable
 version: 1.0.0
 invocation: user
 ---

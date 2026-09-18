@@ -4,7 +4,7 @@ description: Turn a research question into an evidence-backed decision by defini
 category: common
 subject: workflow
 scope: universal
-status: experimental
+status: stable
 version: 1.0.0
 invocation: user
 ---

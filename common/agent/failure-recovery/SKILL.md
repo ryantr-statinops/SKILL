@@ -4,7 +4,7 @@ description: Recover safely from failed commands, tools, scripts, partial change
 category: common
 subject: agent
 scope: universal
-status: experimental
+status: stable
 version: 1.0.0
 invocation: both
 ---
