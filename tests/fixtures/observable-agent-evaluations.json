@@ -1,0 +1,50 @@
+[
+  {
+    "name": "feature representative",
+    "workflow": "common/workflow/feature-delivery",
+    "case": "representative",
+    "required_terms": ["feature artifact", "test evidence", "review result"]
+  },
+  {
+    "name": "feature boundary",
+    "workflow": "common/workflow/feature-delivery",
+    "case": "boundary",
+    "required_terms": ["bug-fixing", "isolated defect"]
+  },
+  {
+    "name": "bug representative",
+    "workflow": "common/workflow/bug-fixing",
+    "case": "representative",
+    "required_terms": ["root cause", "regression test", "verification"]
+  },
+  {
+    "name": "bug boundary",
+    "workflow": "common/workflow/bug-fixing",
+    "case": "boundary",
+    "required_terms": ["feature-delivery", "planned feature"]
+  },
+  {
+    "name": "research representative",
+    "workflow": "common/workflow/research-decision",
+    "case": "representative",
+    "required_terms": ["high-trust evidence", "cited artifact", "uncertainty"]
+  },
+  {
+    "name": "research boundary",
+    "workflow": "common/workflow/research-decision",
+    "case": "boundary",
+    "required_terms": ["implementation", "settled decision"]
+  },
+  {
+    "name": "data representative",
+    "workflow": "common/workflow/data-analysis",
+    "case": "representative",
+    "required_terms": ["schema", "reproducible", "limitations"]
+  },
+  {
+    "name": "data boundary",
+    "workflow": "common/workflow/data-analysis",
+    "case": "boundary",
+    "required_terms": ["bug-fixing", "application defect"]
+  }
+]
