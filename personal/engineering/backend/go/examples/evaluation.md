@@ -14,7 +14,7 @@ Validation: Run Go tests and verify startup, shutdown, and error behavior.
 
 Task: Build a scheduled SQL transformation with no Go service.
 
-Expected: Route to data-engineering pipelines or orchestration.
+Expected: Route to data pipelines or orchestration.
 
 Failure condition: Choose Go backend guidance only because the pipeline could be implemented in Go.
 

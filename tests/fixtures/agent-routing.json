@@ -17,16 +17,56 @@
   },
   {
     "task": "Ingest source files, validate records, and schedule a data workflow.",
-    "expected_skill": "personal/engineering/data-engineering/pipelines",
+    "expected_skill": "personal/engineering/data/pipelines",
     "boundary_skill": "personal/engineering/backend/nodejs",
     "expected_explanation": true,
     "confirmation": "before_mutation",
     "expected_validation": true
   },
   {
-    "task": "Inspect MT5 connectivity without placing or modifying trades.",
-    "expected_skill": "personal/quant/trading/mt5",
-    "boundary_skill": "personal/quant/quant-research/backtesting",
+    "task": "Compare two algorithms for a hot computation path, benchmark the baseline, and choose the implementation with explicit complexity and memory trade-offs.",
+    "expected_skill": "personal/engineering/core",
+    "boundary_skill": "personal/engineering/backend/nodejs",
+    "expected_explanation": true,
+    "confirmation": "before_mutation",
+    "expected_validation": true
+  },
+  {
+    "task": "Design an LLM application with retrieval, structured output, tool permissions, evaluation, monitoring, and fallback behavior.",
+    "expected_skill": "personal/engineering/ai/core",
+    "boundary_skill": "personal/engineering/backend/core",
+    "expected_explanation": true,
+    "confirmation": "before_external",
+    "expected_validation": true
+  },
+  {
+    "task": "Design a backend service boundary with API contracts, persistence, authorization, async retries, health checks, and observability before choosing a framework.",
+    "expected_skill": "personal/engineering/backend/core",
+    "boundary_skill": "personal/engineering/ai/core",
+    "expected_explanation": true,
+    "confirmation": "before_mutation",
+    "expected_validation": true
+  },
+  {
+    "task": "Explain a regression result with descriptive summaries, assumptions, uncertainty, residual diagnostics, and a time-aware validation split.",
+    "expected_skill": "personal/statistics",
+    "boundary_skill": "personal/engineering/data/pipelines",
+    "expected_explanation": true,
+    "confirmation": "never",
+    "expected_validation": true
+  },
+  {
+    "task": "Evaluate a quantitative signal hypothesis with temporal splits, baseline comparisons, leakage controls, and transaction costs.",
+    "expected_skill": "personal/quant/research",
+    "boundary_skill": "personal/statistics",
+    "expected_explanation": true,
+    "confirmation": "before_external",
+    "expected_validation": true
+  },
+  {
+    "task": "Turn a validated quantitative research artifact into a versioned, monitored, reproducible production workflow with freshness checks, recovery, rollback, and human approval.",
+    "expected_skill": "personal/quant/production-workflow",
+    "boundary_skill": "personal/quant/research",
     "expected_explanation": true,
     "confirmation": "before_external",
     "expected_validation": true

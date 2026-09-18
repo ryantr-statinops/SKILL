@@ -14,7 +14,7 @@ Validation: Confirm the route names the minimal UI workflow.
 
 Task: Implement a database migration for the API backend.
 
-Expected: Route to backend/data-engineering guidance, not frontend.
+Expected: Route to backend/data guidance, not frontend.
 
 Failure condition: Treat a UI consumer as the owner of persistence changes.
 

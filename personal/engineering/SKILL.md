@@ -1,6 +1,6 @@
 ---
 name: engineering
-description: Route personal engineering work to backend, data engineering, infrastructure, or lightweight frontend workflows.
+description: Route personal engineering work through shared foundations to data, AI, backend, infrastructure, or lightweight frontend workflows.
 category: personal
 subject: engineering
 scope: personal
@@ -10,12 +10,13 @@ version: 1.0.0
 
 # Engineering router
 
-Use for engineering decisions that should reflect Ryan's preferences. Route to the narrowest child skill.
+Use for engineering decisions that should reflect Ryan's preferences. Start with `core` when the task involves shared computational or systems reasoning, then route to the narrowest domain or implementation skill.
 
 | Need | Skill |
 | --- | --- |
+| Algorithms, optimization, or systems foundations | [core](core/SKILL.md) |
 | Go, Python, or Node.js backend | [backend](backend/SKILL.md) |
-| Data pipelines or storage | [data-engineering](data-engineering/SKILL.md) |
+| Data pipelines or storage | [data](data/SKILL.md) |
 | AI and agent engineering | [ai](ai/SKILL.md) |
 | Linux, Docker, or networking | [infrastructure](infrastructure/SKILL.md) |
 | Lightweight web UI | [frontend](frontend/SKILL.md) |

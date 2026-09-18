@@ -1,6 +1,6 @@
 ---
 name: backend
-description: Route personal backend work to Go or Python service engineering workflows.
+description: Route personal backend work through service foundations to API, architecture, runtime, and operations workflows.
 category: personal
 subject: engineering
 scope: personal
@@ -10,14 +10,14 @@ version: 1.0.0
 
 # Backend router
 
-Choose the implementation language only after clarifying service boundaries, interfaces, persistence, and operational needs.
+Choose the implementation language only after clarifying service boundaries, interfaces, persistence, and operational needs. Use `core` first when those foundations are not yet explicit, then load API, architecture, and runtime-specific guidance as needed.
 
 | Need | Skill |
 | --- | --- |
+| Backend foundations | [core](core/SKILL.md) |
 | Go backend | [go](go/SKILL.md) |
 | Python backend | [python](python/SKILL.md) |
 | Node.js backend | [nodejs](nodejs/SKILL.md) |
-| Backend foundations | [core](core/SKILL.md) |
 | API design | [api-design](api-design/SKILL.md) |
 | Service architecture | [service-architecture](service-architecture/SKILL.md) |
 

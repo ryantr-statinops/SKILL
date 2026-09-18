@@ -14,7 +14,7 @@ Validation: Run the analysis from a clean session and compare expected artifacts
 
 Task: Decide whether a database schema supports an ingestion workload.
 
-Expected: Route to data-engineering database guidance, not R foundations.
+Expected: Route to data engineering database guidance, not R foundations.
 
 Failure condition: Use a plotting workflow as a substitute for system design.
 

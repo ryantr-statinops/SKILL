@@ -4,7 +4,7 @@
 
 Task: Route a request to build a Node.js API backed by a scheduled data pipeline.
 
-Expected: Select backend/nodejs and data-engineering/pipelines, loading only the relevant foundation guidance.
+Expected: Select backend/nodejs and data/pipelines, loading only the relevant foundation guidance.
 
 Failure condition: Load all engineering domains or select an unrelated frontend workflow.
 

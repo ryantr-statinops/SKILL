@@ -1,30 +1,27 @@
 ---
 name: ai
-description: Reserved router for personal AI and agent engineering workflows; detailed AI skills are not built yet.
+description: Route personal AI engineering work through a shared foundation for ML, LLM, agent, evaluation, and production system decisions.
 category: personal
 subject: ai-engineering
 scope: personal
-status: draft
-version: 0.1.0
+status: experimental
+version: 1.0.0
 ---
 
 # AI engineering router
 
-This category is intentionally a scaffold. Do not route production work here
-until the relevant leaf skill has been designed and evaluated.
+Use this router for systems where a model, retrieval component, tool, or agent is part of the user-facing outcome. Load `core` first for problem framing, model/system boundaries, evaluation, and production constraints.
 
-Planned scopes include agent engineering, MCP integration, prompt/context
-design, and agent evaluation.
+| Need | Skill |
+| --- | --- |
+| AI/ML/LLM/agent foundations and system design | [core](core/SKILL.md) |
 
-## Current status
-
-No AI leaf skill is active yet. Use the common agent skills for portable
-context loading and failure recovery until this category is built.
+Detailed RAG, agent, MCP, MLOps, and model-specific skills may be added later. Until then, keep their shared decision rules in `core` and do not invent a narrower route.
 
 ## Agent handoff
 
-- Selected when: Use only for initial AI/agent engineering framing described by this draft scaffold.
-- Do not activate when: Do not activate for production AI implementation until a reviewed leaf skill exists.
-- Expected output: State the foundation scope, missing capability, and safe next step.
-- User-facing report: Explain the scaffold limitation, assumptions, and any common skill used instead.
+- Selected when: Route a personal AI engineering task to `core` when it involves model, data, LLM, agent, tool, evaluation, or production decisions.
+- Do not activate when: Do not use for ordinary software work with no AI system boundary.
+- Expected output: Name the relevant AI system boundary, route to `core`, and identify any future specialized skill that is not yet available.
+- User-facing report: Summarize the selected foundation, assumptions, evaluation plan, and unresolved production risks.
 - Confirmation boundary: Ask before destructive, external, or irreversible actions.

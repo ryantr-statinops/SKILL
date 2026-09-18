@@ -41,6 +41,13 @@ python3 scripts/discover_skills.py --category personal "data pipeline"
 python3 scripts/discover_skills.py --format json "debug failing test"
 ```
 
+For personal engineering work, route through `personal/engineering/SKILL.md`
+and load `engineering/core` when computational or systems reasoning is shared
+across domains. Use `engineering/data`, `engineering/ai`, or
+`engineering/backend` for the relevant domain. Use `personal/statistics` for
+statistical reasoning and `personal/quant/research` or
+`personal/quant/production-workflow` for quantitative engineering work.
+
 The command returns deterministic candidates only. The agent must read the
 selected `SKILL.md` before activating any procedure.
 

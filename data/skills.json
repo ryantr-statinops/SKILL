@@ -312,23 +312,23 @@
     {
       "id": "personal/engineering/ai",
       "name": "ai",
-      "description": "Reserved router for personal AI and agent engineering workflows; detailed AI skills are not built yet.",
+      "description": "Route personal AI engineering work through a shared foundation for ML, LLM, agent, evaluation, and production system decisions.",
       "category": "personal",
       "subject": "ai-engineering",
       "scope": "personal",
-      "status": "draft",
-      "version": "0.1.0",
+      "status": "experimental",
+      "version": "1.0.0",
       "path": "personal/engineering/ai/SKILL.md"
     },
     {
       "id": "personal/engineering/ai/core",
       "name": "core",
-      "description": "Reserved foundation for personal AI and agent engineering; use only for initial framing until dedicated AI skills are built.",
+      "description": "Design personal AI systems across problem framing, ML/LLM foundations, agents, tools, evaluation, and production constraints.",
       "category": "personal",
       "subject": "ai-engineering",
       "scope": "personal",
-      "status": "draft",
-      "version": "0.1.0",
+      "status": "experimental",
+      "version": "1.0.0",
       "path": "personal/engineering/ai/core/SKILL.md"
     },
     {
@@ -345,7 +345,7 @@
     {
       "id": "personal/engineering/backend/core",
       "name": "core",
-      "description": "Apply personal backend foundations for service boundaries, contracts, persistence, errors, tests, and operations.",
+      "description": "Design personal backend services around boundaries, contracts, persistence, security, failure behavior, testing, and operations.",
       "category": "personal",
       "subject": "backend",
       "scope": "personal",
@@ -376,15 +376,15 @@
       "path": "personal/engineering/backend/service-architecture/SKILL.md"
     },
     {
-      "id": "personal/engineering/data-engineering/core",
+      "id": "personal/engineering/data/core",
       "name": "core",
-      "description": "Apply personal data-engineering foundations for data contracts, lineage, quality, storage, and reproducible workflows.",
+      "description": "Apply personal data engineering foundations for contracts, lineage, quality, storage, reproducibility, and recoverable workflows.",
       "category": "personal",
-      "subject": "data-engineering",
+      "subject": "data",
       "scope": "personal",
       "status": "experimental",
       "version": "1.0.0",
-      "path": "personal/engineering/data-engineering/core/SKILL.md"
+      "path": "personal/engineering/data/core/SKILL.md"
     },
     {
       "id": "personal/decision/architecture-tradeoff",
@@ -422,12 +422,12 @@
     {
       "id": "personal/education",
       "name": "education",
-      "description": "Route personal learning and teaching tasks to foundational R, LaTeX, statistics, probability, or stochastic-process workflows.",
+      "description": "Route personal learning and teaching tasks to statistics, R, or LaTeX workflows.",
       "category": "personal",
       "subject": "education",
       "scope": "personal",
       "status": "experimental",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "path": "personal/education/SKILL.md"
     },
     {
@@ -442,17 +442,6 @@
       "path": "personal/education/latex/SKILL.md"
     },
     {
-      "id": "personal/education/probability",
-      "name": "probability",
-      "description": "Teach and apply probability foundations through explicit events, variables, assumptions, and derivations.",
-      "category": "personal",
-      "subject": "education",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/education/probability/SKILL.md"
-    },
-    {
       "id": "personal/education/r",
       "name": "r",
       "description": "Support foundational R learning and analysis through reproducible, inspectable statistical workflows.",
@@ -464,31 +453,9 @@
       "path": "personal/education/r/SKILL.md"
     },
     {
-      "id": "personal/education/statistics",
-      "name": "statistics",
-      "description": "Explain and apply foundational statistical reasoning with explicit assumptions, uncertainty, and interpretation.",
-      "category": "personal",
-      "subject": "education",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/education/statistics/SKILL.md"
-    },
-    {
-      "id": "personal/education/stochastic-processes",
-      "name": "stochastic-processes",
-      "description": "Study foundational stochastic processes by connecting definitions, dynamics, distributions, and simulation.",
-      "category": "personal",
-      "subject": "education",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/education/stochastic-processes/SKILL.md"
-    },
-    {
       "id": "personal/engineering/backend",
       "name": "backend",
-      "description": "Route personal backend work to Go or Python service engineering workflows.",
+      "description": "Route personal backend work through service foundations to API, architecture, runtime, and operations workflows.",
       "category": "personal",
       "subject": "engineering",
       "scope": "personal",
@@ -497,18 +464,29 @@
       "path": "personal/engineering/backend/SKILL.md"
     },
     {
-      "id": "personal/engineering/data-engineering",
-      "name": "data-engineering",
-      "description": "Route personal data engineering work to pipeline, database, or orchestration workflows.",
+      "id": "personal/engineering/core",
+      "name": "core",
+      "description": "Analyze and improve software systems using computational thinking, complexity, measurement, and explicit engineering trade-offs before choosing an implementation.",
       "category": "personal",
       "subject": "engineering",
       "scope": "personal",
       "status": "experimental",
       "version": "1.0.0",
-      "path": "personal/engineering/data-engineering/SKILL.md"
+      "path": "personal/engineering/core/SKILL.md"
     },
     {
-      "id": "personal/engineering/data-engineering/databases",
+      "id": "personal/engineering/data",
+      "name": "data",
+      "description": "Route personal data engineering work to core, pipeline, database, or orchestration workflows.",
+      "category": "personal",
+      "subject": "engineering",
+      "scope": "personal",
+      "status": "experimental",
+      "version": "1.0.0",
+      "path": "personal/engineering/data/SKILL.md"
+    },
+    {
+      "id": "personal/engineering/data/databases",
       "name": "databases",
       "description": "Choose and design personal data storage and query patterns based on workload, consistency, scale, and operational simplicity.",
       "category": "personal",
@@ -516,7 +494,7 @@
       "scope": "personal",
       "status": "experimental",
       "version": "1.0.0",
-      "path": "personal/engineering/data-engineering/databases/SKILL.md"
+      "path": "personal/engineering/data/databases/SKILL.md"
     },
     {
       "id": "personal/engineering/infrastructure/docker",
@@ -532,7 +510,7 @@
     {
       "id": "personal/engineering",
       "name": "engineering",
-      "description": "Route personal engineering work to backend, data engineering, infrastructure, or lightweight frontend workflows.",
+      "description": "Route personal engineering work through shared foundations to data, AI, backend, infrastructure, or lightweight frontend workflows.",
       "category": "personal",
       "subject": "engineering",
       "scope": "personal",
@@ -607,7 +585,7 @@
       "path": "personal/engineering/infrastructure/networking/SKILL.md"
     },
     {
-      "id": "personal/engineering/data-engineering/orchestration",
+      "id": "personal/engineering/data/orchestration",
       "name": "orchestration",
       "description": "Plan and operate personal data workflow scheduling with dependencies, retries, observability, and ownership.",
       "category": "personal",
@@ -615,10 +593,10 @@
       "scope": "personal",
       "status": "experimental",
       "version": "1.0.0",
-      "path": "personal/engineering/data-engineering/orchestration/SKILL.md"
+      "path": "personal/engineering/data/orchestration/SKILL.md"
     },
     {
-      "id": "personal/engineering/data-engineering/pipelines",
+      "id": "personal/engineering/data/pipelines",
       "name": "pipelines",
       "description": "Design personal data pipelines with explicit inputs, transformations, outputs, quality checks, and reproducible execution.",
       "category": "personal",
@@ -626,7 +604,7 @@
       "scope": "personal",
       "status": "experimental",
       "version": "1.0.0",
-      "path": "personal/engineering/data-engineering/pipelines/SKILL.md"
+      "path": "personal/engineering/data/pipelines/SKILL.md"
     },
     {
       "id": "personal/engineering/backend/python",
@@ -673,53 +651,20 @@
       "path": "personal/product/project-scoping/SKILL.md"
     },
     {
-      "id": "personal/quant/quant-research/alpha",
-      "name": "alpha",
-      "description": "Formulate and investigate quantitative signal hypotheses with disciplined features, leakage controls, and falsifiable evaluation.",
+      "id": "personal/quant/production-workflow",
+      "name": "production-workflow",
+      "description": "Turn a validated quantitative research artifact into a reproducible, observable, recoverable production engineering workflow without authorizing trade execution.",
       "category": "personal",
       "subject": "quant",
       "scope": "personal",
       "status": "experimental",
       "version": "1.0.0",
-      "path": "personal/quant/quant-research/alpha/SKILL.md"
-    },
-    {
-      "id": "personal/quant/quant-research/backtesting",
-      "name": "backtesting",
-      "description": "Design and review quantitative backtests with time ordering, costs, leakage controls, and reproducible results.",
-      "category": "personal",
-      "subject": "quant",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/quant/quant-research/backtesting/SKILL.md"
-    },
-    {
-      "id": "personal/quant/trading/execution",
-      "name": "execution",
-      "description": "Review quantitative execution and risk controls without independently placing, modifying, or cancelling orders.",
-      "category": "personal",
-      "subject": "quant",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/quant/trading/execution/SKILL.md"
-    },
-    {
-      "id": "personal/quant/trading/mt5",
-      "name": "mt5",
-      "description": "Analyze MT5 account, market, and integration workflows without placing or modifying trades automatically.",
-      "category": "personal",
-      "subject": "quant",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/quant/trading/mt5/SKILL.md"
+      "path": "personal/quant/production-workflow/SKILL.md"
     },
     {
       "id": "personal/quant",
       "name": "quant",
-      "description": "Route foundational quantitative work to research, trading, or time-series workflows without authorizing financial execution.",
+      "description": "Route personal quantitative work to research or production-engineering workflows without authorizing financial execution.",
       "category": "personal",
       "subject": "quant",
       "scope": "personal",
@@ -728,37 +673,26 @@
       "path": "personal/quant/SKILL.md"
     },
     {
-      "id": "personal/quant/quant-research",
-      "name": "quant-research",
-      "description": "Route quantitative research to alpha investigation or backtesting workflows with explicit bias and cost controls.",
+      "id": "personal/quant/research",
+      "name": "research",
+      "description": "Investigate quantitative hypotheses and historical strategies with explicit data, leakage, cost, robustness, and reproducibility controls.",
       "category": "personal",
       "subject": "quant",
       "scope": "personal",
       "status": "experimental",
       "version": "1.0.0",
-      "path": "personal/quant/quant-research/SKILL.md"
+      "path": "personal/quant/research/SKILL.md"
     },
     {
-      "id": "personal/quant/time-series",
-      "name": "time-series",
-      "description": "Analyze personal time-series problems with explicit temporal structure, stationarity assumptions, leakage controls, and uncertainty.",
+      "id": "personal/statistics",
+      "name": "statistics",
+      "description": "Apply foundational statistical reasoning across descriptive analysis, probability, inference, regression, time-series, and stochastic processes with explicit assumptions and uncertainty.",
       "category": "personal",
-      "subject": "quant",
+      "subject": "statistics",
       "scope": "personal",
       "status": "experimental",
       "version": "1.0.0",
-      "path": "personal/quant/time-series/SKILL.md"
-    },
-    {
-      "id": "personal/quant/trading",
-      "name": "trading",
-      "description": "Route personal trading-related analysis to MT5 integration or execution-risk workflows without placing trades.",
-      "category": "personal",
-      "subject": "quant",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/quant/trading/SKILL.md"
+      "path": "personal/statistics/SKILL.md"
     },
     {
       "id": "personal/workflow/brainstorming",
