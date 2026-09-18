@@ -23,6 +23,10 @@ When integrating into another runtime, verify:
 4. Whether scripts need a particular interpreter or dependency.
 5. How project instructions and skill instructions are prioritized.
 
+Use `python3 scripts/inspect_integration.py /path/to/project` to produce a
+read-only report of detected runtime directories, instruction files, skill
+roots, conflicts, and recommended integration methods.
+
 ## Directory adapters
 
 Use `.agent/` as the portable baseline. A runtime-specific project may map the

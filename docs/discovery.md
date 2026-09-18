@@ -33,6 +33,17 @@ python3 scripts/generate_skill_index.py
 python3 scripts/generate_skill_index.py --check
 ```
 
+Agents can search the generated registry without loading skill bodies:
+
+```bash
+python3 scripts/discover_skills.py "build a Node.js API"
+python3 scripts/discover_skills.py --category personal "data pipeline"
+python3 scripts/discover_skills.py --format json "debug failing test"
+```
+
+The command returns deterministic candidates only. The agent must read the
+selected `SKILL.md` before activating any procedure.
+
 ## Selection rules
 
 1. Match the desired outcome, not only a technology keyword.
