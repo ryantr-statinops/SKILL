@@ -651,28 +651,6 @@
       "path": "personal/product/project-scoping/SKILL.md"
     },
     {
-      "id": "personal/quant/quant-research/alpha",
-      "name": "alpha",
-      "description": "Formulate and investigate quantitative signal hypotheses with disciplined features, leakage controls, and falsifiable evaluation.",
-      "category": "personal",
-      "subject": "quant",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/quant/quant-research/alpha/SKILL.md"
-    },
-    {
-      "id": "personal/quant/quant-research/backtesting",
-      "name": "backtesting",
-      "description": "Design and review quantitative backtests with time ordering, costs, leakage controls, and reproducible results.",
-      "category": "personal",
-      "subject": "quant",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/quant/quant-research/backtesting/SKILL.md"
-    },
-    {
       "id": "personal/quant/trading/execution",
       "name": "execution",
       "description": "Review quantitative execution and risk controls without independently placing, modifying, or cancelling orders.",
@@ -706,15 +684,15 @@
       "path": "personal/quant/SKILL.md"
     },
     {
-      "id": "personal/quant/quant-research",
-      "name": "quant-research",
-      "description": "Route quantitative research to alpha investigation or backtesting workflows with explicit bias and cost controls.",
+      "id": "personal/quant/research",
+      "name": "research",
+      "description": "Investigate quantitative hypotheses and historical strategies with explicit data, leakage, cost, robustness, and reproducibility controls.",
       "category": "personal",
       "subject": "quant",
       "scope": "personal",
       "status": "experimental",
       "version": "1.0.0",
-      "path": "personal/quant/quant-research/SKILL.md"
+      "path": "personal/quant/research/SKILL.md"
     },
     {
       "id": "personal/quant/trading",

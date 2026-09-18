@@ -24,9 +24,9 @@
     "expected_validation": true
   },
   {
-    "task": "Inspect MT5 connectivity without placing or modifying trades.",
-    "expected_skill": "personal/quant/trading/mt5",
-    "boundary_skill": "personal/quant/quant-research/backtesting",
+    "task": "Evaluate a quantitative signal hypothesis with temporal splits, baseline comparisons, leakage controls, and transaction costs.",
+    "expected_skill": "personal/quant/research",
+    "boundary_skill": "personal/statistics",
     "expected_explanation": true,
     "confirmation": "before_external",
     "expected_validation": true

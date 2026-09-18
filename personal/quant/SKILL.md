@@ -12,7 +12,7 @@ version: 1.0.0
 
 | Need | Skill |
 | --- | --- |
-| Alpha, backtesting, or model evaluation research | [quant-research](quant-research/SKILL.md) |
+| Alpha, backtesting, or model evaluation research | [research](research/SKILL.md) |
 | Time-series foundations | [statistics](../statistics/SKILL.md) |
 
 This category is engineering and research guidance, not financial advice or trade authorization. Production workflow guidance must stop at system design, monitoring, and human approval boundaries.
