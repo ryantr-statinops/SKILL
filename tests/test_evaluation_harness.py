@@ -27,6 +27,8 @@ class EvaluationHarnessTests(unittest.TestCase):
         report = json.loads(result.stdout)
         self.assertEqual(report["failed"], 0)
         self.assertEqual(report["total"], 68)
+        self.assertEqual(report["routing_total"], 5)
+        self.assertEqual(report["routing_failed"], 0)
 
     def test_case_requires_both_sections_and_all_fields(self) -> None:
         text = "## Representative task\nTask: one\nExpected: two\n"

@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CATEGORIES = ("common", "personal")
 CASE_SECTIONS = ("## Representative task", "## Boundary task")
 CASE_FIELDS = ("Task:", "Expected:", "Failure condition:", "Validation:")
+CONFIRMATIONS = {"never", "before_mutation", "before_external"}
 
 # Validation commands are opt-in and exact-match only. New commands must be
 # reviewed here before an evaluation file can request their execution.
@@ -76,18 +77,68 @@ def check_case(text: str, heading: str) -> list[str]:
     return errors
 
 
-def registry_ids() -> set[str]:
+def registry_records() -> dict[str, dict[str, str]]:
     registry_path = ROOT / "data/skills.json"
     try:
         registry = json.loads(registry_path.read_text(encoding="utf-8"))
         records = registry["skills"]
-        return {record["id"] for record in records}
+        return {record["id"]: record for record in records}
     except (OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
         raise ValueError(f"invalid generated registry: {registry_path.relative_to(ROOT)}") from exc
 
 
-def evaluate(run_commands: bool) -> tuple[list[dict[str, object]], int]:
-    ids = registry_ids()
+def evaluate_routing(records: dict[str, dict[str, str]]) -> tuple[list[dict[str, object]], int]:
+    fixture_path = ROOT / "tests/fixtures/agent-routing.json"
+    try:
+        fixtures = json.loads(fixture_path.read_text(encoding="utf-8"))
+        if not isinstance(fixtures, list):
+            raise TypeError("fixture is not a list")
+    except (OSError, TypeError, json.JSONDecodeError) as exc:
+        raise ValueError(f"invalid routing fixture: {fixture_path.relative_to(ROOT)}") from exc
+
+    results = []
+    failures = 0
+    for index, fixture in enumerate(fixtures):
+        errors = []
+        required = ("task", "expected_skill", "boundary_skill", "expected_explanation", "confirmation", "expected_validation")
+        if not isinstance(fixture, dict):
+            errors.append("fixture case is not an object")
+            fixture = {}
+        for field in required:
+            if field not in fixture:
+                errors.append(f"missing {field}")
+        expected = fixture.get("expected_skill")
+        boundary = fixture.get("boundary_skill")
+        confirmation = fixture.get("confirmation")
+        if expected not in records:
+            errors.append(f"expected skill is absent from registry: {expected}")
+        elif records[expected]["status"] == "deprecated":
+            errors.append(f"expected skill is deprecated: {expected}")
+        if boundary is not None and boundary not in records:
+            errors.append(f"boundary skill is absent from registry: {boundary}")
+        if confirmation not in CONFIRMATIONS:
+            errors.append(f"invalid confirmation: {confirmation}")
+        if fixture.get("expected_explanation") is not True:
+            errors.append("expected_explanation must be true")
+        if fixture.get("expected_validation") is not True:
+            errors.append("expected_validation must be true")
+        result = {
+            "case": index + 1,
+            "task": fixture.get("task", ""),
+            "expected_skill": expected,
+            "boundary_skill": boundary,
+            "confirmation": confirmation,
+            "status": "passed" if not errors else "failed",
+            "errors": errors,
+        }
+        results.append(result)
+        failures += bool(errors)
+    return results, failures
+
+
+def evaluate(run_commands: bool) -> tuple[list[dict[str, object]], list[dict[str, object]], int]:
+    records = registry_records()
+    ids = set(records)
     results: list[dict[str, object]] = []
     failures = 0
     for category in CATEGORIES:
@@ -132,19 +183,33 @@ def evaluate(run_commands: bool) -> tuple[list[dict[str, object]], int]:
             }
             results.append(result)
             failures += bool(errors)
-    return results, failures
+    routing_results, routing_failures = evaluate_routing(records)
+    return results, routing_results, failures + routing_failures
 
 
-def render_json(results: list[dict[str, object]]) -> str:
+def render_json(results: list[dict[str, object]], routing: list[dict[str, object]]) -> str:
+    failed = sum(r["status"] == "failed" for r in results) + sum(
+        r["status"] == "failed" for r in routing
+    )
     return json.dumps(
-        {"schema_version": 1, "total": len(results), "failed": sum(r["status"] == "failed" for r in results), "skills": results},
+        {
+            "schema_version": 2,
+            "total": len(results),
+            "failed": failed,
+            "skills": results,
+            "routing_total": len(routing),
+            "routing_failed": sum(r["status"] == "failed" for r in routing),
+            "routing": routing,
+        },
         indent=2,
         ensure_ascii=False,
     ) + "\n"
 
 
-def render_markdown(results: list[dict[str, object]]) -> str:
-    failed = sum(result["status"] == "failed" for result in results)
+def render_markdown(results: list[dict[str, object]], routing: list[dict[str, object]]) -> str:
+    failed = sum(result["status"] == "failed" for result in results) + sum(
+        result["status"] == "failed" for result in routing
+    )
     lines = [
         "# Skill evaluation report",
         "",
@@ -161,17 +226,23 @@ def render_markdown(results: list[dict[str, object]]) -> str:
         lines.append(
             f"| `{result['id']}` | `{result['path']}` | `{result['status']}` | {errors} |"
         )
+    lines.extend(["", "## Agent routing fixtures", "", "| Case | Expected skill | Status | Errors |", "| ---: | --- | --- | --- |"])
+    for result in routing:
+        errors = "; ".join(result["errors"]) or "—"
+        lines.append(
+            f"| {result['case']} | `{result['expected_skill']}` | `{result['status']}` | {errors} |"
+        )
     return "\n".join(lines) + "\n"
 
 
 def main() -> int:
     args = parse_args()
     try:
-        results, failures = evaluate(args.run_commands)
+        results, routing, failures = evaluate(args.run_commands)
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
-    report = render_json(results) if args.format == "json" else render_markdown(results)
+    report = render_json(results, routing) if args.format == "json" else render_markdown(results, routing)
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(report, encoding="utf-8")
