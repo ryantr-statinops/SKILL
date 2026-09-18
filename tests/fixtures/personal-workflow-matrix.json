@@ -1,0 +1,65 @@
+[
+  {
+    "name": "python-backend",
+    "representative_query": "Ryan preferred Python backend maintainable services tooling APIs",
+    "expected_skill": "personal/engineering/backend/python",
+    "boundary_query": "React lightweight web interface",
+    "boundary_skill": "personal/engineering/frontend/lightweight-web",
+    "artifact_or_validation": "service tests and API contract checks",
+    "reason": "A frontend interface is outside the Python backend boundary."
+  },
+  {
+    "name": "backend-api",
+    "representative_query": "backend API contracts validation errors client behavior",
+    "expected_skill": "personal/engineering/backend/api-design",
+    "boundary_query": "Explain regression statistics uncertainty",
+    "boundary_skill": "personal/statistics",
+    "artifact_or_validation": "API contract, validation, and error behavior",
+    "reason": "Statistical interpretation is not API design."
+  },
+  {
+    "name": "data-engineering",
+    "representative_query": "personal data engineering",
+    "expected_skill": "personal/engineering/data",
+    "boundary_query": "Design API contracts validation errors",
+    "boundary_skill": "personal/engineering/backend/api-design",
+    "artifact_or_validation": "pipeline inputs, transformations, quality checks, and lineage",
+    "reason": "An API contract task belongs to backend design."
+  },
+  {
+    "name": "ai-engineering",
+    "representative_query": "AI engineering LLM application tools evaluation monitoring",
+    "expected_skill": "personal/engineering/ai",
+    "boundary_query": "Go backend services testing operations",
+    "boundary_skill": "personal/engineering/backend/go",
+    "artifact_or_validation": "tool boundary, evaluation plan, monitoring, and fallback behavior",
+    "reason": "A Go service task does not require AI engineering."
+  },
+  {
+    "name": "quant-research",
+    "representative_query": "quant research signal hypothesis temporal splits leakage transaction costs",
+    "expected_skill": "personal/quant/research",
+    "boundary_query": "Create maintainable LaTeX document",
+    "boundary_skill": "personal/education/latex",
+    "artifact_or_validation": "temporal validation, baselines, leakage controls, and costs",
+    "reason": "Document authoring is outside quantitative research."
+  },
+  {
+    "name": "personal-debugging",
+    "representative_query": "personal debugging reproduce isolate fix verify",
+    "expected_skill": "personal/workflow/personal-debugging",
+    "boundary_query": "Choose a technology for a personal project",
+    "boundary_skill": "personal/decision/technology-selection",
+    "artifact_or_validation": "reproduction evidence, root cause, fix, and verification",
+    "reason": "Technology selection is a decision task, not debugging."
+  },
+  {
+    "name": "project-initialization",
+    "representative_query": "initialize personal software project structure conventions validation",
+    "expected_skill": "personal/workflow/project-init",
+    "boundary_query": "personal technical research engineering product decision",
+    "boundary_skill": "personal/workflow/personal-research",
+    "artifact_or_validation": "project structure, conventions, validation path, and documentation",
+    "reason": "A research decision should not initialize a project by default."
+  }
+]
