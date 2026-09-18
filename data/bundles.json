@@ -92,6 +92,22 @@
         "common/data/schema-validation",
         "common/data/reproducible-analysis"
       ]
+    },
+    {
+      "id": "personal-python",
+      "description": "Ryan's Python backend foundation with API, engineering, testing, debugging, and review guidance.",
+      "scope": "personal",
+      "runtime_target": "portable",
+      "allow_deprecated": false,
+      "skills": [
+        "personal/engineering/backend/python",
+        "personal/engineering/backend/core",
+        "personal/engineering/backend/api-design",
+        "personal/engineering/core",
+        "common/engineering/testing",
+        "common/engineering/debugging",
+        "common/engineering/code-review"
+      ]
     }
   ]
 }
