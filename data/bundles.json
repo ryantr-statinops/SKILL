@@ -35,6 +35,21 @@
         "common/delivery/change-review",
         "common/agent/failure-recovery"
       ]
+    },
+    {
+      "id": "feature-delivery",
+      "description": "Build a feature through requirements, planning, testing, implementation, review, and handoff.",
+      "scope": "universal",
+      "runtime_target": "portable",
+      "allow_deprecated": false,
+      "skills": [
+        "common/workflow/feature-delivery",
+        "common/foundation/requirements-analysis",
+        "common/foundation/task-planning",
+        "common/engineering/testing",
+        "common/engineering/code-review",
+        "common/delivery/change-review"
+      ]
     }
   ]
 }
