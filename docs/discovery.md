@@ -25,7 +25,10 @@ instructions or loading supporting resources.
 
 ## Querying the index
 
-Use `docs/skill-index.md` for human review and `data/skills.json` for tooling.
+Use `docs/skill-index.md` for human review and `data/skills.json` for tooling
+when working in this source repository. A consumer installation should use its
+`.skill-catalog.json` instead; it contains only the skills that were installed
+there and remains usable when the source registry is unavailable.
 Regenerate both after changing skill metadata:
 
 ```bash
@@ -39,6 +42,9 @@ Agents can search the generated registry without loading skill bodies:
 python3 scripts/discover_skills.py "build a Node.js API"
 python3 scripts/discover_skills.py --category personal "data pipeline"
 python3 scripts/discover_skills.py --format json "debug failing test"
+
+# Consumer discovery from an installed catalog
+python3 scripts/discover_skills.py --registry /path/to/project/.agent/skills/.skill-catalog.json "debug failing test"
 ```
 
 For personal engineering work, route through `personal/engineering/SKILL.md`

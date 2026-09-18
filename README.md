@@ -86,7 +86,7 @@ user outcome
   → validate and hand off
 ```
 
-For integration and runtime layout, read the [integration guide](docs/integration.md).
+For integration, update provenance, installed catalogs, and runtime layout, read the [integration guide](docs/integration.md).
 For routing, read the [discovery guide](docs/discovery.md). For coordinated
 outcomes, read the [workflow guide](docs/workflows.md). For consumer validation,
 read the [consumer smoke test](docs/consumer-smoke-test.md).

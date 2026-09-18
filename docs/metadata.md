@@ -30,6 +30,9 @@ invocation: both
 - `invocation`: `user`, `model`, or `both`; describes whether the skill is
   explicitly selected by a user, automatically selected by an agent, or both.
 
+- `requires`: optional list of canonical skill IDs required by this skill;
+  dependency resolution is handled by the registry and sync tools.
+
 `invocation` is portable metadata. It does not encode Claude, Codex, plugin, or
 other runtime-specific commands. A `user` skill is an explicit workflow entry
 point; a `both` skill may also be selected from its description and metadata.

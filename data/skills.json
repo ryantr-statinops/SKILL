@@ -394,7 +394,7 @@
       "subject": "skill-system",
       "scope": "repository",
       "status": "stable",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "invocation": "both",
       "path": "meta/skill-discovery/SKILL.md",
       "requires": []
@@ -459,7 +459,7 @@
       "subject": "ai-engineering",
       "scope": "personal",
       "status": "experimental",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "invocation": "both",
       "path": "personal/engineering/ai/core/SKILL.md",
       "requires": []

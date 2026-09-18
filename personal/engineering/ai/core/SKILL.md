@@ -5,13 +5,13 @@ category: personal
 subject: ai-engineering
 scope: personal
 status: experimental
-version: 1.0.0
+version: 1.1.0
 invocation: both
 ---
 
 # AI engineering foundations
 
-Use this skill to design an AI-enabled system as an engineered product rather than as a model demo. Keep the user outcome, data, model, context, tools, evaluation, and operational boundary explicit.
+Use this skill to design an AI-enabled system as an engineered product rather than as a model demo. Keep the user outcome, data, model, context, tools, evaluation, and operational boundary explicit. It is the shared foundation for the personal AI router while specialized routes are not yet justified.
 
 ## Problem framing
 

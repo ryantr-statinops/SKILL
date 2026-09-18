@@ -5,7 +5,7 @@ category: meta
 subject: skill-system
 scope: repository
 status: stable
-version: 1.0.0
+version: 1.1.0
 invocation: both
 ---
 
@@ -13,16 +13,19 @@ invocation: both
 
 ## When to use
 
-Use when routing a user task to one or more skills in this library.
+Use when routing a user task to one or more skills in this library or to the
+installed catalog exposed by a consumer runtime.
 
 ## Workflow
 
 1. Extract the task outcome, domain, artifacts, and risk.
-2. Scan category and skill descriptions; do not load every skill.
-3. Reject candidates whose `when not to use` boundary matches.
-4. Select the narrowest skill that covers the outcome; combine skills only when responsibilities are distinct.
-5. Read its `SKILL.md`, then load only linked resources required by the task.
-6. Validate the result using the selected skill's stated checks.
+2. Select the registry source: the repository registry for authoring work, or
+   the consumer `.skill-catalog.json` / runtime skill list for installed work.
+3. Scan category and skill descriptions; do not load every skill.
+4. Reject candidates whose `when not to use` boundary matches.
+5. Select the narrowest skill that covers the outcome; combine skills only when responsibilities are distinct.
+6. Read its `SKILL.md`, then load only linked resources required by the task.
+7. Validate the result using the selected skill's stated checks.
 
 ## Decision rules
 

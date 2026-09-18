@@ -105,6 +105,13 @@ boundary, not a second copy of the skill content.
 Bundle sync validates every referenced skill and stops if any target path
 already exists. It never overwrites a selected skill implicitly.
 
+Every normal sync also writes `.skill-sync.json` (source, bundle, selected
+skills, and per-file hashes) and `.skill-catalog.json` (the installed skill
+metadata). Review a prospective change with `--check --update`; apply it with
+`--update`. An update stops if a managed file was edited in the consumer, and
+only replaces files after the complete new export has validated. The catalog is
+the preferred discovery input inside the consumer.
+
 ### Direct copy or development symlink
 
 Direct copy is appropriate for a one-time, small integration. A symlink can be
@@ -124,6 +131,12 @@ possible adapters: .agents/skills/, .codex/skills/, .claude/skills/
 Runtime-specific notes, hooks, plugins, and always-on instructions belong in
 the adapter or its instruction file. Do not rewrite a portable `SKILL.md` to
 fit one runtime when the difference belongs in `AGENTS.md` or an adapter.
+
+The repository can generate a native `.agents/skills/` adapter from an existing
+`.agent/skills/` export. Adapter directory names encode the full source ID with
+hyphens (for example `common-engineering-debugging`) so repeated leaf names do
+not collide. The adapter keeps the portable source content and its relative
+resources intact.
 
 ## Bringing in an existing skill
 

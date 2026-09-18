@@ -18,6 +18,11 @@ description: What the skill does and when it applies.
 ---
 ```
 
+When one skill requires another, add an optional `requires` list containing
+canonical IDs such as `common/engineering/testing`. The registry records these
+dependencies and bundle validation resolves them transitively, rejects cycles,
+and rejects missing resources.
+
 The body should explain activation boundaries, scope, workflow, decision rules,
 constraints, failure modes, and validation. Start from
 `meta/SKILL_TEMPLATE.md` and remove sections that do not add value.
@@ -59,3 +64,7 @@ portable and must not contain runtime-specific plugin or slash-command rules.
 2. Link every supporting resource from the relevant instruction.
 3. Run `python3 scripts/validate_skills.py`.
 4. Test one representative task and one nearby boundary task.
+
+Do not make activation claims that only repeat the generic handoff template.
+State the concrete outcome that selects this skill and the nearby outcome that
+belongs to a different route.
