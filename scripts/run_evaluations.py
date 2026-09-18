@@ -87,6 +87,23 @@ def registry_records() -> dict[str, dict[str, str]]:
         raise ValueError(f"invalid generated registry: {registry_path.relative_to(ROOT)}") from exc
 
 
+def evaluation_skill_files() -> list[Path]:
+    paths = {
+        skill_file
+        for category in CATEGORIES
+        for skill_file in (ROOT / category).rglob("SKILL.md")
+    }
+    promotion_path = ROOT / "data/promoted.json"
+    try:
+        promoted = json.loads(promotion_path.read_text(encoding="utf-8"))["skills"]
+    except (OSError, KeyError, TypeError, json.JSONDecodeError) as exc:
+        raise ValueError(f"invalid promotion registry: {promotion_path.relative_to(ROOT)}") from exc
+    for identifier in promoted:
+        if isinstance(identifier, str) and identifier.startswith("meta/"):
+            paths.add(ROOT / identifier / "SKILL.md")
+    return sorted(paths)
+
+
 def evaluate_routing(records: dict[str, dict[str, str]]) -> tuple[list[dict[str, object]], int]:
     fixture_path = ROOT / "tests/fixtures/agent-routing.json"
     try:
@@ -141,48 +158,51 @@ def evaluate(run_commands: bool) -> tuple[list[dict[str, object]], list[dict[str
     ids = set(records)
     results: list[dict[str, object]] = []
     failures = 0
-    for category in CATEGORIES:
-        for skill_file in sorted((ROOT / category).rglob("SKILL.md")):
-            skill_dir = skill_file.parent
-            skill_id = skill_dir.relative_to(ROOT).as_posix()
-            evaluation = skill_dir / "examples/evaluation.md"
-            errors: list[str] = []
-            commands: list[dict[str, str]] = []
-            if skill_id not in ids:
-                errors.append("skill id is absent from generated registry")
-            if not evaluation.is_file():
-                errors.append("missing examples/evaluation.md")
-            else:
-                text = evaluation.read_text(encoding="utf-8")
-                for heading in CASE_SECTIONS:
-                    errors.extend(check_case(text, heading))
-                for command in declared_commands(text):
-                    if command not in ALLOWED_COMMANDS:
-                        errors.append(f"command is not allowlisted: {command}")
-                        commands.append({"command": command, "status": "rejected"})
-                    elif not run_commands:
-                        commands.append({"command": command, "status": "skipped"})
-                    else:
-                        completed = subprocess.run(
-                            ALLOWED_COMMANDS[command],
-                            cwd=ROOT,
-                            capture_output=True,
-                            text=True,
-                            check=False,
-                        )
-                        status = "passed" if completed.returncode == 0 else "failed"
-                        commands.append({"command": command, "status": status})
-                        if completed.returncode != 0:
-                            errors.append(f"allowlisted command failed: {command}")
-            result = {
-                "id": skill_id,
-                "path": evaluation.relative_to(ROOT).as_posix(),
-                "status": "passed" if not errors else "failed",
-                "errors": errors,
-                "commands": commands,
-            }
-            results.append(result)
-            failures += bool(errors)
+    try:
+        skill_files = evaluation_skill_files()
+    except ValueError as exc:
+        raise ValueError(str(exc)) from exc
+    for skill_file in skill_files:
+        skill_dir = skill_file.parent
+        skill_id = skill_dir.relative_to(ROOT).as_posix()
+        evaluation = skill_dir / "examples/evaluation.md"
+        errors: list[str] = []
+        commands: list[dict[str, str]] = []
+        if skill_id not in ids:
+            errors.append("skill id is absent from generated registry")
+        if not evaluation.is_file():
+            errors.append("missing examples/evaluation.md")
+        else:
+            text = evaluation.read_text(encoding="utf-8")
+            for heading in CASE_SECTIONS:
+                errors.extend(check_case(text, heading))
+            for command in declared_commands(text):
+                if command not in ALLOWED_COMMANDS:
+                    errors.append(f"command is not allowlisted: {command}")
+                    commands.append({"command": command, "status": "rejected"})
+                elif not run_commands:
+                    commands.append({"command": command, "status": "skipped"})
+                else:
+                    completed = subprocess.run(
+                        ALLOWED_COMMANDS[command],
+                        cwd=ROOT,
+                        capture_output=True,
+                        text=True,
+                        check=False,
+                    )
+                    status = "passed" if completed.returncode == 0 else "failed"
+                    commands.append({"command": command, "status": status})
+                    if completed.returncode != 0:
+                        errors.append(f"allowlisted command failed: {command}")
+        result = {
+            "id": skill_id,
+            "path": evaluation.relative_to(ROOT).as_posix(),
+            "status": "passed" if not errors else "failed",
+            "errors": errors,
+            "commands": commands,
+        }
+        results.append(result)
+        failures += bool(errors)
     routing_results, routing_failures = evaluate_routing(records)
     return results, routing_results, failures + routing_failures
 
