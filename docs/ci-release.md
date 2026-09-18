@@ -9,6 +9,8 @@ and whitespace. It does not require network access for external URLs.
 Run the same checks locally:
 
 ```bash
+pytest -q
+python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/validate_skills.py
 python3 scripts/generate_skill_index.py --check
 python3 scripts/run_evaluations.py --format json

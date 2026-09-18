@@ -120,6 +120,23 @@ A contribution should keep each skill narrow, define explicit activation and
 exclusion boundaries, include representative and boundary evaluation cases,
 and pass repository validation before commit.
 
+Run the repository checks locally with:
+
+```bash
+pytest -q
+python3 -m unittest discover -s tests -p 'test_*.py'
+python3 scripts/validate_skills.py
+python3 scripts/generate_skill_index.py --check
+python3 scripts/run_evaluations.py --format json
+python3 scripts/check_markdown_links.py
+git diff --check
+```
+
+Pytest runs the repository test suite only. The consumer project under
+`tests/fixtures/` is exercised by the consumer smoke test in
+`tests/test_consumer_smoke.py` and is intentionally excluded from root pytest
+collection.
+
 The [test suite](tests/) contains regression and consumer fixtures,
 [AGENTS.md](AGENTS.md) defines repository operating rules, and
 [CHANGELOG.md](CHANGELOG.md) records release history.

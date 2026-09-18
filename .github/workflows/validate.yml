@@ -20,6 +20,9 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install test dependency
+        run: python -m pip install --disable-pip-version-check pytest
+
       - name: Validate skill structure and metadata
         run: python3 scripts/validate_skills.py
 
@@ -31,6 +34,9 @@ jobs:
 
       - name: Run evaluation harness regression tests
         run: python3 -m unittest discover -s tests -p 'test_*.py'
+
+      - name: Run pytest repository suite
+        run: pytest -q
 
       - name: Check local Markdown links
         run: python3 scripts/check_markdown_links.py
