@@ -422,7 +422,7 @@
     {
       "id": "personal/education",
       "name": "education",
-      "description": "Route personal learning and teaching tasks to foundational R, LaTeX, statistics, probability, or stochastic-process workflows.",
+      "description": "Route personal learning and teaching tasks to statistics, R, or LaTeX workflows.",
       "category": "personal",
       "subject": "education",
       "scope": "personal",
@@ -442,17 +442,6 @@
       "path": "personal/education/latex/SKILL.md"
     },
     {
-      "id": "personal/education/probability",
-      "name": "probability",
-      "description": "Teach and apply probability foundations through explicit events, variables, assumptions, and derivations.",
-      "category": "personal",
-      "subject": "education",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/education/probability/SKILL.md"
-    },
-    {
       "id": "personal/education/r",
       "name": "r",
       "description": "Support foundational R learning and analysis through reproducible, inspectable statistical workflows.",
@@ -462,28 +451,6 @@
       "status": "experimental",
       "version": "1.0.0",
       "path": "personal/education/r/SKILL.md"
-    },
-    {
-      "id": "personal/education/statistics",
-      "name": "statistics",
-      "description": "Explain and apply foundational statistical reasoning with explicit assumptions, uncertainty, and interpretation.",
-      "category": "personal",
-      "subject": "education",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/education/statistics/SKILL.md"
-    },
-    {
-      "id": "personal/education/stochastic-processes",
-      "name": "stochastic-processes",
-      "description": "Study foundational stochastic processes by connecting definitions, dynamics, distributions, and simulation.",
-      "category": "personal",
-      "subject": "education",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/education/stochastic-processes/SKILL.md"
     },
     {
       "id": "personal/engineering/backend",
@@ -730,7 +697,7 @@
     {
       "id": "personal/quant",
       "name": "quant",
-      "description": "Route foundational quantitative work to research, trading, or time-series workflows without authorizing financial execution.",
+      "description": "Route personal quantitative work to research or production-engineering workflows without authorizing financial execution.",
       "category": "personal",
       "subject": "quant",
       "scope": "personal",
@@ -750,17 +717,6 @@
       "path": "personal/quant/quant-research/SKILL.md"
     },
     {
-      "id": "personal/quant/time-series",
-      "name": "time-series",
-      "description": "Analyze personal time-series problems with explicit temporal structure, stationarity assumptions, leakage controls, and uncertainty.",
-      "category": "personal",
-      "subject": "quant",
-      "scope": "personal",
-      "status": "experimental",
-      "version": "1.0.0",
-      "path": "personal/quant/time-series/SKILL.md"
-    },
-    {
       "id": "personal/quant/trading",
       "name": "trading",
       "description": "Route personal trading-related analysis to MT5 integration or execution-risk workflows without placing trades.",
@@ -770,6 +726,17 @@
       "status": "experimental",
       "version": "1.0.0",
       "path": "personal/quant/trading/SKILL.md"
+    },
+    {
+      "id": "personal/statistics",
+      "name": "statistics",
+      "description": "Apply foundational statistical reasoning across descriptive analysis, probability, inference, regression, time-series, and stochastic processes with explicit assumptions and uncertainty.",
+      "category": "personal",
+      "subject": "statistics",
+      "scope": "personal",
+      "status": "experimental",
+      "version": "1.0.0",
+      "path": "personal/statistics/SKILL.md"
     },
     {
       "id": "personal/workflow/brainstorming",

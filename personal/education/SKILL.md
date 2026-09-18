@@ -1,6 +1,6 @@
 ---
 name: education
-description: Route personal learning and teaching tasks to foundational R, LaTeX, statistics, probability, or stochastic-process workflows.
+description: Route personal learning and teaching tasks to statistics, R, or LaTeX workflows.
 category: personal
 subject: education
 scope: personal
@@ -16,15 +16,13 @@ Use this router for foundational learning, explanation, study planning, or mathe
 | --- | --- |
 | R learning or analysis | [r](r/SKILL.md) |
 | Mathematical writing | [latex](latex/SKILL.md) |
-| Statistical reasoning | [statistics](statistics/SKILL.md) |
-| Probability foundations | [probability](probability/SKILL.md) |
-| Stochastic processes | [stochastic-processes](stochastic-processes/SKILL.md) |
+| Statistical reasoning, probability, inference, regression, or time-series | [statistics](../statistics/SKILL.md) |
 
 Do not use this router to generate a complete textbook or make unsupported academic claims.
 
 ## Agent handoff
 
-- Selected when: Route a task to the narrowest child skill listed by this router.
+- Selected when: Route a learning or teaching task to statistics, R, or LaTeX according to the requested outcome.
 - Do not activate when: Do not activate when the task is outside this category or no child boundary matches.
 - Expected output: Name the selected child skill(s), reason, and any supporting route.
 - User-facing report: Summarize the route, excluded children, loaded resources, and validation.

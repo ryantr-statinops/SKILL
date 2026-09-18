@@ -4,7 +4,7 @@
 
 Task: Route a request asking how to learn probability with simulations and mathematical explanations.
 
-Expected: Select the probability skill and identify when statistics or R support is also needed.
+Expected: Select `personal/statistics` and identify when R support is also needed.
 
 Failure condition: Load every education skill before identifying the learning objective.
 
